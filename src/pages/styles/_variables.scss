@@ -1,0 +1,75 @@
+/* Variables para el sitio web de Mindtechpy */
+
+// Colores principales
+$primary-color: #4a6bff;
+$secondary-color: #2a3f7c;
+$accent-color: #ff7f50;
+$text-color: #333333;
+$bg-color: #f8f9fa;
+$light-color: #ffffff;
+$dark-color: #1d2337;
+$border-color: #e1e4e8;
+
+// Colores adicionales
+$success-color: #28a745;
+$error-color: #dc3545;
+$warning-color: #ffc107;
+$info-color: #17a2b8;
+
+// Tipografía
+$font-family-base: 'Poppins', sans-serif;
+$font-size-base: 16px;
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-md: 1rem;
+$font-size-lg: 1.25rem;
+$font-size-xl: 1.5rem;
+$font-size-xxl: 2rem;
+$font-size-xxxl: 2.5rem;
+
+// Espaciado
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+$spacing-xxl: 3rem;
+$spacing-xxxl: 5rem;
+
+// Contenedor
+$container-max-width: 1320px;
+$container-padding: 1rem;
+
+// Bordes y sombras
+$border-radius-sm: 4px;
+$border-radius: 8px;
+$border-radius-lg: 12px;
+$border-radius-xl: 20px;
+
+$shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.05);
+$shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+$shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+// Transiciones
+$transition-base: all 0.3s ease;
+$transition-slow: all 0.5s ease;
+$transition-fast: all 0.2s ease;
+
+// Breakpoints para responsive
+$breakpoint-xs: 576px;
+$breakpoint-sm: 767px;
+$breakpoint-md: 991px;
+$breakpoint-lg: 1199px;
+$breakpoint-xl: 1399px;
+
+// Variables para depuración
+$debug-border-color: rgba(255, 0, 0, 0.3);
+$debug-grid-color: rgba(0, 0, 255, 0.1);
+$debug-component-color: rgba(0, 255, 0, 0.1);
+
+// Variables para el modo oscuro (futuro)
+$dark-primary-color: #5d7eff;
+$dark-secondary-color: #3a547d;
+$dark-bg-color: #121212;
+$dark-text-color: #e0e0e0;
+$dark-border-color: #363636;

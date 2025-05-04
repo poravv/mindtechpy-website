@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyectos - MindTechPy</title>
+  <meta name="description" content="Descubre nuestro portafolio de proyectos y las soluciones tecnológicas innovadoras que hemos desarrollado en MindTechPy.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Header con Navbar -->
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <div class="navbar-logo">
+          <a href="/">
+            <img src="/images/mindtechpy-logo.png" alt="MindTechPy Logo">
+          </a>
+        </div>
+        <div class="navbar-toggle" id="navbar-toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="navbar-menu" id="navbar-menu">
+          <li class="navbar-item"><a href="/" class="navbar-link">Inicio</a></li>
+          <li class="navbar-item"><a href="/servicios" class="navbar-link">Servicios</a></li>
+          <li class="navbar-item"><a href="/clientes" class="navbar-link">Clientes</a></li>
+          <li class="navbar-item"><a href="/proyectos" class="navbar-link active">Proyectos</a></li>
+          <li class="navbar-item"><a href="/contacto" class="navbar-link">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="page-title animate-fadeIn">Nuestro Portafolio</h1>
+      <p class="page-subtitle animate-fadeIn delay-200">Proyectos innovadores que transforman negocios</p>
+    </div>
+  </section>
+
+  <!-- Filtro de Proyectos -->
+  <section class="portfolio-filter">
+    <div class="container">
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="web">Desarrollo Web</button>
+        <button class="filter-btn" data-filter="mobile">Aplicaciones Móviles</button>
+        <button class="filter-btn" data-filter="ai">IA y Machine Learning</button>
+        <button class="filter-btn" data-filter="cloud">Soluciones Cloud</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proyectos Grid -->
+  <section class="proyectos-grid-section">
+    <div class="container">
+      <div class="proyectos-grid" id="proyectos-grid">
+        <!-- Los proyectos se cargarán dinámicamente con JavaScript -->
+        
+        <!-- Ejemplo de proyecto -->
+        <div class="proyecto-card all web" data-category="web">
+          <div class="proyecto-imagen">
+            <img src="/images/project-1.jpg" alt="Proyecto de E-commerce">
+            <div class="proyecto-overlay">
+              <div class="proyecto-categoria">Desarrollo Web</div>
+              <div class="proyecto-acciones">
+                <a href="/proyectos/ecommerce" class="btn btn-sm btn-primary">Ver detalles</a>
+                <a href="https://example.com" target="_blank" class="btn btn-sm btn-secondary">Visitar sitio</a>
+              </div>
+            </div>
+          </div>
+          <div class="proyecto-info">
+            <h3>Plataforma E-commerce Premium</h3>
+            <p>Desarrollo de tienda online con sistema de pagos integrado y gestión de inventario en tiempo real.</p>
+            <div class="proyecto-tech">
+              <span class="badge badge-primary">React</span>
+              <span class="badge badge-primary">Node.js</span>
+              <span class="badge badge-primary">MongoDB</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="proyecto-card all mobile" data-category="mobile">
+          <div class="proyecto-imagen">
+            <img src="/images/project-2.jpg" alt="Aplicación Móvil">
+            <div class="proyecto-overlay">
+              <div class="proyecto-categoria">Aplicación Móvil</div>
+              <div class="proyecto-acciones">
+                <a href="/proyectos/app-fitness" class="btn btn-sm btn-primary">Ver detalles</a>
+                <a href="https://apps.apple.com" target="_blank" class="btn btn-sm btn-secondary">App Store</a>
+              </div>
+            </div>
+          </div>
+          <div class="proyecto-info">
+            <h3>App de Fitness y Bienestar</h3>
+            <p>Aplicación móvil para seguimiento de actividad física, nutrición y meditación con análisis personalizado.</p>
+            <div class="proyecto-tech">
+              <span class="badge badge-primary">React Native</span>
+              <span class="badge badge-primary">Firebase</span>
+              <span class="badge badge-primary">Redux</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="proyecto-card all ai" data-category="ai">
+          <div class="proyecto-imagen">
+            <img src="/images/project-3.jpg" alt="Sistema de IA">
+            <div class="proyecto-overlay">
+              <div class="proyecto-categoria">Inteligencia Artificial</div>
+              <div class="proyecto-acciones">
+                <a href="/proyectos/ia-prediccion" class="btn btn-sm btn-primary">Ver detalles</a>
+              </div>
+            </div>
+          </div>
+          <div class="proyecto-info">
+            <h3>Sistema de Predicción de Demanda</h3>
+            <p>Implementación de algoritmos de machine learning para predecir demanda de productos en cadena de suministro.</p>
+            <div class="proyecto-tech">
+              <span class="badge badge-primary">Python</span>
+              <span class="badge badge-primary">TensorFlow</span>
+              <span class="badge badge-primary">AWS</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="proyecto-card all cloud" data-category="cloud">
+          <div class="proyecto-imagen">
+            <img src="/images/project-4.jpg" alt="Migración Cloud">
+            <div class="proyecto-overlay">
+              <div class="proyecto-categoria">Soluciones Cloud</div>
+              <div class="proyecto-acciones">
+                <a href="/proyectos/migracion-cloud" class="btn btn-sm btn-primary">Ver detalles</a>
+              </div>
+            </div>
+          </div>
+          <div class="proyecto-info">
+            <h3>Migración a Infraestructura Cloud</h3>
+            <p>Migración completa de infraestructura on-premise a AWS con arquitectura serverless y microservicios.</p>
+            <div class="proyecto-tech">
+              <span class="badge badge-primary">AWS</span>
+              <span class="badge badge-primary">Docker</span>
+              <span class="badge badge-primary">Kubernetes</span>
+              <span class="badge badge-primary">Terraform</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="proyecto-card all web" data-category="web">
+          <div class="proyecto-imagen">
+            <img src="/images/project-5.jpg" alt="Dashboard Analítico">
+            <div class="proyecto-overlay">
+              <div class="proyecto-categoria">Desarrollo Web</div>
+              <div class="proyecto-acciones">
+                <a href="/proyectos/dashboard" class="btn btn-sm btn-primary">Ver detalles</a>
+                <a href="https://example.com/demo" target="_blank" class="btn btn-sm btn-secondary">Demo</a>
+              </div>
+            </div>
+          </div>
+          <div class="proyecto-info">
+            <h3>Dashboard Analítico Empresarial</h3>
+            <p>Desarrollo de plataforma de visualización de datos empresariales con reportes personalizados y métricas clave.</p>
+            <div class="proyecto-tech">
+              <span class="badge badge-primary">Vue.js</span>
+              <span class="badge badge-primary">D3.js</span>
+              <span class="badge badge-primary">Express</span>
+              <span class="badge badge-primary">PostgreSQL</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="proyecto-card all mobile" data-category="mobile">
+          <div class="proyecto-imagen">
+            <img src="/images/project-6.jpg" alt="App Financiera">
+            <div class="proyecto-overlay">
+              <div class="proyecto-categoria">Aplicación Móvil</div>
+              <div class="proyecto-acciones">
+                <a href="/proyectos/app-fintech" class="btn btn-sm btn-primary">Ver detalles</a>
+                <a href="https://play.google.com" target="_blank" class="btn btn-sm btn-secondary">Play Store</a>
+              </div>
+            </div>
+          </div>
+          <div class="proyecto-info">
+            <h3>Aplicación Fintech para Pagos</h3>
+            <p>Desarrollo de solución de pagos móviles con integración de múltiples proveedores y sistema de recompensas.</p>
+            <div class="proyecto-tech">
+              <span class="badge badge-primary">Flutter</span>
+              <span class="badge badge-primary">Dart</span>
+              <span class="badge badge-primary">Node.js</span>
+              <span class="badge badge-primary">MongoDB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>¿Tienes un proyecto en mente?</h2>
+        <p>Contáctanos y permítenos ayudarte a convertir tu idea en una solución innovadora y efectiva.</p>
+        <a href="/contacto" class="btn btn-primary">Empecemos a trabajar juntos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <div class="footer-logo">
+            <img src="/images/mindtechpy-logo-white.png" alt="MindTechPy Logo">
+          </div>
+          <p class="footer-description">Soluciones tecnológicas innovadoras para empresas que buscan destacar en la era digital.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/mindtechpy" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/mindtechpy" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/mindtechpy" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/mindtechpy" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3 class="footer-title">Enlaces rápidos</h3>
+          <ul class="footer-links">
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/servicios">Servicios</a></li>
+            <li><a href="/clientes">Clientes</a></li>
+            <li><a href="/proyectos">Proyectos</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 class="footer-title">Servicios</h3>
+          <ul class="footer-links">
+            <li><a href="/servicios#web">Desarrollo Web</a></li>
+            <li><a href="/servicios#movil">Aplicaciones Móviles</a></li>
+            <li><a href="/servicios#consultoria">Consultoría IT</a></li>
+            <li><a href="/servicios#ia">Inteligencia Artificial</a></li>
+            <li><a href="/servicios#cloud">Soluciones Cloud</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 class="footer-title">Contacto</h3>
+          <ul class="footer-contact">
+            <li><i class="fas fa-map-marker-alt"></i> Asunción, Paraguay</li>
+            <li><i class="fas fa-phone"></i> +595 XXX XXX XXX</li>
+            <li><i class="fas fa-envelope"></i> info@mindtechpy.net</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 MindTechPy. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // El archivo proyectos.js se importará mediante webpack
+  </script>
+</body>
+</html>

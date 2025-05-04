@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <style>
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+    @keyframes pulse {
+      0% { opacity: 0.4; }
+      50% { opacity: 1; }
+      100% { opacity: 0.4; }
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .floating { animation: float 6s ease-in-out infinite; }
+    .pulsating { animation: pulse 3s ease-in-out infinite; }
+    .spinning { transform-origin: center; animation: spin 10s linear infinite; }
+  </style>
+  
+  <!-- Fondo con patrón de puntos -->
+  <pattern id="dotPattern" patternUnits="userSpaceOnUse" width="25" height="25" patternTransform="rotate(45)">
+    <rect width="25" height="25" fill="none"/>
+    <circle cx="5" cy="5" r="1" fill="#e0f2fe" opacity="0.5"/>
+  </pattern>
+  <rect x="0" y="0" width="800" height="600" fill="url(#dotPattern)"/>
+  
+  <!-- Círculo gradiente de fondo -->
+  <circle cx="650" cy="150" r="300" fill="url(#blueGradient)" opacity="0.1"/>
+  
+  <!-- Degradados -->
+  <defs>
+    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.3"/>
+    </linearGradient>
+    <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#ec4899" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Grupo principal flotante -->
+  <g class="floating">
+    <!-- Laptop con código -->
+    <g transform="translate(400, 300)">
+      <!-- Base de laptop -->
+      <rect x="-150" y="-100" width="300" height="180" rx="10" fill="#1e293b"/>
+      <rect x="-140" y="-90" width="280" height="160" rx="5" fill="#0f172a"/>
+      
+      <!-- Pantalla -->
+      <rect x="-130" y="-80" width="260" height="140" rx="3" fill="#334155"/>
+      
+      <!-- Código en pantalla -->
+      <g>
+        <rect x="-120" y="-70" width="240" height="10" fill="#4c1d95" opacity="0.8"/>
+        <rect x="-120" y="-55" width="140" fill="#5b21b6" height="10" opacity="0.7"/>
+        <rect x="-120" y="-40" width="180" fill="#6d28d9" height="10" opacity="0.6"/>
+        <rect x="-120" y="-25" width="120" fill="#7c3aed" height="10" opacity="0.6"/>
+        <rect x="-120" y="-10" width="200" fill="#8b5cf6" height="10" opacity="0.5"/>
+        <rect x="-120" y="5" width="160" fill="#9333ea" height="10" opacity="0.5"/>
+        <rect x="-120" y="20" width="220" fill="#a855f7" height="10" opacity="0.4"/>
+        <rect x="-120" y="35" width="140" fill="#c084fc" height="10" opacity="0.4"/>
+        <rect x="-120" y="50" width="190" fill="#d8b4fe" height="10" opacity="0.3"/>
+      </g>
+      
+      <!-- Base del teclado -->
+      <rect x="-150" y="80" width="300" height="20" rx="5" fill="#1e293b"/>
+      <rect x="-130" y="90" width="260" height="10" rx="5" fill="#0f172a"/>
+    </g>
+    
+    <!-- Círculo con código orbitando -->
+    <g transform="translate(550, 200)">
+      <circle cx="0" cy="0" r="60" fill="url(#blueGradient)" opacity="0.7"/>
+      
+      <g class="spinning">
+        <!-- Órbita -->
+        <circle cx="0" cy="0" r="90" fill="none" stroke="#8b5cf6" stroke-width="1" opacity="0.3" stroke-dasharray="5,5"/>
+        
+        <!-- Elementos orbitando -->
+        <g transform="translate(0, -90)">
+          <circle cx="0" cy="0" r="10" fill="#2563eb"/>
+          <text x="0" y="0" dominant-baseline="middle" text-anchor="middle" font-family="monospace" font-size="10" fill="white">{}</text>
+        </g>
+        
+        <g transform="rotate(120) translate(0, -90)">
+          <circle cx="0" cy="0" r="15" fill="#8b5cf6"/>
+          <text x="0" y="0" dominant-baseline="middle" text-anchor="middle" font-family="monospace" font-size="12" fill="white">JS</text>
+        </g>
+        
+        <g transform="rotate(240) translate(0, -90)">
+          <circle cx="0" cy="0" r="12" fill="#10b981"/>
+          <text x="0" y="0" dominant-baseline="middle" text-anchor="middle" font-family="monospace" font-size="10" fill="white">&lt;/&gt;</text>
+        </g>
+      </g>
+      
+      <!-- Texto dentro del círculo -->
+      <text x="0" y="0" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">API</text>
+    </g>
+    
+    <!-- Dispositivos móviles -->
+    <g transform="translate(250, 220)">
+      <!-- Teléfono -->
+      <rect x="-30" y="-60" width="60" height="120" rx="10" fill="#1e293b"/>
+      <rect x="-25" y="-55" width="50" height="110" rx="5" fill="#334155"/>
+      <circle cx="0" cy="45" r="8" fill="#1e293b"/>
+      <rect x="-15" y="-50" width="30" height="5" rx="2" fill="#1e293b"/>
+      
+      <!-- Pantalla con gráfica -->
+      <g>
+        <rect x="-20" y="-40" width="40" height="70" rx="2" fill="#0f172a"/>
+        <path d="M-18,-25 L-10,-30 L0,-15 L10,-35 L18,-25" stroke="#10b981" stroke-width="2" fill="none"/>
+        <circle cx="-10" cy="-30" r="3" fill="#10b981"/>
+        <circle cx="0" cy="-15" r="3" fill="#10b981"/>
+        <circle cx="10" cy="-35" r="3" fill="#10b981"/>
+      </g>
+    </g>
+    
+    <!-- Íconos de UI y componentes -->
+    <g transform="translate(650, 350)">
+      <!-- UI Componentes -->
+      <rect x="-40" y="-40" width="80" height="80" fill="url(#purpleGradient)" rx="15" opacity="0.8"/>
+      <g fill="white">
+        <circle cx="-15" cy="-15" r="10" opacity="0.9"/>
+        <rect x="5" y="-25" width="30" height="10" rx="3" opacity="0.7"/>
+        <rect x="5" y="-10" width="20" height="10" rx="3" opacity="0.8"/>
+        <rect x="-25" y="5" width="60" height="10" rx="3" opacity="0.6"/>
+        <rect x="-25" y="20" width="40" height="10" rx="3" opacity="0.7"/>
+      </g>
+    </g>
+    
+    <!-- Engranajes -->
+    <g class="spinning" transform="translate(200, 120) scale(0.7)">
+      <path d="M0,-30 L5,-12 L20,-20 L15,-5 L30,0 L15,5 L20,20 L5,12 L0,30 L-5,12 L-20,20 L-15,5 L-30,0 L-15,-5 L-20,-20 L-5,-12 Z" fill="#6366f1" opacity="0.8"/>
+      <circle cx="0" cy="0" r="10" fill="#1e293b"/>
+    </g>
+    
+    <g class="spinning" transform="translate(500, 440) scale(0.5)">
+      <path d="M0,-30 L5,-12 L20,-20 L15,-5 L30,0 L15,5 L20,20 L5,12 L0,30 L-5,12 L-20,20 L-15,5 L-30,0 L-15,-5 L-20,-20 L-5,-12 Z" fill="#10b981" opacity="0.8"/>
+      <circle cx="0" cy="0" r="10" fill="#1e293b"/>
+    </g>
+    
+    <!-- Base de datos -->
+    <g transform="translate(330, 420)">
+      <path d="M-30,-15 C-30,-25 30,-25 30,-15 L30,15 C30,25 -30,25 -30,15 Z" fill="#2563eb" opacity="0.8"/>
+      <path d="M-30,-15 C-30,-5 30,-5 30,-15" fill="none" stroke="white" stroke-width="1" opacity="0.5"/>
+      <ellipse cx="0" cy="-15" rx="30" ry="10" fill="#2563eb" opacity="0.9"/>
+      <line x1="-20" y1="-18" x2="20" y2="-18" stroke="white" stroke-width="1" opacity="0.5"/>
+      <line x1="-15" y1="-12" x2="15" y2="-12" stroke="white" stroke-width="1" opacity="0.5"/>
+    </g>
+  </g>
+  
+  <!-- Conexiones entre elementos (líneas punteadas) -->
+  <path d="M400,300 C450,250 500,220 550,200" fill="none" stroke="#8b5cf6" stroke-width="1" opacity="0.6" stroke-dasharray="5,5"/>
+  <path d="M400,300 C350,260 300,230 250,220" fill="none" stroke="#10b981" stroke-width="1" opacity="0.6" stroke-dasharray="5,5"/>
+  <path d="M400,300 C450,350 550,370 650,350" fill="none" stroke="#2563eb" stroke-width="1" opacity="0.6" stroke-dasharray="5,5"/>
+  <path d="M400,300 C370,350 350,390 330,420" fill="none" stroke="#6366f1" stroke-width="1" opacity="0.6" stroke-dasharray="5,5"/>
+  
+  <!-- Puntos brillantes pulsantes -->
+  <circle class="pulsating" cx="400" cy="300" r="5" fill="white"/>
+  <circle class="pulsating" cx="550" cy="200" r="5" fill="#8b5cf6"/>
+  <circle class="pulsating" cx="250" cy="220" r="5" fill="#10b981"/>
+  <circle class="pulsating" cx="650" cy="350" r="5" fill="#2563eb"/>
+  <circle class="pulsating" cx="330" cy="420" r="5" fill="#6366f1"/>
+</svg>

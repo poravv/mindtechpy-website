@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto - MindTechPy</title>
+  <meta name="description" content="Ponte en contacto con MindTechPy para discutir tu proyecto o solicitar información sobre nuestros servicios de desarrollo de software y soluciones tecnológicas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Header con Navbar -->
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <div class="navbar-logo">
+          <a href="/">
+            <img src="/images/mindtechpy-logo.png" alt="MindTechPy Logo">
+          </a>
+        </div>
+        <div class="navbar-toggle" id="navbar-toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="navbar-menu" id="navbar-menu">
+          <li class="navbar-item"><a href="/" class="navbar-link">Inicio</a></li>
+          <li class="navbar-item"><a href="/servicios" class="navbar-link">Servicios</a></li>
+          <li class="navbar-item"><a href="/clientes" class="navbar-link">Clientes</a></li>
+          <li class="navbar-item"><a href="/proyectos" class="navbar-link">Proyectos</a></li>
+          <li class="navbar-item"><a href="/contacto" class="navbar-link active">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="page-title animate-fadeIn">Contacto</h1>
+      <p class="page-subtitle animate-fadeIn delay-200">Estamos listos para ayudarte con tu próximo proyecto</p>
+    </div>
+  </section>
+
+  <!-- Contacto Info + Formulario -->
+  <section class="contacto-section">
+    <div class="container">
+      <div class="contacto-grid">
+        <div class="contacto-info animate-fadeIn">
+          <h2>Información de Contacto</h2>
+          <p>Estamos aquí para responder cualquier pregunta que puedas tener. Siéntete libre de contactarnos y conversemos sobre cómo podemos ayudarte.</p>
+          
+          <div class="contacto-details">
+            <div class="contacto-item">
+              <div class="contacto-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contacto-text">
+                <h3>Dirección</h3>
+                <p>Asunción, Paraguay</p>
+              </div>
+            </div>
+            
+            <div class="contacto-item">
+              <div class="contacto-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contacto-text">
+                <h3>Teléfono</h3>
+                <p>+595 XXX XXX XXX</p>
+              </div>
+            </div>
+            
+            <div class="contacto-item">
+              <div class="contacto-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contacto-text">
+                <h3>Email</h3>
+                <p>info@mindtechpy.net</p>
+              </div>
+            </div>
+            
+            <div class="contacto-item">
+              <div class="contacto-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="contacto-text">
+                <h3>Horario</h3>
+                <p>Lunes a Viernes: 9:00 AM - 6:00 PM</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="contacto-social">
+            <h3>Síguenos</h3>
+            <div class="social-icons">
+              <a href="https://www.facebook.com/mindtechpy" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://www.instagram.com/mindtechpy" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/company/mindtechpy" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://github.com/mindtechpy" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contacto-form-container animate-fadeIn delay-200">
+          <h2>Envíanos un mensaje</h2>
+          <p>Completa el formulario a continuación y nos pondremos en contacto contigo lo antes posible.</p>
+          
+          <form class="contacto-form" id="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre" class="form-label">Nombre completo</label>
+                <input type="text" id="nombre" name="nombre" class="form-control" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="asunto" class="form-label">Asunto</label>
+              <input type="text" id="asunto" name="asunto" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="servicio" class="form-label">Servicio de interés</label>
+              <select id="servicio" name="servicio" class="form-control">
+                <option value="">Selecciona un servicio</option>
+                <option value="desarrollo-web">Desarrollo Web</option>
+                <option value="aplicaciones-moviles">Aplicaciones Móviles</option>
+                <option value="consultoria-it">Consultoría IT</option>
+                <option value="ia">Inteligencia Artificial</option>
+                <option value="cloud">Soluciones Cloud</option>
+                <option value="otros">Otros</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="mensaje" class="form-label">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" class="form-control" rows="5" required></textarea>
+            </div>
+            
+            <div class="form-group form-check">
+              <input type="checkbox" id="privacidad" name="privacidad" class="form-check-input" required>
+              <label for="privacidad" class="form-check-label">He leído y acepto la <a href="/privacidad">política de privacidad</a></label>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-block">Enviar mensaje</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mapa -->
+  <section class="mapa-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Encuéntranos</h2>
+        <p class="section-subtitle">Visita nuestras oficinas</p>
+      </div>
+    </div>
+    <div class="mapa-container">
+      <!-- Se integraría un mapa real con la API de Google Maps -->
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115401.72113924509!2d-57.6462131071621!3d-25.304469264877914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945da8246ef1f0e7%3A0xb99ec4a3a0573f3d!2sAsunci%C3%B3n%2C%20Paraguay!5e0!3m2!1ses!2sus!4v1683236228317!5m2!1ses!2sus" 
+        width="100%" 
+        height="450" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Preguntas Frecuentes</h2>
+        <p class="section-subtitle">Respuestas a las dudas más comunes</p>
+      </div>
+      
+      <div class="faq-accordion">
+        <div class="faq-item animate-on-scroll">
+          <div class="faq-question">
+            <h3>¿Cuál es el proceso para iniciar un proyecto con MindTechPy?</h3>
+            <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+          </div>
+          <div class="faq-answer">
+            <p>El proceso comienza con una consulta inicial donde escuchamos tus necesidades y objetivos. Luego, realizamos un análisis detallado para preparar una propuesta personalizada. Una vez aprobada, comenzamos con la planificación y desarrollo según la metodología acordada, manteniendo comunicación constante durante todo el proyecto.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item animate-on-scroll">
+          <div class="faq-question">
+            <h3>¿Cuánto tiempo toma desarrollar un proyecto?</h3>
+            <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+          </div>
+          <div class="faq-answer">
+            <p>El tiempo de desarrollo varía según la complejidad y alcance del proyecto. Un sitio web informativo puede tomar de 2 a 4 semanas, mientras que un sistema más complejo o aplicación móvil puede requerir de 2 a 6 meses. En la propuesta inicial, proporcionamos un cronograma detallado con plazos estimados para cada etapa.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item animate-on-scroll">
+          <div class="faq-question">
+            <h3>¿Ofrecen soporte técnico después de finalizar el proyecto?</h3>
+            <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+          </div>
+          <div class="faq-answer">
+            <p>Sí, ofrecemos planes de soporte y mantenimiento para todos nuestros proyectos. Estos incluyen actualizaciones de seguridad, resolución de problemas técnicos, mejoras continuas y asesoramiento. Los detalles específicos del soporte se definen en el contrato según las necesidades del cliente.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item animate-on-scroll">
+          <div class="faq-question">
+            <h3>¿Trabajan con clientes internacionales?</h3>
+            <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+          </div>
+          <div class="faq-answer">
+            <p>Absolutamente. Tenemos experiencia trabajando con clientes de diversos países y adaptamos nuestros horarios para facilitar la comunicación en diferentes zonas horarias. Utilizamos herramientas de colaboración en línea para garantizar una comunicación fluida y efectiva durante todo el proyecto.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item animate-on-scroll">
+          <div class="faq-question">
+            <h3>¿Cómo garantizan la calidad de sus desarrollos?</h3>
+            <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+          </div>
+          <div class="faq-answer">
+            <p>Implementamos estrictos procesos de control de calidad que incluyen revisiones de código, pruebas automatizadas y manuales en cada etapa del desarrollo. Seguimos las mejores prácticas de la industria y utilizamos metodologías ágiles para identificar y resolver problemas tempranamente. Además, involucramos al cliente en revisiones regulares para asegurar que el producto cumple con sus expectativas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <div class="footer-logo">
+            <img src="/images/mindtechpy-logo-white.png" alt="MindTechPy Logo">
+          </div>
+          <p class="footer-description">Soluciones tecnológicas innovadoras para empresas que buscan destacar en la era digital.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/mindtechpy" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/mindtechpy" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/mindtechpy" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/mindtechpy" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3 class="footer-title">Enlaces rápidos</h3>
+          <ul class="footer-links">
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/servicios">Servicios</a></li>
+            <li><a href="/clientes">Clientes</a></li>
+            <li><a href="/proyectos">Proyectos</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 class="footer-title">Servicios</h3>
+          <ul class="footer-links">
+            <li><a href="/servicios#web">Desarrollo Web</a></li>
+            <li><a href="/servicios#movil">Aplicaciones Móviles</a></li>
+            <li><a href="/servicios#consultoria">Consultoría IT</a></li>
+            <li><a href="/servicios#ia">Inteligencia Artificial</a></li>
+            <li><a href="/servicios#cloud">Soluciones Cloud</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 class="footer-title">Contacto</h3>
+          <ul class="footer-contact">
+            <li><i class="fas fa-map-marker-alt"></i> Asunción, Paraguay</li>
+            <li><i class="fas fa-phone"></i> +595 XXX XXX XXX</li>
+            <li><i class="fas fa-envelope"></i> info@mindtechpy.net</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 MindTechPy. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // El archivo contacto.js se importará mediante webpack
+  </script>
+</body>
+</html>
