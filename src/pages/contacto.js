@@ -1,145 +1,139 @@
 // Importamos los estilos
 import './styles/styles.css';
-// import './styles/main.scss'; // Comentado temporalmente hasta resolver problemas SCSS
-// Importamos las funciones compartidas para la navegación
-import { initNavbar } from './index.js';
 
-// Función para inicializar el acordeón de FAQ
-function initFaqAccordion() {
-  const faqItems = document.querySelectorAll('.faq-item');
+// Importamos los componentes necesarios
+import Navbar from '../components/Navbar';
+
+// Inicializar la navegación
+const initNavbar = () => {
+  new Navbar();
+};
+
+// Inicializar el formulario de contacto
+const initContactForm = () => {
+  const contactForm = document.getElementById('contact-form');
+  if (!contactForm) return;
+
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    
+    // Cambia el texto del botón para indicar envío
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+    
+    // Simulación de envío (reemplazar por API real)
+    setTimeout(() => {
+      // Mostrar mensaje de éxito
+      alert('¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.');
+      
+      // Limpiar formulario
+      contactForm.reset();
+      
+      // Restaurar botón
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Enviar mensaje';
+    }, 1500);
+  });
+};
+
+// Inicializar las pestañas de tecnologías
+const initTechTabs = () => {
+  const tabs = document.querySelectorAll('.tech-tab');
+  if (!tabs.length) return;
   
-  if (faqItems.length === 0) return;
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Desactivar todos los tabs
+      document.querySelectorAll('.tech-tab').forEach(t => {
+        t.classList.remove('active');
+      });
+      
+      // Activar el tab seleccionado
+      tab.classList.add('active');
+      
+      // Mostrar el contenido correspondiente
+      const category = tab.getAttribute('data-category');
+      
+      // Ocultar todos los grids de tecnología
+      document.querySelectorAll('.tech-grid').forEach(grid => {
+        grid.classList.remove('active');
+      });
+      
+      // Mostrar el grid correspondiente
+      document.getElementById(category).classList.add('active');
+    });
+  });
+};
+
+// Inicializar el acordeón de preguntas frecuentes
+const initFaqAccordion = () => {
+  const faqItems = document.querySelectorAll('.faq-item');
+  if (!faqItems.length) return;
   
   faqItems.forEach(item => {
     const question = item.querySelector('.faq-question');
     const answer = item.querySelector('.faq-answer');
-    const toggle = item.querySelector('.faq-toggle i');
+    const toggle = item.querySelector('.faq-toggle');
     
     question.addEventListener('click', () => {
-      // Cerrar otros items abiertos
-      faqItems.forEach(otherItem => {
-        if (otherItem !== item && otherItem.classList.contains('active')) {
-          otherItem.classList.remove('active');
-          otherItem.querySelector('.faq-answer').style.maxHeight = null;
-          otherItem.querySelector('.faq-toggle i').classList.remove('fa-minus');
-          otherItem.querySelector('.faq-toggle i').classList.add('fa-plus');
+      // Cerrar otras preguntas si están abiertas
+      document.querySelectorAll('.faq-item.active').forEach(openItem => {
+        if (openItem !== item) {
+          openItem.classList.remove('active');
+          openItem.querySelector('.faq-toggle i').className = 'fas fa-plus';
+          openItem.querySelector('.faq-answer').style.maxHeight = '0px';
         }
       });
       
-      // Toggle actual item
+      // Alternar estado actual
       item.classList.toggle('active');
       
+      // Cambiar ícono
       if (item.classList.contains('active')) {
+        toggle.innerHTML = '<i class="fas fa-minus"></i>';
         answer.style.maxHeight = answer.scrollHeight + 'px';
-        toggle.classList.remove('fa-plus');
-        toggle.classList.add('fa-minus');
       } else {
-        answer.style.maxHeight = null;
-        toggle.classList.remove('fa-minus');
-        toggle.classList.add('fa-plus');
+        toggle.innerHTML = '<i class="fas fa-plus"></i>';
+        answer.style.maxHeight = '0px';
       }
     });
   });
-}
+};
 
-// Función para inicializar el formulario de contacto
-function initContactoForm() {
-  const form = document.getElementById('contact-form');
+// Animación al desplazarse para elementos
+const initScrollAnimations = () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('appear');
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
   
-  if (!form) return;
+  // Observar todos los elementos con la clase animate-on-scroll
+  document.querySelectorAll('.animate-on-scroll').forEach(el => {
+    observer.observe(el);
+  });
+};
+
+// Inicializar todo cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', () => {
+  initNavbar();
+  initContactForm();
+  initTechTabs();
+  initFaqAccordion();
+  initScrollAnimations();
   
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const submitBtn = form.querySelector('button[type="submit"]');
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-    
-    // Simulamos el envío del formulario (en producción se enviaría a un backend real)
-    try {
-      // Recolectamos los datos del formulario
-      const formData = new FormData(form);
-      const formValues = Object.fromEntries(formData);
-      
-      // Simulamos una petición API
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // Aquí se enviaría a un backend real mediante fetch o axios
-      console.log('Datos del formulario:', formValues);
-      
-      // Mostramos mensaje de éxito
-      const successMessage = document.createElement('div');
-      successMessage.className = 'alert alert-success';
-      successMessage.innerHTML = '<i class="fas fa-check-circle"></i> ¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.';
-      
-      // Insertamos el mensaje antes del formulario
-      form.parentNode.insertBefore(successMessage, form);
-      
-      // Reseteamos el formulario
-      form.reset();
-      
-      // Restauramos el botón
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = 'Enviar mensaje';
-      
-      // Ocultamos el mensaje después de un tiempo
-      setTimeout(() => {
-        successMessage.style.opacity = '0';
-        setTimeout(() => successMessage.remove(), 500);
-      }, 5000);
-      
-    } catch (error) {
-      // Mostramos mensaje de error
-      console.error('Error al enviar el formulario:', error);
-      
-      const errorMessage = document.createElement('div');
-      errorMessage.className = 'alert alert-error';
-      errorMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> Hubo un error al enviar tu mensaje. Por favor intenta nuevamente o contáctanos directamente por teléfono.';
-      
-      // Insertamos el mensaje antes del formulario
-      form.parentNode.insertBefore(errorMessage, form);
-      
-      // Restauramos el botón
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = 'Enviar mensaje';
-      
-      // Ocultamos el mensaje después de un tiempo
-      setTimeout(() => {
-        errorMessage.style.opacity = '0';
-        setTimeout(() => errorMessage.remove(), 500);
-      }, 5000);
+  // Header fijo con cambio de estilo al desplazarse
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('.header');
+    if (window.scrollY > 100) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
     }
   });
-}
-
-// Inicializamos cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', () => {
-  // Inicializamos el navbar (función compartida)
-  initNavbar();
-  
-  // Inicializamos las funciones específicas de la página de contacto
-  initFaqAccordion();
-  initContactoForm();
-  
-  // Inicializamos animaciones al scroll
-  const elements = document.querySelectorAll('.animate-on-scroll');
-  
-  const isElementInViewport = (el) => {
-    const rect = el.getBoundingClientRect();
-    return (
-      rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.75 &&
-      rect.bottom >= 0
-    );
-  };
-  
-  const handleScroll = () => {
-    elements.forEach(element => {
-      if (isElementInViewport(element)) {
-        element.classList.add('animate-fadeIn');
-      }
-    });
-  };
-  
-  window.addEventListener('scroll', handleScroll);
-  handleScroll(); // Ejecutar al cargar la página
 });
