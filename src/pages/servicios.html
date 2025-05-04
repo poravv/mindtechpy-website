@@ -156,63 +156,114 @@
   </section>
 
   <!-- Tecnologías -->
-  <section class="tecnologias-section">
+  <section class="section tech-showcase-section">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Tecnologías que Utilizamos</h2>
-        <p class="section-subtitle">Herramientas modernas para soluciones efectivas</p>
+        <h2 class="section-title">Tecnologías que Dominamos</h2>
+        <p class="section-subtitle">Trabajamos con las herramientas más avanzadas para ofrecer soluciones robustas y eficientes</p>
       </div>
-      <div class="tecnologias-grid">
-        <div class="tecnologia-card animate-on-scroll">
-          <i class="fab fa-js-square"></i>
-          <h4>JavaScript</h4>
+      
+      <!-- Categorías de tecnología con pestañas -->
+      <div class="tech-categories">
+        <div class="tech-category-tabs">
+          <button class="tech-tab active" data-category="frontend">Frontend</button>
+          <button class="tech-tab" data-category="backend">Backend</button>
+          <button class="tech-tab" data-category="mobile">Mobile</button>
+          <button class="tech-tab" data-category="database">Bases de Datos</button>
+          <button class="tech-tab" data-category="devops">DevOps</button>
         </div>
-        <div class="tecnologia-card animate-on-scroll">
-          <i class="fab fa-react"></i>
-          <h4>React</h4>
-        </div>
-        <div class="tecnologia-card animate-on-scroll">
-          <i class="fab fa-angular"></i>
-          <h4>Angular</h4>
-        </div>
-        <div class="tecnologia-card animate-on-scroll">
-          <i class="fab fa-vuejs"></i>
-          <h4>Vue.js</h4>
-        </div>
-        <div class="tecnologia-card animate-on-scroll">
-          <i class="fab fa-node-js"></i>
-          <h4>Node.js</h4>
-        </div>
-        <div class="tecnologia-card animate-on-scroll">
-          <i class="fab fa-python"></i>
-          <h4>Python</h4>
-        </div>
-        <div class="tecnologia-card animate-on-scroll">
-          <i class="fab fa-php"></i>
-          <h4>PHP</h4>
-        </div>
-        <div class="tecnologia-card animate-on-scroll">
-          <i class="fab fa-java"></i>
-          <h4>Java</h4>
-        </div>
-        <div class="tecnologia-card animate-on-scroll">
-          <i class="fab fa-aws"></i>
-          <h4>AWS</h4>
-        </div>
-        <div class="tecnologia-card animate-on-scroll">
-          <i class="fab fa-docker"></i>
-          <h4>Docker</h4>
-        </div>
-        <div class="tecnologia-card animate-on-scroll">
-          <i class="fab fa-android"></i>
-          <h4>Android</h4>
-        </div>
-        <div class="tecnologia-card animate-on-scroll">
-          <i class="fab fa-apple"></i>
-          <h4>iOS</h4>
+        
+        <!-- Contenedor de tecnologías -->
+        <div class="tech-container">
+          <!-- Frontend -->
+          <div class="tech-grid active" id="frontend">
+            <div class="tech-item">
+              <img src="/images/tech/react.png" alt="React">
+              <span>React</span>
+            </div>
+            <div class="tech-item">
+              <img src="/images/tech/angular.png" alt="Angular">
+              <span>Angular</span>
+            </div>
+            <div class="tech-item">
+              <img src="/images/tech/html-css-js.png" alt="HTML, CSS, JavaScript">
+              <span>HTML/CSS/JS</span>
+            </div>
+          </div>
+          
+          <!-- Backend -->
+          <div class="tech-grid" id="backend">
+            <div class="tech-item">
+              <img src="/images/tech/nodejs.svg" alt="Node.js">
+              <span>Node.js</span>
+            </div>
+            <div class="tech-item">
+              <img src="/images/tech/spring-boot.png" alt="Spring Boot">
+              <span>Spring Boot</span>
+            </div>
+          </div>
+          
+          <!-- Mobile -->
+          <div class="tech-grid" id="mobile">
+            <div class="tech-item">
+              <img src="/images/tech/android.png" alt="Android">
+              <span>Android</span>
+            </div>
+            <div class="tech-item">
+              <img src="/images/tech/ios.png" alt="iOS">
+              <span>iOS</span>
+            </div>
+            <div class="tech-item">
+              <img src="/images/tech/flutter.svg" alt="Flutter">
+              <span>Flutter</span>
+            </div>
+            <div class="tech-item">
+              <img src="/images/tech/react.png" alt="React Native">
+              <span>React Native</span>
+            </div>
+          </div>
+          
+          <!-- Bases de Datos -->
+          <div class="tech-grid" id="database">
+            <div class="tech-item">
+              <img src="/images/tech/mongodb.jpg" alt="MongoDB">
+              <span>MongoDB</span>
+            </div>
+            <div class="tech-item">
+              <img src="/images/tech/postgres.png" alt="PostgreSQL">
+              <span>PostgreSQL</span>
+            </div>
+            <div class="tech-item">
+              <img src="/images/tech/mysql.png" alt="MySQL">
+              <span>MySQL</span>
+            </div>
+            <div class="tech-item">
+              <img src="/images/tech/oracle-db.jpeg" alt="Oracle">
+              <span>Oracle</span>
+            </div>
+          </div>
+          
+          <!-- DevOps -->
+          <div class="tech-grid" id="devops">
+            <div class="tech-item">
+              <img src="/images/tech/docker.png" alt="Docker">
+              <span>Docker</span>
+            </div>
+            <div class="tech-item">
+              <img src="/images/tech/portainer.png" alt="Portainer">
+              <span>Portainer</span>
+            </div>
+            <div class="tech-item">
+              <img src="/images/tech/nginx-proxy-manager.png" alt="Nginx">
+              <span>Nginx</span>
+            </div>
+            <div class="tech-item">
+              <img src="/images/tech/firebase.png" alt="Firebase">
+              <span>Firebase</span>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
   </section>
 
   <!-- CTA Section -->
@@ -258,54 +309,54 @@
         <!-- Columna 2: Enlaces rápidos -->
         <div class="footer-links">
           <h4>Navegación</h4>
-          <ul>
-            <li><a href="/"><i class="fas fa-angle-right"></i> Inicio</a></li>
-            <li><a href="/servicios"><i class="fas fa-angle-right"></i> Servicios</a></li>
-            <li><a href="/clientes"><i class="fas fa-angle-right"></i> Clientes</a></li>
-            <li><a href="/proyectos"><i class="fas fa-angle-right"></i> Proyectos</a></li>
-            <li><a href="/contacto"><i class="fas fa-angle-right"></i> Contacto</a></li>
-          </ul>
+          <div class="footer-nav-links">
+            <a href="/">Inicio</a>
+            <a href="/servicios">Servicios</a>
+            <a href="/clientes">Clientes</a>
+            <a href="/proyectos">Proyectos</a>
+            <a href="/contacto">Contacto</a>
+          </div>
         </div>
         
         <!-- Columna 3: Servicios -->
         <div class="footer-links">
           <h4>Nuestros Servicios</h4>
-          <ul>
-            <li><a href="/servicios#web"><i class="fas fa-angle-right"></i> Desarrollo Web</a></li>
-            <li><a href="/servicios#movil"><i class="fas fa-angle-right"></i> Apps Móviles</a></li>
-            <li><a href="/servicios#consultoria"><i class="fas fa-angle-right"></i> Consultoría IT</a></li>
-            <li><a href="/servicios#ia"><i class="fas fa-angle-right"></i> Inteligencia Artificial</a></li>
-            <li><a href="/servicios#cloud"><i class="fas fa-angle-right"></i> Soluciones Cloud</a></li>
-          </ul>
+          <div class="footer-nav-links">
+            <a href="/servicios#web">Desarrollo Web</a>
+            <a href="/servicios#movil">Apps Móviles</a>
+            <a href="/servicios#consultoria">Consultoría IT</a>
+            <a href="/servicios#ia">Inteligencia Artificial</a>
+            <a href="/servicios#cloud">Soluciones Cloud</a>
+          </div>
         </div>
         
         <!-- Columna 4: Contacto -->
         <div class="footer-links">
           <h4>Contáctanos</h4>
-          <ul>
-            <li>
+          <div class="footer-contact-info">
+            <div class="footer-contact-item">
               <i class="fas fa-map-marker-alt"></i>
               <span>Asunción, Paraguay</span>
-            </li>
-            <li>
+            </div>
+            <div class="footer-contact-item">
               <i class="fas fa-phone"></i>
               <span>+595 XXX XXX XXX</span>
-            </li>
-            <li>
+            </div>
+            <div class="footer-contact-item">
               <i class="fas fa-envelope"></i>
               <span>info@mindtechpy.net</span>
-            </li>
-            <li>
+            </div>
+            <div class="footer-contact-item">
               <i class="fas fa-clock"></i>
               <span>Lun-Vie: 9:00 - 18:00</span>
-            </li>
+            </div>
           </ul>
         </div>
       </div>
       
       <!-- Parte inferior del footer -->
       <div class="footer-bottom">
-        <p>&copy; 2025 MindTechPy. Todos los derechos reservados | Diseñado con <i class="fas fa-heart" style="color: var(--accent-color);"></i> en Paraguay</p>
+        <p>&copy; 2025 MindTechPy. Todos los derechos reservados </p>
         <p>
           <a href="/terminos">Términos y Condiciones</a> | 
           <a href="/privacidad">Política de Privacidad</a>

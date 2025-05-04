@@ -42,8 +42,6 @@ const loadServicios = () => {
     `;
     
     // Podemos examinar cada servicio durante la depuración
-    debugger; // Breakpoint explícito que se activará en el navegador con devtools abierto
-    
     serviciosGrid.appendChild(servicioCard);
   });
 

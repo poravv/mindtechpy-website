@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
   <!-- Header con Navbar -->
@@ -95,9 +96,6 @@
             </div>
           </div>
         </div>
-        <div class="sobre-nosotros-image">
-          <img src="/images/about-image.svg" alt="Equipo de MindTechPy">
-        </div>
       </div>
     </div>
   </section>
@@ -132,50 +130,91 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-grid">
-        <div class="footer-column">
+      <!-- Sección superior del footer -->
+      <div class="footer-top">
+        <!-- Columna 1: Información de la empresa -->
+        <div class="footer-info">
           <div class="footer-logo">
             <img src="/images/mindtechpy-logo-white.png" alt="MindTechPy Logo">
           </div>
-          <p class="footer-description">Soluciones tecnológicas innovadoras para empresas que buscan destacar en la era digital.</p>
-          <div class="footer-social">
-            <a href="https://www.facebook.com/mindtechpy" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/mindtechpy" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/company/mindtechpy" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://github.com/mindtechpy" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+          <p>Transformamos ideas en soluciones tecnológicas innovadoras que impulsan el crecimiento de tu empresa en la era digital.</p>
+          <div class="social-media">
+            <a href="https://www.facebook.com/mindtechpy" class="social-icon" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/mindtechpy" class="social-icon" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/mindtechpy" class="social-icon" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/mindtechpy" class="social-icon" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://twitter.com/mindtechpy" class="social-icon" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-twitter"></i>
+            </a>
           </div>
         </div>
-        <div class="footer-column">
-          <h3 class="footer-title">Enlaces rápidos</h3>
-          <ul class="footer-links">
-            <li><a href="/">Inicio</a></li>
-            <li><a href="/servicios">Servicios</a></li>
-            <li><a href="/clientes">Clientes</a></li>
-            <li><a href="/proyectos">Proyectos</a></li>
-            <li><a href="/contacto">Contacto</a></li>
-          </ul>
+        
+        <!-- Columna 2: Enlaces rápidos -->
+        <div class="footer-links">
+          <h4>Navegación</h4>
+          <div class="footer-nav-links">
+            <a href="/">Inicio</a>
+            <a href="/servicios">Servicios</a>
+            <a href="/clientes">Clientes</a>
+            <a href="/proyectos">Proyectos</a>
+            <a href="/contacto">Contacto</a>
+          </div>
         </div>
-        <div class="footer-column">
-          <h3 class="footer-title">Servicios</h3>
-          <ul class="footer-links">
-            <li><a href="/servicios#web">Desarrollo Web</a></li>
-            <li><a href="/servicios#movil">Aplicaciones Móviles</a></li>
-            <li><a href="/servicios#consultoria">Consultoría IT</a></li>
-            <li><a href="/servicios#ia">Inteligencia Artificial</a></li>
-            <li><a href="/servicios#cloud">Soluciones Cloud</a></li>
-          </ul>
+        
+        <!-- Columna 3: Servicios -->
+        <div class="footer-links">
+          <h4>Nuestros Servicios</h4>
+          <div class="footer-nav-links">
+            <a href="/servicios#web">Desarrollo Web</a>
+            <a href="/servicios#movil">Apps Móviles</a>
+            <a href="/servicios#consultoria">Consultoría IT</a>
+            <a href="/servicios#ia">Inteligencia Artificial</a>
+            <a href="/servicios#cloud">Soluciones Cloud</a>
+          </div>
         </div>
-        <div class="footer-column">
-          <h3 class="footer-title">Contacto</h3>
-          <ul class="footer-contact">
-            <li><i class="fas fa-map-marker-alt"></i> Asunción, Paraguay</li>
-            <li><i class="fas fa-phone"></i> +595 XXX XXX XXX</li>
-            <li><i class="fas fa-envelope"></i> info@mindtechpy.net</li>
-          </ul>
+        
+        <!-- Columna 4: Contacto -->
+        <div class="footer-links">
+          <h4>Contáctanos</h4>
+          <div class="footer-contact-info">
+            <div class="footer-contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Asunción, Paraguay</span>
+            </div>
+            <div class="footer-contact-item">
+              <i class="fas fa-phone"></i>
+              <span>+595 XXX XXX XXX</span>
+            </div>
+            <div class="footer-contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>info@mindtechpy.net</span>
+            </div>
+            <div class="footer-contact-item">
+              <i class="fas fa-clock"></i>
+              <span>Lun-Vie: 9:00 - 18:00</span>
+            </div>
+          </div>
         </div>
       </div>
+      
+      <!-- Parte inferior del footer -->
       <div class="footer-bottom">
-        <p>&copy; 2025 MindTechPy. Todos los derechos reservados.</p>
+        <div class="footer-copyright">
+          <p>&copy; 2025 MindTechPy. Todos los derechos reservados.</p>
+        </div>
+        <div class="footer-legal">
+          <a href="/terminos">Términos y Condiciones</a>
+          <span class="footer-separator">|</span>
+          <a href="/privacidad">Política de Privacidad</a>
+        </div>
       </div>
     </div>
   </footer>

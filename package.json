@@ -4,9 +4,17 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/infrastructure/server.js",
-    "build": "webpack --mode production"
+    "dev": "export DEBUG=true && nodemon src/infrastructure/server.js",
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development"
   },
-  "keywords": ["website", "mindtechpy", "responsive", "modern", "hexagonal architecture"],
+  "keywords": [
+    "website",
+    "mindtechpy",
+    "responsive",
+    "modern",
+    "hexagonal architecture"
+  ],
   "author": "MindTechPy",
   "license": "ISC",
   "description": "Sitio web moderno y responsivo para MindTechPy",
@@ -16,6 +24,7 @@
     "express": "^4.18.2"
   },
   "devDependencies": {
+    "copy-webpack-plugin": "^13.0.0",
     "css-loader": "^6.8.1",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.3",

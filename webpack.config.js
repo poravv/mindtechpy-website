@@ -1,13 +1,14 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
     index: './src/pages/index.js',
     contacto: './src/pages/contacto.js',
+    servicios: './src/pages/servicios.js',
     // Añadir más puntos de entrada según sea necesario
-    // servicios: './src/pages/servicios.js',
     // clientes: './src/pages/clientes.js',
     // proyectos: './src/pages/proyectos.js',
   },
@@ -23,7 +24,12 @@ module.exports = {
       {
         test: /\.(css|scss)$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../', // Esto ayuda a resolver las rutas relativas en CSS
+            },
+          },
           'css-loader',
           'sass-loader'
         ]
@@ -43,6 +49,25 @@ module.exports = {
     ]
   },
   plugins: [
+    new CopyPlugin({
+      patterns: [
+        { 
+          from: 'public/images', 
+          to: 'images' 
+        },
+        { 
+          from: 'public/css',
+          to: 'css'
+        },
+        { 
+          from: 'src/assets', 
+          to: 'images/tech' 
+        }
+      ],
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].css',
+    }),
     new HtmlWebpackPlugin({
       template: './src/pages/index.html',
       filename: 'index.html',
@@ -51,7 +76,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/pages/servicios.html',
       filename: 'servicios.html',
-      chunks: ['index']
+      chunks: ['servicios']
     }),
     new HtmlWebpackPlugin({
       template: './src/pages/clientes.html',
@@ -72,9 +97,6 @@ module.exports = {
       template: './src/pages/test.html',
       filename: 'test.html',
       chunks: ['index']
-    }),
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].css'
     })
   ],
   devServer: {
