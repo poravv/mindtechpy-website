@@ -5,8 +5,12 @@
   "scripts": {
     "start": "node src/infrastructure/server.js",
     "dev": "export DEBUG=true && nodemon src/infrastructure/server.js",
+    "dev:full": "node dev.js",
+    "compile-sass": "node sass-compile.js",
+    "update-styles": "node update-styles.js",
     "build": "webpack --mode production",
-    "build:dev": "webpack --mode development"
+    "build:dev": "webpack --mode development",
+    "build:all": "node build-site.js"
   },
   "keywords": [
     "website",

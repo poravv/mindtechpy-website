@@ -6,11 +6,6 @@ const CopyPlugin = require('copy-webpack-plugin');
 module.exports = {
   entry: {
     index: './src/pages/index.js',
-    contacto: './src/pages/contacto.js',
-    servicios: './src/pages/servicios.js',
-    // Añadir más puntos de entrada según sea necesario
-    // clientes: './src/pages/clientes.js',
-    // proyectos: './src/pages/proyectos.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -51,18 +46,7 @@ module.exports = {
   plugins: [
     new CopyPlugin({
       patterns: [
-        { 
-          from: 'public/images', 
-          to: 'images' 
-        },
-        { 
-          from: 'public/css',
-          to: 'css'
-        },
-        { 
-          from: 'src/assets', 
-          to: 'images/tech' 
-        }
+        { from: 'public/images', to: 'images' }
       ],
     }),
     new MiniCssExtractPlugin({
@@ -73,31 +57,7 @@ module.exports = {
       filename: 'index.html',
       chunks: ['index']
     }),
-    new HtmlWebpackPlugin({
-      template: './src/pages/servicios.html',
-      filename: 'servicios.html',
-      chunks: ['servicios']
-    }),
-    new HtmlWebpackPlugin({
-      template: './src/pages/clientes.html',
-      filename: 'clientes.html',
-      chunks: ['index']
-    }),
-    new HtmlWebpackPlugin({
-      template: './src/pages/proyectos.html',
-      filename: 'proyectos.html',
-      chunks: ['index']
-    }),
-    new HtmlWebpackPlugin({
-      template: './src/pages/contacto.html',
-      filename: 'contacto.html',
-      chunks: ['contacto']
-    }),
-    new HtmlWebpackPlugin({
-      template: './src/pages/test.html',
-      filename: 'test.html',
-      chunks: ['index']
-    })
+    
   ],
   devServer: {
     static: {

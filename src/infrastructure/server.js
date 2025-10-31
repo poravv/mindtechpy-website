@@ -83,39 +83,19 @@ app.get('/', (req, res) => {
       console.log(`✅ Archivo encontrado: ${filePath}`);
     } else {
       console.log(`❌ Archivo NO encontrado: ${filePath}`);
-      // Intenta servir como fallback la página de servicios
-      console.log(`🔄 Intentando servir servicios.html como fallback`);
-      return res.sendFile(path.join(__dirname, '../../dist/servicios.html'));
     }
   }
   
   res.sendFile(filePath);
 });
 
-app.get('/servicios', (req, res) => {
-  if (DEBUG) console.log('📄 Sirviendo página de servicios');
-  res.sendFile(path.join(__dirname, '../../dist/servicios.html'));
-});
+// La página de clientes se eliminó según requerimientos
 
-app.get('/clientes', (req, res) => {
-  if (DEBUG) console.log('📄 Sirviendo página de clientes');
-  res.sendFile(path.join(__dirname, '../../dist/clientes.html'));
-});
+// Ruta de proyectos eliminada según requerimiento
 
-app.get('/proyectos', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../dist/proyectos.html'));
-});
-
-app.get('/contacto', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../dist/contacto.html'));
-});
 
 // API endpoints (para ejemplos y futura expansión)
-app.get('/api/servicios', (req, res) => {
-  // Aquí se podría conectar con un adaptador del dominio
-  const servicios = require('../domain/servicios');
-  res.json(servicios.getAll());
-});
+// Rutas adicionales y API eliminadas para el nuevo sitio
 
 // Manejo de errores para depuración
 app.use((err, req, res, next) => {

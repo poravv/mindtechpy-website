@@ -1,0 +1,82 @@
+Aplicaciones que ya tenemos:
+💬 1. Plataforma de Envío Masivo por WhatsApp
+
+Tipo: Suscripción mensual
+Tecnología: Node.js, Express, Redis, MinIO, Keycloak, HTML, CSS, JS
+
+Descripción:
+Automatizá tus campañas de comunicación con nuestra plataforma de mensajería masiva por WhatsApp.
+Permite enviar textos, imágenes, documentos o archivos personalizados a miles de contactos con total seguridad y control.
+Ideal para empresas, comercios y organizaciones que buscan mantener contacto directo y efectivo con sus clientes.
+
+Características:
+	•	Envíos programados y segmentados
+	•	Panel web intuitivo
+	•	Notificaciones en tiempo real
+	•	Estadísticas de entrega y lectura
+	•	Integración con APIs y CRM
+	•	Seguridad mediante autenticación con Keycloak
+
+⸻
+
+📱 2. Sistema de Envío de SMS Masivos
+
+Tipo: Contrato y licencia anual
+Tecnología: Node.js, Express, HTML, CSS, JS
+
+Descripción:
+Solución profesional para envío de mensajes SMS a través de módems USB físicos.
+Ideal para empresas que requieren comunicación garantizada incluso sin conexión a internet.
+Ofrecemos instalación, soporte técnico y licencias adaptadas al volumen de envío.
+
+Características:
+	•	Envíos simultáneos mediante múltiples módems
+	•	Reportes de entrega
+	•	Interfaz web para gestión y monitoreo
+	•	Soporte técnico personalizado
+	•	Licencia por instalación o uso corporativo
+
+⸻
+
+📄 3. Sistema de Lectura Automática de Facturas Electrónicas
+
+Tipo: Uso por licencia
+Tecnología: Python, OpenAI, FastAPI, Angular, XML, OCR
+
+Descripción:
+Procesá automáticamente tus facturas electrónicas desde el correo o carpetas compartidas.
+El sistema detecta PDFs, XMLs o imágenes, extrae y valida la información fiscal mediante IA, y genera exportaciones listas para sistemas contables.
+
+Características:
+	•	Integración con correos IMAP/SMTP
+	•	Lectura inteligente con OpenAI (GPT-4o)
+	•	Procesamiento de XML nativos y PDFs escaneados
+	•	Panel de control web con Angular
+	•	Exportación a Excel compatible
+	•	Validación contra bases fiscales locales
+
+⸻
+
+⚙️ 4. Desarrollo de Software a Medida
+
+Tipo: Por proyecto o contrato
+Tecnología principal: Node.js, Spring Boot, Python, Flutter, Angular, React
+
+Descripción:
+Creamos soluciones digitales personalizadas para empresas que buscan automatizar procesos, integrar sistemas o escalar su negocio con tecnología moderna.
+Desde aplicaciones móviles hasta plataformas web y APIs seguras, diseñamos e implementamos cada proyecto desde cero.
+
+Áreas de especialidad:
+	•	Aplicaciones móviles (Flutter)
+	•	Backend empresarial (Spring Boot, Node.js, Python)
+	•	Frontend moderno (Angular, React)
+	•	CI/CD con GitHub Actions
+	•	Contenerización y despliegue con Docker
+	•	Bases de datos: MongoDB, MySQL, PostgreSQL, Oracle
+
+
+#Contactos:
+Whatsapp llamadas: +595992756462
+Correo electronico: andres.vera@mindtechpy.net 
+
+# Eliminar todo los testimonios y toda la pagina de clientes

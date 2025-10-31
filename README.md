@@ -20,6 +20,32 @@ cd web-mindtdchpy
 npm install
 ```
 
+## Desarrollo
+
+```bash
+# Iniciar servidor de desarrollo
+npm run dev
+
+# Compilar SASS (opcional)
+npm run compile-sass
+
+# Actualizar estilos unificados
+node update-styles.js
+
+# Construcción completa del sitio
+node build-site.js
+```
+
+## Sistema de Estilos Unificado
+
+Este proyecto ahora utiliza un sistema de estilos unificado en un solo archivo CSS para:
+- Eliminar redundancias
+- Mantener consistencia visual
+- Facilitar futuras modificaciones
+- Optimizar el rendimiento
+
+Para más información consulta la [Guía de Estilos](styles-guide.md).
+
 ## Uso
 
 ### Construir el proyecto
