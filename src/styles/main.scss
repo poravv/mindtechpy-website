@@ -16,6 +16,11 @@ $error: #ef4444;
 // Sombra base
 $shadow: 0 10px 25px -10px rgba(0,0,0,.15);
 
+// Tipografía global (aplica también al modo clásico)
+body {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
 // Tema Moderno (activado con data-theme="modern" en <html>)
 html[data-theme='modern'] {
   // Variables CSS para consumo en runtime si se necesita
@@ -30,7 +35,8 @@ html[data-theme='modern'] {
     margin: 0;
     color: var(--color-text);
     background: var(--color-bg);
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, sans-serif;
+    // Tipografía agradable para modo moderno
+    font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Noto Sans', Helvetica, Arial, sans-serif;
     line-height: 1.6;
   }
 
@@ -39,8 +45,8 @@ html[data-theme='modern'] {
     position: sticky;
     top: 0;
     z-index: 20;
-    background: #fff;
-    box-shadow: 0 1px 0 rgba(0,0,0,.06);
+    background: linear-gradient(135deg, #2563eb 0%, #8b5cf6 100%);
+    box-shadow: 0 6px 20px -12px rgba(0,0,0,.4);
   }
 
   nav {
@@ -49,7 +55,7 @@ html[data-theme='modern'] {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: .75rem 1rem;
+    padding: 1rem 1.25rem;
 
     .nav-actions {
       margin-left: auto;
@@ -78,40 +84,40 @@ html[data-theme='modern'] {
     .menu-toggle {
       display: none;
       appearance: none;
-      border: 1px solid rgba(0,0,0,.12);
-      background: #fff;
-      color: var(--color-secondary);
-      padding: .4rem .6rem;
+      border: 1px solid rgba(255,255,255,.5);
+      background: transparent;
+      color: #fff;
+      padding: .45rem .7rem;
       border-radius: .5rem;
       cursor: pointer;
     }
 
     a {
-      color: var(--color-secondary);
+      color: #f8fafc;
       text-decoration: none;
       font-weight: 600;
+      font-size: 1rem;
       padding: .25rem .5rem;
       border-radius: .375rem;
       transition: color .15s ease, background-color .15s ease;
 
-      &:hover {
-        color: var(--color-primary);
-        background: rgba(37,99,235,.06);
-      }
+      &:hover { background: rgba(255,255,255,.10); }
+      // Activo: sólo color (sin saltos de línea)
+      &.active { background: transparent; color: #e0e7ff; }
     }
 
     img {
       display: block;
-      height: 28px;
+      height: 36px;
       width: auto;
     }
 
-    button#mode-toggle, .nav-list .mode-toggle {
+    button#mode-toggle, .nav-list .mode-toggle, .nav-actions .navstyle-toggle, .nav-list .navstyle-toggle {
       margin-left: auto;
       appearance: none;
       border: none;
-      background: var(--color-primary);
-      color: #fff;
+      background: #ffffff;
+      color: var(--color-primary);
       padding: .5rem .9rem;
       border-radius: .5rem;
       font-weight: 600;
@@ -123,6 +129,31 @@ html[data-theme='modern'] {
       &:active { transform: translateY(0); }
     }
   }
+
+  // Variantes de navbar (oscura / clara)
+  &[data-navbar='dark'] header {
+    background: linear-gradient(135deg, #2563eb 0%, #8b5cf6 100%);
+  }
+  &[data-navbar='dark'] nav a { color: #fff; }
+  &[data-navbar='dark'] nav a:hover { background: rgba(255,255,255,.12); }
+
+  &[data-navbar='light'] header {
+    background: #ffffff;
+    box-shadow: 0 6px 20px -12px rgba(0,0,0,.2);
+  }
+  &[data-navbar='light'] nav a { color: var(--color-secondary); }
+  &[data-navbar='light'] nav a:hover { background: rgba(37,99,235,.06); }
+  &[data-navbar='light'] .menu-toggle { border-color: rgba(0,0,0,.15); color: var(--color-secondary); }
+  &[data-navbar='light'] button#mode-toggle, &[data-navbar='light'] .navstyle-toggle {
+    background: var(--color-primary);
+    color: #fff;
+  }
+
+  // Estado compacto al hacer scroll
+  header.compact + nav, header.compact nav { /* guard */ }
+  header.compact ~ * {}
+  header.compact nav { padding: .6rem .9rem; }
+  header.compact nav img { height: 30px; }
 
   main {
     max-width: 1100px;
@@ -140,6 +171,33 @@ html[data-theme='modern'] {
     }
     p { margin: .25rem 0 .75rem 0; }
   }
+
+  // Botones (solo modo moderno)
+  .btn {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: .6rem;
+    padding: .7rem 1.1rem;
+    transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+    box-shadow: 0 10px 24px -14px rgba(0,0,0,.4);
+    color: #fff;
+    border: 0;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn:active { transform: translateY(0); }
+  .btn-whatsapp {
+    background: linear-gradient(135deg, #2563eb 0%, #8b5cf6 100%);
+  }
+  .btn-whatsapp:hover { opacity: .95; }
+  .btn-call {
+    background: linear-gradient(135deg, #8b5cf6 0%, #2563eb 100%);
+    margin-left: .5rem;
+  }
+  .btn-call:hover { opacity: .95; }
+
+  // Animación suave al cambiar de pestaña (panel)
+  .tab-anim { animation: fadeUp .2s ease both; }
 
   // Hero layout e imágenes modernas
   .hero-wrap {
@@ -200,13 +258,14 @@ html[data-theme='modern'] {
 
     .footer-cols {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem clamp(2rem, 6vw, 4.5rem); // row-gap col-gap más amplio
       margin-bottom: 1rem;
 
       strong { color: #ffffff; }
       ul { list-style: none; padding: 0; margin: .5rem 0 0 0; }
-      li { margin: .25rem 0; }
+      li { margin: .4rem 0; }
+      .contact-email, .contact-email a { white-space: nowrap; }
     }
     a { color: #cbd5e1; text-decoration: none; }
     a:hover { color: #fff; }
@@ -240,6 +299,7 @@ html[data-theme='modern'] {
 
       &:hover { transform: translateY(-1px); }
     }
+    /* ajustes de footer movidos a su bloque correspondiente */
   }
 }
 
@@ -280,6 +340,8 @@ html[data-theme='modern'] {
       &[aria-expanded='true'] .nav-list { display: flex; }
       .nav-list .only-mobile { display: block; }
       .nav-list .mode-toggle { width: 100%; text-align: left; padding: .5rem .25rem; }
+      .nav-list a { color: var(--color-secondary); }
+      .nav-list a.active { background: transparent; color: var(--color-primary); }
     }
 
     section { padding: 1.25rem 0; }
@@ -306,4 +368,21 @@ html[data-theme='modern'] .tech-logos img:hover {
   filter: grayscale(0%);
   opacity: 1;
   transform: translateY(-2px);
+}
+
+// Estilo de texto tipo código (global)
+.code-text,
+code,
+pre code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: .75rem 1rem;
+  border-radius: .5rem;
+  overflow-x: auto;
 }

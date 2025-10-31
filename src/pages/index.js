@@ -43,6 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
   applyTheme(saved);
   syncNavForTheme();
 
+  // Forzamos navbar oscuro por defecto
+  document.documentElement.setAttribute('data-navbar', 'dark');
+
   const toggleDesktop = document.getElementById('mode-toggle');
   const toggleMobile = document.getElementById('mode-toggle-mobile');
   const toggles = [toggleDesktop, toggleMobile].filter(Boolean);
@@ -59,6 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
       syncNavForTheme();
     }));
   }
+
+  // Sin toggles de variante de navbar (oscuro fijo)
 
   // Mobile menu toggle
   const nav = document.querySelector('header nav');
@@ -96,14 +101,45 @@ document.addEventListener('DOMContentLoaded', () => {
       if (p.id === nextId) p.removeAttribute('hidden');
       else p.setAttribute('hidden', '');
     });
+    // efecto suave en el panel activo (solo moderno)
+    if (document.documentElement.getAttribute('data-theme') === 'modern') {
+      panels.forEach(p => p.classList.remove('tab-anim'));
+      const active = document.getElementById(nextId);
+      if (active) active.classList.add('tab-anim');
+    }
   }
 
   function updateFromHash() {
     const key = (location.hash || '#home').replace('#','');
     selectTabByKey(key);
+    // Resaltar nav activo
+    const links = document.querySelectorAll('.nav-list a');
+    links.forEach(a => {
+      const target = a.getAttribute('href').replace('#','');
+      const isActive = target === key;
+      a.classList.toggle('active', isActive);
+      if (isActive) {
+        a.setAttribute('aria-current', 'page');
+      } else {
+        a.removeAttribute('aria-current');
+      }
+    });
+    // Desplazar al inicio con suavidad en modo moderno
+    if (document.documentElement.getAttribute('data-theme') === 'modern') {
+      try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { window.scrollTo(0,0); }
+    }
   }
 
   // Inicial y cambios de hash
   updateFromHash();
   window.addEventListener('hashchange', updateFromHash);
+
+  // Header compacto al hacer scroll (solo moderno)
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    const isModern = document.documentElement.getAttribute('data-theme') === 'modern';
+    if (!header) return;
+    if (isModern && window.scrollY > 10) header.classList.add('compact');
+    else header.classList.remove('compact');
+  });
 });
