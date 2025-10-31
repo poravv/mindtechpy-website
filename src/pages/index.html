@@ -13,15 +13,19 @@
       <a href="#home" aria-label="Inicio" class="brand">
         <img src="/images/mindtechpy-logo.png" alt="MindTechPy" width="120">
       </a>
-      <ul class="nav-list">
+      <div class="nav-actions">
+        <button id="mode-toggle" type="button" class="mode-toggle">Modo Moderno</button>
+        <button id="menu-toggle" class="menu-toggle" type="button" aria-label="Menú" aria-expanded="false" aria-controls="primary-navigation" hidden>☰</button>
+      </div>
+      <ul id="primary-navigation" class="nav-list" role="navigation">
         <li><a href="#home">Inicio</a></li>
         <li><a href="#soluciones">Soluciones</a></li>
         <li><a href="#tecnologias">Tecnologías</a></li>
         <li><a href="#precios">Precios</a></li>
         <li><a href="#empresa">Empresa</a></li>
         <li><a href="#contacto">Contacto</a></li>
+        <li class="only-mobile" hidden><button id="mode-toggle-mobile" type="button" class="mode-toggle">Modo Moderno</button></li>
       </ul>
-      <button id="mode-toggle" type="button">Modo Moderno</button>
     </nav>
   </header>
 
@@ -29,13 +33,24 @@
     <!-- Panel Inicio -->
     <section id="tab-home" role="tabpanel">
       <h1>MindTechPy</h1>
-      <p>Impulsamos tu negocio con software a medida, integraciones y automatización segura.</p>
-      <ul>
-        <li>Mensajería masiva por WhatsApp y SMS con panel web, métricas y seguridad.</li>
-        <li>Lectura inteligente de facturas electrónicas (PDF/XML/imagen) con IA.</li>
-        <li>Desarrollo de plataformas web y móviles robustas, escalables y seguras.</li>
-        <li>Despliegues en la nube, CI/CD, contenedores y gobernanza de acceso.</li>
-      </ul>
+      <div class="hero-wrap">
+        <div>
+          <p>Impulsamos tu negocio con software a medida, integraciones y automatización segura.</p>
+          <ul>
+            <li>Mensajería masiva por WhatsApp y SMS con panel web, métricas y seguridad.</li>
+            <li>Lectura inteligente de facturas electrónicas (PDF/XML/imagen) con IA.</li>
+            <li>Desarrollo de plataformas web y móviles robustas, escalables y seguras.</li>
+            <li>Despliegues en la nube, CI/CD, contenedores y gobernanza de acceso.</li>
+            <li>Arquitecturas modernas: Arquitectura Limpia (Clean Architecture) y Arquitectura Hexagonal.</li>
+          </ul>
+          <p class="desc-pro">
+            En MindTechPy impulsamos la transformación digital con tecnología e innovación, uniendo consultoría estratégica y desarrollo de software personalizado para resolver retos reales del negocio. Diseñamos plataformas seguras y escalables, integramos sistemas, automatizamos procesos y aceleramos resultados, apoyados en prácticas modernas como Clean Architecture, Arquitectura Hexagonal, CI/CD y servicios cloud como Firebase.
+          </p>
+        </div>
+        <div>
+          <img src="/images/hero-image.svg" alt="Soluciones tecnológicas" class="img-modern reveal" loading="lazy">
+        </div>
+      </div>
       <p>Trabajamos con metodologías ágiles y mejores prácticas de ingeniería.</p>
       <hr>
     </section>
@@ -43,69 +58,133 @@
     <!-- Panel Soluciones -->
     <section id="tab-soluciones" role="tabpanel" hidden>
       <h2>Soluciones</h2>
-      <ul>
-        <li>
-          <strong>WhatsApp Masivo (suscripción)</strong>
+      <div class="cards">
+        <article class="card">
+          <h3>WhatsApp Masivo (suscripción)</h3>
           <p>Campañas segmentadas, panel web, notificaciones y estadísticas.</p>
           <ul>
-            <li>Envíos programados con segmentación y listas.</li>
-            <li>Adjuntos (imágenes/documentos) y mensajes personalizados.</li>
-            <li>Autenticación y roles con Keycloak.</li>
-            <li>Integración con CRM/APIs y exportación de métricas.</li>
+            <li>Envíos programados con segmentación y listas</li>
+            <li>Adjuntos (imágenes/documentos) y mensajes personalizados</li>
+            <li>Autenticación y roles con Keycloak</li>
+            <li>Integración con CRM/APIs y exportación de métricas</li>
           </ul>
-        </li>
-        <li>
-          <strong>SMS Masivo (licencia anual)</strong>
+        </article>
+        <article class="card">
+          <h3>SMS Masivo (licencia anual)</h3>
           <p>Envía SMS mediante módems físicos con reportes y monitoreo.</p>
           <ul>
-            <li>Soporte para múltiples módems simultáneos.</li>
-            <li>Confirmación de entrega y reportes CSV.</li>
-            <li>Interfaz web de control y soporte técnico dedicado.</li>
+            <li>Soporte para múltiples módems simultáneos</li>
+            <li>Confirmación de entrega y reportes CSV</li>
+            <li>Interfaz web de control y soporte técnico dedicado</li>
           </ul>
-        </li>
-        <li>
-          <strong>Lectura de Facturas Electrónicas (licencia)</strong>
+        </article>
+        <article class="card">
+          <h3>Lectura de Facturas (licencia)</h3>
           <p>Procesamiento automático de PDF/XML/imagen con IA y validación.</p>
           <ul>
-            <li>Lectura desde correo o carpetas compartidas.</li>
-            <li>Validación fiscal y normalización de datos.</li>
-            <li>Exportación a Excel y API.</li>
+            <li>Lectura desde correo o carpetas compartidas</li>
+            <li>Validación fiscal y normalización de datos</li>
+            <li>Exportación a Excel y API</li>
           </ul>
-        </li>
-        <li>
-          <strong>Software a Medida (proyecto/contrato)</strong>
+        </article>
+        <article class="card">
+          <h3>Software a Medida (proyecto/contrato)</h3>
           <p>Desarrollo web/móvil, APIs, integraciones y automatización.</p>
           <ul>
-            <li>Stack: Node.js, Spring Boot, Python, Angular, React, Flutter.</li>
-            <li>CI/CD con GitHub Actions, Docker y despliegue cloud.</li>
-            <li>Arquitectura segura, escalable y mantenible.</li>
+            <li>Stack: Node.js, Spring Boot, Python, Angular, React, Flutter</li>
+            <li>CI/CD con GitHub Actions, Docker y despliegue cloud</li>
+            <li>Arquitectura Limpia y Hexagonal, segura y mantenible</li>
           </ul>
-        </li>
-      </ul>
+        </article>
+      </div>
       <hr>
     </section>
 
     <!-- Panel Tecnologías -->
     <section id="tab-tecnologias" role="tabpanel" hidden>
       <h2>Tecnologías</h2>
-      <p><strong>Frontend:</strong> HTML, CSS/SCSS, JavaScript, Angular, React</p>
-      <p><strong>Backend:</strong> Node.js (Express), Spring Boot (Java), Python (FastAPI)</p>
-      <p><strong>Móvil:</strong> Flutter, React Native</p>
-      <p><strong>Datos:</strong> MongoDB, PostgreSQL, MySQL, Oracle</p>
-      <p><strong>Infra/DevOps:</strong> Docker, Nginx, Portainer, GitHub Actions</p>
-      <p><strong>Otros:</strong> Redis, MinIO, Keycloak, Firebase</p>
+      <div class="cards">
+        <article class="card">
+          <h3>Frontend</h3>
+          <p>HTML, CSS/SCSS, JavaScript, Angular, React</p>
+        </article>
+        <article class="card">
+          <h3>Backend</h3>
+          <p>Node.js (Express), Spring Boot (Java), Python (FastAPI)</p>
+        </article>
+        <article class="card">
+          <h3>Móvil</h3>
+          <p>Flutter, React Native</p>
+        </article>
+        <article class="card">
+          <h3>Datos</h3>
+          <p>MongoDB, PostgreSQL, MySQL, Oracle</p>
+        </article>
+        <article class="card">
+          <h3>Infra/DevOps</h3>
+          <p>Docker, Nginx, Portainer, GitHub Actions</p>
+        </article>
+        <article class="card">
+          <h3>Cloud y Servicios</h3>
+          <p>Firebase, Redis, MinIO, Keycloak</p>
+        </article>
+        <article class="card">
+          <h3>Arquitecturas</h3>
+          <p>Arquitectura Limpia (Clean Architecture) y Arquitectura Hexagonal</p>
+        </article>
+      </div>
+      <div class="tech-logos">
+        <img src="/images/tech/react.png" alt="React" loading="lazy">
+        <img src="/images/tech/angular.png" alt="Angular" loading="lazy">
+        <img src="/images/tech/nodejs.svg" alt="Node.js" loading="lazy">
+        <img src="/images/tech/spring-boot.png" alt="Spring Boot" loading="lazy">
+        <img src="/images/tech/docker.png" alt="Docker" loading="lazy">
+        <img src="/images/tech/firebase.png" alt="Firebase" loading="lazy">
+      </div>
       <hr>
     </section>
 
     <!-- Panel Precios -->
     <section id="tab-precios" role="tabpanel" hidden>
       <h2>Precios</h2>
-      <ul>
-        <li><strong>WhatsApp masivo:</strong> Suscripción mensual según volumen.</li>
-        <li><strong>SMS masivo:</strong> Licencia anual por instalación/uso corporativo.</li>
-        <li><strong>Facturas (OCR + IA):</strong> Licencia por uso/volumen de documentos.</li>
-        <li><strong>Software a medida:</strong> Presupuesto por alcance (proyecto/contrato).</li>
-      </ul>
+      <div class="cards">
+        <article class="card">
+          <h3>WhatsApp Masivo</h3>
+          <p>Suscripción mensual</p>
+          <ul>
+            <li>Planes por volumen de envíos</li>
+            <li>Incluye panel y métricas</li>
+            <li>Soporte y onboarding</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>SMS Masivo</h3>
+          <p>Licencia anual</p>
+          <ul>
+            <li>Por instalación o corporativo</li>
+            <li>Módulos opcionales</li>
+            <li>Soporte técnico</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Lectura de Facturas</h3>
+          <p>Licencia por uso</p>
+          <ul>
+            <li>Por volumen de documentos</li>
+            <li>Exportaciones y validaciones</li>
+            <li>Actualizaciones incluidas</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Software a Medida</h3>
+          <p>Proyecto o contrato</p>
+          <ul>
+            <li>Definición de alcance</li>
+            <li>Iteraciones ágiles</li>
+            <li>Entrega y soporte</li>
+          </ul>
+        </article>
+      </div>
       <p>Solicitá una propuesta adaptada a tus necesidades.</p>
       <hr>
     </section>
@@ -113,13 +192,35 @@
     <!-- Panel Empresa -->
     <section id="tab-empresa" role="tabpanel" hidden>
       <h2>Quiénes somos</h2>
-      <p>Construimos soluciones robustas y escalables con foco en resultados, seguridad y mantenibilidad.</p>
-      <ul>
-        <li><strong>Calidad:</strong> revisión de código, pruebas y métricas.</li>
-        <li><strong>Seguridad:</strong> autenticación, autorización y cumplimiento.</li>
-        <li><strong>Resultados:</strong> entregas tempranas y medibles.</li>
-      </ul>
-      <p><strong>Proceso:</strong> Descubrimiento → Diseño → Desarrollo → QA → Despliegue → Soporte.</p>
+      <div class="cards">
+        <article class="card">
+          <h3>Metodología</h3>
+          <p>Ágil con enfoque en valor y calidad.</p>
+          <ul>
+            <li>Descubrimiento → Diseño → Desarrollo → QA → Despliegue → Soporte</li>
+            <li>CI/CD con GitHub Actions</li>
+            <li>Observabilidad y métricas</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Arquitectura</h3>
+          <p>Arquitectura Limpia y Hexagonal como base.</p>
+          <ul>
+            <li>Separación de capas y dependencias</li>
+            <li>Pruebas y mantenibilidad</li>
+            <li>Acoplamiento mínimo, alta cohesión</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Seguridad</h3>
+          <p>Autenticación, autorización y cumplimiento.</p>
+          <ul>
+            <li>Keycloak, OAuth2/OIDC</li>
+            <li>Hardening y controles</li>
+            <li>Backups y recuperación</li>
+          </ul>
+        </article>
+      </div>
       <hr>
     </section>
 
@@ -147,6 +248,15 @@
           <li>SMS Masivo</li>
           <li>Lectura de Facturas</li>
           <li>Software a Medida</li>
+        </ul>
+      </div>
+      <div>
+        <strong>Conocimientos</strong>
+        <ul>
+          <li>Arquitectura Limpia</li>
+          <li>Arquitectura Hexagonal</li>
+          <li>Firebase</li>
+          <li>CI/CD y DevOps</li>
         </ul>
       </div>
       <div>

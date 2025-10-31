@@ -15,22 +15,67 @@ function updateToggleText(btn) {
   btn.textContent = isModern ? 'Modo Clásico' : 'Modo Moderno';
 }
 
+function syncNavForTheme() {
+  const isModern = document.documentElement.getAttribute('data-theme') === 'modern';
+  const nav = document.querySelector('header nav');
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileToggle = document.getElementById('mode-toggle-mobile');
+  const mobileToggleLi = mobileToggle ? mobileToggle.closest('li') : null;
+
+  if (nav) nav.setAttribute('aria-expanded', 'false');
+  if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+
+  if (menuToggle) {
+    // En clásico oculto; en moderno visible
+    menuToggle.hidden = !isModern;
+  }
+  if (mobileToggleLi) {
+    // Mostrar el toggle móvil solo en moderno
+    mobileToggleLi.hidden = !isModern;
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const y = document.getElementById('y');
   if (y) y.textContent = new Date().getFullYear();
 
   const saved = localStorage.getItem('theme') || 'classic';
   applyTheme(saved);
+  syncNavForTheme();
 
-  const toggle = document.getElementById('mode-toggle');
-  if (toggle) {
-    updateToggleText(toggle);
-    toggle.addEventListener('click', () => {
+  const toggleDesktop = document.getElementById('mode-toggle');
+  const toggleMobile = document.getElementById('mode-toggle-mobile');
+  const toggles = [toggleDesktop, toggleMobile].filter(Boolean);
+  const syncToggleTexts = () => toggles.forEach(btn => updateToggleText(btn));
+
+  if (toggles.length) {
+    syncToggleTexts();
+    toggles.forEach(btn => btn.addEventListener('click', () => {
       const current = document.documentElement.getAttribute('data-theme') === 'modern' ? 'modern' : 'classic';
       const next = current === 'modern' ? 'classic' : 'modern';
       applyTheme(next);
       localStorage.setItem('theme', next);
-      updateToggleText(toggle);
+      syncToggleTexts();
+      syncNavForTheme();
+    }));
+  }
+
+  // Mobile menu toggle
+  const nav = document.querySelector('header nav');
+  const menuToggle = document.getElementById('menu-toggle');
+  if (nav && menuToggle) {
+    nav.setAttribute('aria-expanded', 'false');
+    menuToggle.addEventListener('click', () => {
+      const expanded = nav.getAttribute('aria-expanded') === 'true';
+      nav.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      menuToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+    });
+    // Cerrar al hacer click en un link
+    document.querySelectorAll('.nav-list a').forEach(a => {
+      a.addEventListener('click', () => {
+        nav.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
     });
   }
 
