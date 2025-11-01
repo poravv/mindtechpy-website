@@ -3,10 +3,14 @@ import '../styles/main.scss';
 
 function applyTheme(theme) {
   const html = document.documentElement;
+  const classicStylesheet = document.getElementById('classic-styles');
+  
   if (theme === 'modern') {
     html.setAttribute('data-theme', 'modern');
+    if (classicStylesheet) classicStylesheet.disabled = true;
   } else {
     html.removeAttribute('data-theme');
+    if (classicStylesheet) classicStylesheet.disabled = false;
   }
 }
 
@@ -25,7 +29,7 @@ function createClassicNotice() {
   notice.innerHTML = `
     <button class="close" aria-label="Cerrar notificación">×</button>
     <div class="content">
-      <p>😄 Estás en modo clásico. Puedes cambiar al <strong>Modo Moderno</strong> para una experiencia visual mejorada.</p>
+      <p>✨ Estás navegando en <strong>Modo Clásico</strong> con diseño retro/vintage. ¿Preferís una experiencia moderna?</p>
       <div class="actions">
         <button class="btn btn-modernize" type="button">Cambiar a Modo Moderno</button>
       </div>
@@ -36,26 +40,26 @@ function createClassicNotice() {
   const closeBtn = notice.querySelector('.close');
   closeBtn.addEventListener('click', () => {
     notice.classList.add('hide');
-    setTimeout(() => notice.remove(), 200);
+    setTimeout(() => notice.remove(), 300);
   });
 
   const modernBtn = notice.querySelector('.btn-modernize');
   modernBtn.addEventListener('click', () => {
-    document.documentElement.setAttribute('data-theme', 'modern');
+    applyTheme('modern');
     localStorage.setItem('theme', 'modern');
     const toggleDesktop = document.getElementById('mode-toggle');
     const toggleMobile = document.getElementById('mode-toggle-mobile');
     [toggleDesktop, toggleMobile].filter(Boolean).forEach(updateToggleText);
     syncNavForTheme();
     notice.classList.add('hide');
-    setTimeout(() => notice.remove(), 200);
+    setTimeout(() => notice.remove(), 300);
   });
 
   setTimeout(() => {
     if (!notice.isConnected) return;
     notice.classList.add('hide');
-    setTimeout(() => notice.remove(), 200);
-  }, 10000);
+    setTimeout(() => notice.remove(), 300);
+  }, 12000);
 }
 
 function syncNavForTheme() {
@@ -69,13 +73,12 @@ function syncNavForTheme() {
   if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
 
   if (menuToggle) {
-    // En clásico oculto; en moderno visible
     menuToggle.hidden = !isModern;
   }
   if (mobileToggleLi) {
-    // Mostrar el toggle móvil solo en moderno
     mobileToggleLi.hidden = !isModern;
   }
+  
   // Notificación solo en clásico
   if (!isModern) {
     createClassicNotice();
@@ -113,8 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
   }
 
-  // Sin toggles de variante de navbar (oscuro fijo)
-
   // Mobile menu toggle
   const nav = document.querySelector('header nav');
   const menuToggle = document.getElementById('menu-toggle');
@@ -142,7 +143,9 @@ document.addEventListener('DOMContentLoaded', () => {
     tecnologias: 'tab-tecnologias',
     precios: 'tab-precios',
     empresa: 'tab-empresa',
-    contacto: 'tab-contacto'
+    contacto: 'tab-contacto',
+    terminos: 'tab-terminos',
+    privacidad: 'tab-privacidad'
   };
 
   function selectTabByKey(key) {
@@ -151,21 +154,21 @@ document.addEventListener('DOMContentLoaded', () => {
       if (p.id === nextId) p.removeAttribute('hidden');
       else p.setAttribute('hidden', '');
     });
-    // efecto suave en el panel activo (solo moderno)
-    if (document.documentElement.getAttribute('data-theme') === 'modern') {
-      panels.forEach(p => p.classList.remove('tab-anim'));
-      const active = document.getElementById(nextId);
-      if (active) active.classList.add('tab-anim');
-    }
+    // efecto suave en el panel activo
+    panels.forEach(p => p.classList.remove('tab-anim'));
+    const active = document.getElementById(nextId);
+    if (active) active.classList.add('tab-anim');
   }
 
   function updateFromHash() {
     const key = (location.hash || '#home').replace('#','');
     selectTabByKey(key);
     // Resaltar nav activo
-    const links = document.querySelectorAll('.nav-list a');
+    const links = document.querySelectorAll('.nav-list a, footer a');
     links.forEach(a => {
-      const target = a.getAttribute('href').replace('#','');
+      const href = a.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      const target = href.replace('#','');
       const isActive = target === key;
       a.classList.toggle('active', isActive);
       if (isActive) {
@@ -174,9 +177,11 @@ document.addEventListener('DOMContentLoaded', () => {
         a.removeAttribute('aria-current');
       }
     });
-    // Desplazar al inicio con suavidad en modo moderno
-    if (document.documentElement.getAttribute('data-theme') === 'modern') {
-      try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { window.scrollTo(0,0); }
+    // Desplazar al inicio con suavidad
+    try {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (e) {
+      window.scrollTo(0, 0);
     }
   }
 
@@ -189,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', () => {
     const isModern = document.documentElement.getAttribute('data-theme') === 'modern';
     if (!header) return;
-    if (isModern && window.scrollY > 10) header.classList.add('compact');
+    if (isModern && window.scrollY > 50) header.classList.add('compact');
     else header.classList.remove('compact');
   });
 });
