@@ -11,7 +11,7 @@ class StaticVisitorCounter {
     this.storageKey = 'mindtechpy_visitor_data';
     this.sessionKey = 'mindtechpy_session_visit';
     // Semilla base para simular contador global (cambiar este número aumenta/disminuye el contador base)
-    this.baseSeed = 0; // Número inicial de "visitas previas"
+    this.baseSeed = 1; // Número inicial de "visitas previas"
   }
 
   /**
@@ -95,51 +95,14 @@ class StaticVisitorCounter {
   }
 
   /**
-   * Estima el total global usando algoritmo heurístico
-   * Combina: baseSeed + tiempo transcurrido + visitas locales + factor aleatorio
+   * Estima el total global - VERSION SIMPLIFICADA
+   * Solo suma: baseSeed + visitas locales (sin factores complejos)
    */
   getEstimatedTotal() {
     const data = this.getData();
-    const now = new Date();
-    const firstVisit = new Date(data.firstVisit);
     
-    // Días desde primera visita de este dispositivo
-    const daysSinceFirst = Math.max(0, (now - firstVisit) / (1000 * 60 * 60 * 24));
-    
-    // Heurística: asumimos ~15 visitas/día en promedio
-    const estimatedDailyVisits = 15;
-    const timeBasedEstimate = Math.floor(daysSinceFirst * estimatedDailyVisits);
-    
-    // Factor basado en la hora del día (más visitas en horario laboral)
-    const hour = now.getHours();
-    const hourFactor = (hour >= 9 && hour <= 18) ? 1.2 : 0.8;
-    
-    // Componente pseudo-aleatorio determinístico (basado en deviceId para consistencia)
-    const deviceHash = this.hashCode(data.deviceId);
-    const randomComponent = Math.abs(deviceHash) % 50; // Variación de 0-50
-    
-    // Total estimado
-    const estimated = Math.floor(
-      this.baseSeed + 
-      timeBasedEstimate * hourFactor + 
-      (data.myVisits * 3) + // Multiplicador: cada visita local representa ~3 globales
-      randomComponent
-    );
-
-    return Math.max(this.baseSeed, estimated);
-  }
-
-  /**
-   * Hash simple para generar número determinístico desde string
-   */
-  hashCode(str) {
-    let hash = 0;
-    for (let i = 0; i < str.length; i++) {
-      const char = str.charCodeAt(i);
-      hash = ((hash << 5) - hash) + char;
-      hash = hash & hash; // Convert to 32bit integer
-    }
-    return hash;
+    // Simplemente: número base + visitas de este navegador
+    return this.baseSeed + data.myVisits;
   }
 
   /**
