@@ -1,88 +1,87 @@
 # MindTechPy Web
 
-Un sitio web moderno y responsivo para MindTechPy utilizando una arquitectura hexagonal.
+Sitio web de MindTechPy con doble experiencia: Modo Clásico (HTML básico) y Modo Moderno (UI profesional con SCSS), navegación por pestañas y diseño responsivo.
 
 ## Requisitos
 
-- Node.js (v14 o superior)
-- NPM (v6 o superior)
+- Node.js ≥ 14
+- npm ≥ 6
 
 ## Instalación
 
 ```bash
-# Clonar el repositorio
+# Clonar
 git clone [URL_DEL_REPOSITORIO]
-
-# Entrar al directorio
 cd web-mindtdchpy
 
-# Instalar dependencias
+# Dependencias
 npm install
 ```
 
 ## Desarrollo
 
 ```bash
-# Iniciar servidor de desarrollo
-npm run dev
-
-# Compilar SASS (opcional)
-npm run compile-sass
-
-# Actualizar estilos unificados
-node update-styles.js
-
-# Construcción completa del sitio
-node build-site.js
+# Inicia el servidor de desarrollo (Express)
+npm run dev  # http://localhost:3000
 ```
 
-## Sistema de Estilos Unificado
-
-Este proyecto ahora utiliza un sistema de estilos unificado en un solo archivo CSS para:
-- Eliminar redundancias
-- Mantener consistencia visual
-- Facilitar futuras modificaciones
-- Optimizar el rendimiento
-
-Para más información consulta la [Guía de Estilos](styles-guide.md).
-
-## Uso
-
-### Construir el proyecto
+- El servidor sirve el build desde `dist/` y los estáticos desde `public/`.
+- Para ver cambios de estilos/JS, ejecuta el build en otra terminal:
 
 ```bash
-npm run build
+npm run build:dev  # compila con webpack en modo desarrollo
 ```
 
-### Iniciar el servidor
+## Build de producción
 
 ```bash
-npm run start
+npm run build  # genera /dist
+npm run start  # sirve en http://localhost:3000
 ```
 
-Esto iniciará el servidor en http://localhost:3000
+## Estructura relevante
 
-### Iniciar con un solo comando
+- `src/pages/index.html` → Página única con pestañas (Inicio, Soluciones, Tecnologías, Precios, Empresa, Contacto)
+- `src/pages/index.js`   → Lógica (modo clásico/moderno, tabs por hash, menú móvil, notificación clásica)
+- `src/styles/main.scss` → Estilos del modo moderno (paleta, navbar, footer, botones, cards, tipografías)
+- `src/infrastructure/server.js` → Express para servir `dist/` y estáticos
+- `public/images/` → Logos e imágenes (favicon incluido)
 
-También puedes usar el script proporcionado para construir e iniciar el proyecto con un solo comando:
+Notas:
+- Se eliminaron páginas antiguas; todo vive en `index.html` con pestañas por hash.
+- El proyecto usa un único SCSS (`src/styles/main.scss`) en lugar de hojas unificadas antiguas.
 
-```bash
-./run.sh
-```
+## Experiencias de uso
 
-## Estructura del proyecto
+- Modo Clásico (por defecto)
+  - HTML simple sin estilos. Al abrir, muestra una notificación (10s, cerrable) invitando a activar el Modo Moderno.
+  - Tipografía monoespaciada global para legibilidad técnica.
+- Modo Moderno
+  - Activable desde el botón “Modo Moderno” (navbar desktop) o dentro del menú (móvil). Persistencia en `localStorage`.
+  - Tipografía Inter (Google Fonts), navbar oscuro con degradado, botones con degradado, footer mejorado y tarjetas responsivas.
+  - Pestañas por hash con animación suave y realce de link activo en el navbar.
 
-El proyecto sigue una arquitectura hexagonal con la siguiente estructura:
+## Componentes de UI
 
-- `src/domain`: Contiene los modelos core del negocio
-- `src/services`: Servicios y puertos del dominio
-- `src/infrastructure`: Adaptadores y configuración
-- `src/components`: Componentes reutilizables
-- `src/pages`: Páginas del sitio web
+- Navbar: oscuro, con menú hamburguesa en móvil. El link activo cambia de color.
+- Footer: layout auto‑fit en columnas (Soluciones, Empresa, Conocimientos, Contacto, Legal).
+- Botones: `WhatsApp` y `Llamar` con degradados acordes al navbar.
+- Tecnologías: grilla + tira de logos en `/images/tech`.
+- Favicon: configurado con `/images/mindtechpy-logo.png`.
 
-## Características
+## Personalización rápida
 
-- Diseño moderno y responsivo
-- Arquitectura hexagonal para mantener el código limpio y escalable
-- Optimización para SEO
-- Animaciones para mejorar la experiencia de usuario
+- Colores/paleta: editar `src/styles/main.scss` (variables al inicio + bloques navbar/footer/botones).
+- Tipografías: `src/pages/index.html` (link a Inter) y `src/styles/main.scss` (familias de cada modo).
+- Tabs/contenidos: secciones `#tab-*` en `src/pages/index.html`.
+- Notificación del modo clásico: función `createClassicNotice()` en `src/pages/index.js`.
+
+## Accesibilidad y responsive
+
+- Pestañas accesibles por hash, `aria-current` en el enlace activo.
+- Menú móvil con `aria-expanded` y animación de paneles.
+- Grillas responsivas (cards y footer) con auto‑fit.
+
+## Licencia
+
+Pendiente/privada según el repositorio.

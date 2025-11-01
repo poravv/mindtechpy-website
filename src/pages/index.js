@@ -15,6 +15,49 @@ function updateToggleText(btn) {
   btn.textContent = isModern ? 'Modo Clásico' : 'Modo Moderno';
 }
 
+function createClassicNotice() {
+  if (document.getElementById('classic-notice')) return;
+  const notice = document.createElement('div');
+  notice.id = 'classic-notice';
+  notice.className = 'classic-notice';
+  notice.setAttribute('role', 'status');
+  notice.setAttribute('aria-live', 'polite');
+  notice.innerHTML = `
+    <button class="close" aria-label="Cerrar notificación">×</button>
+    <div class="content">
+      <p>😄 Estás en modo clásico. Puedes cambiar al <strong>Modo Moderno</strong> para una experiencia visual mejorada.</p>
+      <div class="actions">
+        <button class="btn btn-modernize" type="button">Cambiar a Modo Moderno</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(notice);
+
+  const closeBtn = notice.querySelector('.close');
+  closeBtn.addEventListener('click', () => {
+    notice.classList.add('hide');
+    setTimeout(() => notice.remove(), 200);
+  });
+
+  const modernBtn = notice.querySelector('.btn-modernize');
+  modernBtn.addEventListener('click', () => {
+    document.documentElement.setAttribute('data-theme', 'modern');
+    localStorage.setItem('theme', 'modern');
+    const toggleDesktop = document.getElementById('mode-toggle');
+    const toggleMobile = document.getElementById('mode-toggle-mobile');
+    [toggleDesktop, toggleMobile].filter(Boolean).forEach(updateToggleText);
+    syncNavForTheme();
+    notice.classList.add('hide');
+    setTimeout(() => notice.remove(), 200);
+  });
+
+  setTimeout(() => {
+    if (!notice.isConnected) return;
+    notice.classList.add('hide');
+    setTimeout(() => notice.remove(), 200);
+  }, 10000);
+}
+
 function syncNavForTheme() {
   const isModern = document.documentElement.getAttribute('data-theme') === 'modern';
   const nav = document.querySelector('header nav');
@@ -32,6 +75,13 @@ function syncNavForTheme() {
   if (mobileToggleLi) {
     // Mostrar el toggle móvil solo en moderno
     mobileToggleLi.hidden = !isModern;
+  }
+  // Notificación solo en clásico
+  if (!isModern) {
+    createClassicNotice();
+  } else {
+    const n = document.getElementById('classic-notice');
+    if (n) n.remove();
   }
 }
 

@@ -386,3 +386,49 @@ pre {
   border-radius: .5rem;
   overflow-x: auto;
 }
+
+// Notificación para modo clásico
+#classic-notice.classic-notice {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  max-width: 420px;
+  z-index: 1000;
+  background: linear-gradient(135deg, #2563eb 0%, #8b5cf6 100%);
+  color: #fff;
+  border-radius: .75rem;
+  box-shadow: 0 20px 40px -20px rgba(0,0,0,.5);
+  padding: .9rem 1rem .9rem 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: .5rem 1rem;
+  transform: translateY(0);
+  transition: opacity .2s ease, transform .2s ease;
+}
+#classic-notice.hide { opacity: 0; transform: translateY(10px); }
+#classic-notice .close {
+  appearance: none;
+  background: rgba(255,255,255,.18);
+  color: #fff;
+  border: none;
+  border-radius: .5rem;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  align-self: start;
+}
+#classic-notice .content { grid-column: 1 / -1; }
+#classic-notice p { margin: 0 0 .5rem 0; }
+#classic-notice .actions { display: flex; gap: .5rem; }
+#classic-notice .btn {
+  display: inline-block;
+  padding: .55rem .9rem;
+  border-radius: .6rem;
+  font-weight: 700;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  box-shadow: 0 10px 24px -14px rgba(0,0,0,.4);
+}
+#classic-notice .btn.btn-modernize { background: rgba(255,255,255,.2); }
+#classic-notice .btn.btn-modernize:hover { background: rgba(255,255,255,.28); }
