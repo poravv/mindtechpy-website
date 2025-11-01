@@ -1,5 +1,6 @@
 // Nuevo sitio MindTechPy: modo Clásico vs Moderno
 import '../styles/main.scss';
+import StaticVisitorCounter from '../utils/StaticVisitorCounter';
 
 function applyTheme(theme) {
   const html = document.documentElement;
@@ -197,4 +198,28 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isModern && window.scrollY > 50) header.classList.add('compact');
     else header.classList.remove('compact');
   });
+
+  // ========== CONTADOR DE VISITAS (ESTÁTICO) ==========
+  const visitorCounter = new StaticVisitorCounter();
+  
+  // Registrar visita (solo una vez por sesión)
+  const result = visitorCounter.registerVisit();
+  
+  // Actualizar display en el footer
+  updateVisitorCounter(result.totalVisits);
+
+  // Función para actualizar el contador en el footer
+  function updateVisitorCounter(count) {
+    const counterEl = document.getElementById('visitor-count');
+    if (counterEl) {
+      counterEl.textContent = formatNumber(count);
+      counterEl.classList.add('updated');
+      setTimeout(() => counterEl.classList.remove('updated'), 600);
+    }
+  }
+
+  // Formatear número con separador de miles
+  function formatNumber(num) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  }
 });

@@ -2,9 +2,13 @@ const express = require('express');
 const path = require('path');
 const dotenv = require('dotenv');
 const fs = require('fs');
+const VisitorCounter = require('./VisitorCounter');
 
 // Cargar variables de entorno
 dotenv.config();
+
+// Inicializar contador de visitas
+const visitorCounter = new VisitorCounter();
 
 // Configuración de depuración
 const DEBUG = process.env.DEBUG === 'true';
@@ -94,8 +98,59 @@ app.get('/', (req, res) => {
 // Ruta de proyectos eliminada según requerimiento
 
 
-// API endpoints (para ejemplos y futura expansión)
-// Rutas adicionales y API eliminadas para el nuevo sitio
+// API endpoints para contador de visitas
+// GET /api/visitors/stats - Obtener estadísticas (público)
+app.get('/api/visitors/stats', (req, res) => {
+  try {
+    const stats = visitorCounter.getStats();
+    res.json({
+      success: true,
+      data: {
+        totalVisits: stats.totalVisits,
+        // No exponemos uniqueVisitors ni lastVisit por privacidad
+      }
+    });
+  } catch (error) {
+    console.error('Error al obtener stats:', error);
+    res.status(500).json({ success: false, error: 'Error al obtener estadísticas' });
+  }
+});
+
+// POST /api/visitors/visit - Incrementar visita (automático al cargar página)
+app.post('/api/visitors/visit', (req, res) => {
+  try {
+    // Obtener IP real del cliente (considerando proxies)
+    const ip = req.headers['x-forwarded-for']?.split(',')[0].trim() 
+               || req.headers['x-real-ip'] 
+               || req.connection.remoteAddress 
+               || req.socket.remoteAddress;
+    
+    const result = visitorCounter.incrementVisit(ip);
+    
+    if (DEBUG) {
+      console.log(`👤 Visita desde IP ${ip}: ${result.message}`);
+    }
+    
+    res.json({
+      success: true,
+      data: {
+        totalVisits: result.totalVisits,
+        isNewVisit: result.isNewVisit
+      }
+    });
+  } catch (error) {
+    console.error('Error al registrar visita:', error);
+    res.status(500).json({ success: false, error: 'Error al registrar visita' });
+  }
+});
+
+// Ruta de reset solo para testing (proteger con autenticación en producción)
+if (DEBUG) {
+  app.post('/api/visitors/reset', (req, res) => {
+    const result = visitorCounter.reset();
+    res.json({ success: true, data: result, message: 'Contador reseteado' });
+  });
+}
 
 // Manejo de errores para depuración
 app.use((err, req, res, next) => {

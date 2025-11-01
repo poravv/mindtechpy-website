@@ -581,6 +581,33 @@ html[data-theme='modern'] {
       border-top: 1px solid rgba(255,255,255,0.15);
       font-size: 0.9rem;
       color: #a0aec0;
+
+      .visitor-counter {
+        margin-left: 1rem;
+        padding-left: 1rem;
+        border-left: 1px solid rgba(255,255,255,0.2);
+        font-size: 0.85rem;
+        color: #94a3b8;
+        opacity: 0.7;
+        transition: opacity 0.3s ease;
+        cursor: help;
+
+        &:hover {
+          opacity: 1;
+        }
+
+        #visitor-count {
+          font-weight: 600;
+          color: $secondary;
+          font-family: 'Courier New', monospace;
+          transition: all 0.3s ease;
+
+          &.updated {
+            color: #0dbfbf;
+            transform: scale(1.1);
+          }
+        }
+      }
     }
   }
 

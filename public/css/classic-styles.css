@@ -502,6 +502,35 @@ footer > p {
   text-indent: 0;
 }
 
+footer .visitor-counter {
+  margin-left: 1rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--classic-gold);
+  font-size: 0.9rem;
+  color: #e8dcc8;
+  opacity: 0.75;
+  transition: opacity 0.3s ease;
+  cursor: help;
+  font-style: normal;
+}
+
+footer .visitor-counter:hover {
+  opacity: 1;
+}
+
+footer .visitor-counter #visitor-count {
+  font-weight: 700;
+  color: var(--classic-gold);
+  font-family: Georgia, 'Times New Roman', serif;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+footer .visitor-counter #visitor-count.updated {
+  color: #ffeb99;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+}
+
 /* ========== NOTIFICACIÓN CLÁSICA ========== */
 #classic-notice.classic-notice {
   position: fixed;
