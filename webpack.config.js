@@ -47,7 +47,8 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: 'public/images', to: 'images' },
-        { from: 'public/css', to: 'css' }
+        { from: 'public/css', to: 'css' },
+        { from: 'public/ads.txt', to: '[name][ext]' } // Copies to root of dist/
       ],
     }),
     new MiniCssExtractPlugin({
@@ -58,7 +59,7 @@ module.exports = {
       filename: 'index.html',
       chunks: ['index']
     }),
-    
+
   ],
   devServer: {
     static: {
