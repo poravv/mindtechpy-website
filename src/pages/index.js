@@ -1,6 +1,6 @@
 import '../styles/main.scss';
 import '../infrastructure/firebase-config';
-import StaticVisitorCounter from '../utils/StaticVisitorCounter';
+import '../infrastructure/firebase-config';
 
 document.addEventListener('DOMContentLoaded', () => {
   const y = document.getElementById('y');
@@ -127,14 +127,4 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(item);
   });
 
-  // --- VISITOR COUNTER ---
-  const visitorCounter = new StaticVisitorCounter();
-  const { totalVisits } = visitorCounter.registerVisit();
-
-  const counterEl = document.getElementById('visitor-count');
-  if (counterEl) {
-    counterEl.textContent = totalVisits.toLocaleString('es-PY');
-    counterEl.classList.add('updated');
-    setTimeout(() => counterEl.classList.remove('updated'), 1000);
-  }
 });
