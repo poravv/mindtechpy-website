@@ -1,0 +1,132 @@
+name: Web CI/CD
+
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+  NAMESPACE: mindtechpy-web
+
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted
+    name: Build and Deploy Website
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Log in to Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GHCR_PAT }}
+
+    - name: Extract metadata
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+        tags: |
+          type=sha,format=short
+          type=raw,value=latest
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: ./Dockerfile
+        push: true
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        platforms: linux/amd64
+
+    - name: Ensure namespace exists
+      run: |
+        kubectl apply -f k8s/namespace.yaml
+
+    - name: Create/Update image pull secret
+      run: |
+        kubectl create secret docker-registry ghcr-secret \
+          --docker-server=${{ env.REGISTRY }} \
+          --docker-username=${{ github.actor }} \
+          --docker-password=${{ secrets.GHCR_PAT }} \
+          --namespace=${{ env.NAMESPACE }} \
+          --dry-run=client -o yaml | kubectl apply -f -
+
+    - name: Create/Update SMTP secret
+      run: |
+        kubectl create secret generic smtp-secret \
+          --from-literal=SMTP_HOST=${{ secrets.SMTP_HOST }} \
+          --from-literal=SMTP_PORT=${{ secrets.SMTP_PORT }} \
+          --from-literal=SMTP_USER=${{ secrets.SMTP_USER }} \
+          --from-literal=SMTP_PASS=${{ secrets.SMTP_PASS }} \
+          --from-literal=MAIL_TO=${{ secrets.MAIL_TO }} \
+          --namespace=${{ env.NAMESPACE }} \
+          --dry-run=client -o yaml | kubectl apply -f -
+
+    - name: Deploy manifests
+      run: |
+        kubectl apply -f k8s/pvc.yaml
+        kubectl apply -f k8s/deployment.yaml
+        kubectl apply -f k8s/ingress.yaml
+
+    - name: Get short SHA
+      run: echo "SHORT_SHA=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
+
+    - name: Update image to current commit
+      run: |
+        kubectl set image deployment/mindtechpy-web \
+          mindtechpy-web=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:sha-${SHORT_SHA} \
+          -n ${{ env.NAMESPACE }}
+        kubectl rollout status deployment/mindtechpy-web -n ${{ env.NAMESPACE }} --timeout=120s
+
+    - name: Health check
+      run: |
+        sleep 15
+        SVC_IP=$(kubectl get service mindtechpy-web-service -n ${{ env.NAMESPACE }} -o jsonpath='{.spec.clusterIP}')
+        for i in {1..5}; do
+          if curl -f http://$SVC_IP:80/api/health > /dev/null 2>&1; then
+            echo "Health check passed"
+            break
+          fi
+          echo "Attempt $i failed, retrying in 10s..."
+          sleep 10
+          if [ $i -eq 5 ]; then
+            echo "Health check failed"
+            kubectl logs deployment/mindtechpy-web -n ${{ env.NAMESPACE }} --tail=30
+            exit 1
+          fi
+        done
+
+    - name: Debug rollout failure
+      if: failure()
+      run: |
+        kubectl describe deployment/mindtechpy-web -n ${{ env.NAMESPACE }} || true
+        POD=$(kubectl get pods -n ${{ env.NAMESPACE }} -l app=mindtechpy-web -o jsonpath='{.items[0].metadata.name}')
+        kubectl describe pod "$POD" -n ${{ env.NAMESPACE }} || true
+        kubectl logs "$POD" -n ${{ env.NAMESPACE }} --tail=100 || true
+
+    - name: Deployment summary
+      if: always()
+      run: |
+        echo "Deployment Summary:"
+        echo "===================="
+        kubectl get pods -n ${{ env.NAMESPACE }}
+        echo ""
+        kubectl get services -n ${{ env.NAMESPACE }}
+        echo ""
+        kubectl get ingress -n ${{ env.NAMESPACE }}

@@ -1,0 +1,117 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mindtechpy-web
+  namespace: mindtechpy-web
+  labels:
+    app: mindtechpy-web
+    tier: frontend
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: mindtechpy-web
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        app: mindtechpy-web
+        tier: frontend
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+      - name: mindtechpy-web
+        image: ghcr.io/poravv/web-mindtdchpy:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+          name: http
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: PORT
+          value: "3000"
+        - name: SMTP_HOST
+          valueFrom:
+            secretKeyRef:
+              name: smtp-secret
+              key: SMTP_HOST
+        - name: SMTP_PORT
+          valueFrom:
+            secretKeyRef:
+              name: smtp-secret
+              key: SMTP_PORT
+        - name: SMTP_USER
+          valueFrom:
+            secretKeyRef:
+              name: smtp-secret
+              key: SMTP_USER
+        - name: SMTP_PASS
+          valueFrom:
+            secretKeyRef:
+              name: smtp-secret
+              key: SMTP_PASS
+        - name: MAIL_TO
+          valueFrom:
+            secretKeyRef:
+              name: smtp-secret
+              key: MAIL_TO
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "50m"
+          limits:
+            memory: "128Mi"
+            cpu: "200m"
+        livenessProbe:
+          httpGet:
+            path: /api/health
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 30
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /api/health
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 3
+        volumeMounts:
+        - name: app-data
+          mountPath: /app/data
+        lifecycle:
+          preStop:
+            exec:
+              command: ["/bin/sh", "-c", "sleep 5"]
+      volumes:
+      - name: app-data
+        persistentVolumeClaim:
+          claimName: mindtechpy-web-data
+      imagePullSecrets:
+      - name: ghcr-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mindtechpy-web-service
+  namespace: mindtechpy-web
+  labels:
+    app: mindtechpy-web
+    tier: frontend
+spec:
+  type: ClusterIP
+  selector:
+    app: mindtechpy-web
+    tier: frontend
+  ports:
+  - port: 80
+    targetPort: 3000
+    name: http

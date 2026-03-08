@@ -1,130 +1,333 @@
 import '../styles/main.scss';
-import '../infrastructure/firebase-config';
-import '../infrastructure/firebase-config';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const y = document.getElementById('y');
-  if (y) y.textContent = new Date().getFullYear();
 
-  // --- MOBILE NAVIGATION ---
-  const nav = document.querySelector('header nav');
+  // ─── Footer Year ───
+  const yearEl = document.getElementById('y');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // ─── Mobile Navigation ───
   const menuToggle = document.getElementById('menu-toggle');
+  const navList = document.getElementById('primary-navigation');
 
-  if (nav && menuToggle) {
-    nav.setAttribute('aria-expanded', 'false');
+  if (menuToggle && navList) {
     menuToggle.addEventListener('click', () => {
-      const expanded = nav.getAttribute('aria-expanded') === 'true';
-      nav.setAttribute('aria-expanded', !expanded);
-      menuToggle.setAttribute('aria-expanded', !expanded);
+      const isOpen = navList.classList.contains('open');
+      navList.classList.toggle('open', !isOpen);
+      menuToggle.setAttribute('aria-expanded', String(!isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Abrir menu de navegacion' : 'Cerrar menu de navegacion');
     });
 
-    // Close menu when clicking a link
-    document.querySelectorAll('.nav-list a').forEach(a => {
-      a.addEventListener('click', () => {
-        nav.setAttribute('aria-expanded', 'false');
+    navList.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navList.classList.remove('open');
         menuToggle.setAttribute('aria-expanded', 'false');
       });
     });
   }
 
-  // --- TAB PANELS LOGIC (CYBER-PREMIUM) ---
-  const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
-  const tabMap = {
-    home: 'tab-home',
-    soluciones: 'tab-soluciones',
-    tecnologias: 'tab-tecnologias',
-    precios: 'tab-precios',
-    empresa: 'tab-empresa',
-    contacto: 'tab-contacto',
-    terminos: 'tab-terminos',
-    privacidad: 'tab-privacidad'
-  };
+  // ─── Scroll Progress Bar ───
+  const progressBar = document.querySelector('.scroll-progress__bar');
 
-  /**
-   * Switches tabs with a smooth fluid animation
-   */
-  async function selectTabByKey(key) {
-    const targetId = tabMap[key] || 'tab-home';
-    const activePanel = panels.find(p => !p.hasAttribute('hidden'));
-    const nextPanel = document.getElementById(targetId);
-
-    if (activePanel === nextPanel) return;
-
-    // Fluid out-in transition (optional delay for smoothness)
-    if (activePanel) {
-      activePanel.style.opacity = '0';
-      activePanel.style.transform = 'translateY(10px) scale(0.98)';
-      await new Promise(r => setTimeout(r, 200));
-      activePanel.setAttribute('hidden', '');
-    }
-
-    if (nextPanel) {
-      nextPanel.removeAttribute('hidden');
-      nextPanel.style.opacity = '0';
-      nextPanel.style.transform = 'translateY(15px) scale(1.02)';
-
-      // Trigger browser reflow
-      void nextPanel.offsetWidth;
-
-      nextPanel.classList.add('tab-anim');
-      nextPanel.style.opacity = '1';
-      nextPanel.style.transform = 'translateY(0) scale(1)';
-    }
+  function updateScrollProgress() {
+    if (!progressBar) return;
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = progress + '%';
   }
 
-  function updateFromHash() {
-    const key = (location.hash || '#home').replace('#', '');
-    selectTabByKey(key);
-
-    // Sync Navigation States
-    const links = document.querySelectorAll('.nav-list a, footer a');
-    links.forEach(a => {
-      const href = a.getAttribute('href');
-      if (!href?.startsWith('#')) return;
-
-      const target = href.replace('#', '');
-      const isActive = target === key;
-      a.classList.toggle('active', isActive);
-
-      if (isActive) a.setAttribute('aria-current', 'page');
-      else a.removeAttribute('aria-current');
-    });
-
-    // Scroll to Top smoothly
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  // Handle Hash Changes
-  window.addEventListener('hashchange', updateFromHash);
-  updateFromHash();
-
-  // --- INTERACTIVE ELEMENTS ---
-
-  // Compact Header on Scroll
+  // ─── Compact Header ───
   const header = document.querySelector('header');
-  window.addEventListener('scroll', () => {
-    if (header) {
-      header.classList.toggle('compact', window.scrollY > 40);
-    }
-  });
 
-  // Reveal elements on scroll (Intersection Observer)
-  const revealItems = document.querySelectorAll('.card, h2, .tech-logos');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-        observer.unobserve(entry.target);
+  function updateHeader() {
+    if (header) {
+      header.classList.toggle('compact', window.scrollY > 60);
+    }
+  }
+
+  // ─── Active Section Detection ───
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-list a');
+
+  function updateActiveSection() {
+    const scrollPos = window.scrollY + 120;
+
+    sections.forEach(section => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
+      const id = section.getAttribute('id');
+
+      if (scrollPos >= top && scrollPos < top + height) {
+        navLinks.forEach(link => {
+          const href = link.getAttribute('href');
+          if (href === '#' + id) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
       }
     });
-  }, { threshold: 0.1 });
+  }
 
-  revealItems.forEach(item => {
-    item.style.opacity = '0';
-    item.style.transform = 'translateY(30px)';
-    item.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
-    observer.observe(item);
+  // ─── Throttled Scroll Handler ───
+  let scrollTicking = false;
+
+  window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+      requestAnimationFrame(() => {
+        updateScrollProgress();
+        updateHeader();
+        updateActiveSection();
+        scrollTicking = false;
+      });
+      scrollTicking = true;
+    }
+  }, { passive: true });
+
+  // ─── Scroll Reveal (IntersectionObserver) ───
+  const revealElements = document.querySelectorAll('[data-reveal]');
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -40px 0px'
   });
 
+  revealElements.forEach(el => revealObserver.observe(el));
+
+  // ─── Counter Animation ───
+  const counters = document.querySelectorAll('[data-target]');
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  counters.forEach(counter => counterObserver.observe(counter));
+
+  function animateCounter(el) {
+    const target = parseInt(el.getAttribute('data-target'), 10);
+    const duration = 1500;
+    const startTime = performance.now();
+
+    function update(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(eased * target);
+      el.textContent = current;
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  // ─── Tech Filter ───
+  const filterButtons = document.querySelectorAll('.tech-filter');
+  const techItems = document.querySelectorAll('.tech-item');
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+
+      filterButtons.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+
+      techItems.forEach(item => {
+        const category = item.getAttribute('data-category');
+        if (filter === 'all' || category === filter) {
+          item.classList.remove('hidden');
+          item.style.animation = 'none';
+          item.offsetHeight; // reflow
+          item.style.animation = '';
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  // ─── Legal Tabs ───
+  const legalTabs = document.querySelectorAll('.legal-tab');
+  const legalContents = document.querySelectorAll('.legal-content');
+
+  legalTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.getAttribute('data-legal');
+
+      legalTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      legalContents.forEach(content => {
+        const id = content.id.replace('legal-', '');
+        if (id === target) {
+          content.removeAttribute('hidden');
+        } else {
+          content.setAttribute('hidden', '');
+        }
+      });
+    });
+  });
+
+  // ─── Contact Form Validation ───
+  const form = document.getElementById('contact-form');
+
+  if (form) {
+    const fields = {
+      name: {
+        el: document.getElementById('contact-name'),
+        validate: (v) => v.trim().length >= 2 ? '' : 'Ingrese su nombre (minimo 2 caracteres)'
+      },
+      email: {
+        el: document.getElementById('contact-email'),
+        validate: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? '' : 'Ingrese un email valido'
+      },
+      message: {
+        el: document.getElementById('contact-message'),
+        validate: (v) => v.trim().length >= 10 ? '' : 'Escriba un mensaje (minimo 10 caracteres)'
+      }
+    };
+
+    // Real-time validation
+    Object.values(fields).forEach(({ el, validate }) => {
+      if (!el) return;
+      el.addEventListener('blur', () => {
+        const error = validate(el.value);
+        const errorEl = el.parentElement.querySelector('.form-error');
+        if (error) {
+          el.classList.add('error');
+          el.classList.remove('valid');
+          if (errorEl) errorEl.textContent = error;
+        } else {
+          el.classList.remove('error');
+          el.classList.add('valid');
+          if (errorEl) errorEl.textContent = '';
+        }
+      });
+
+      el.addEventListener('input', () => {
+        if (el.classList.contains('error')) {
+          const error = validate(el.value);
+          if (!error) {
+            el.classList.remove('error');
+            el.classList.add('valid');
+            const errorEl = el.parentElement.querySelector('.form-error');
+            if (errorEl) errorEl.textContent = '';
+          }
+        }
+      });
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      let hasErrors = false;
+
+      Object.values(fields).forEach(({ el, validate }) => {
+        if (!el) return;
+        const error = validate(el.value);
+        const errorEl = el.parentElement.querySelector('.form-error');
+        if (error) {
+          el.classList.add('error');
+          el.classList.remove('valid');
+          if (errorEl) errorEl.textContent = error;
+          hasErrors = true;
+        }
+      });
+
+      if (hasErrors) return;
+
+      // Show loading state
+      const btnText = form.querySelector('.btn__text');
+      const btnLoading = form.querySelector('.btn__loading');
+      const submitBtn = form.querySelector('[type="submit"]');
+
+      if (btnText) btnText.hidden = true;
+      if (btnLoading) btnLoading.hidden = false;
+      if (submitBtn) submitBtn.disabled = true;
+
+      // Build WhatsApp message
+      const name = fields.name.el.value.trim();
+      const email = fields.email.el.value.trim();
+      const company = document.getElementById('contact-company')?.value.trim() || '';
+      const service = document.getElementById('contact-service')?.value || '';
+      const message = fields.message.el.value.trim();
+
+      const whatsappMsg = encodeURIComponent(
+        `Hola MindTechPy!\n\n` +
+        `Nombre: ${name}\n` +
+        `Email: ${email}\n` +
+        (company ? `Empresa: ${company}\n` : '') +
+        (service ? `Servicio: ${service}\n` : '') +
+        `\nMensaje:\n${message}`
+      );
+
+      // Show success feedback
+      setTimeout(() => {
+        const feedback = form.querySelector('.form-feedback');
+        if (feedback) {
+          feedback.hidden = false;
+          feedback.className = 'form-feedback success';
+          feedback.textContent = 'Redirigiendo a WhatsApp para completar su consulta...';
+        }
+
+        if (btnText) btnText.hidden = false;
+        if (btnLoading) btnLoading.hidden = true;
+        if (submitBtn) submitBtn.disabled = false;
+
+        // Redirect to WhatsApp
+        setTimeout(() => {
+          window.open(`https://wa.me/595992756462?text=${whatsappMsg}`, '_blank');
+        }, 800);
+      }, 600);
+    });
+  }
+
+  // ─── Smooth scroll offset for anchor links ───
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+      const targetId = anchor.getAttribute('href');
+      if (targetId === '#') return;
+
+      const targetEl = document.querySelector(targetId);
+      if (!targetEl) return;
+
+      e.preventDefault();
+
+      const headerHeight = header ? header.offsetHeight : 0;
+      const targetPosition = targetEl.getBoundingClientRect().top + window.scrollY - headerHeight - 20;
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+
+      // Update URL without scroll jump
+      history.pushState(null, '', targetId);
+    });
+  });
+
+  // ─── Initialize ───
+  updateScrollProgress();
+  updateHeader();
+  updateActiveSection();
 });

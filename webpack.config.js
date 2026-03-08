@@ -3,17 +3,20 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 module.exports = {
   entry: {
     index: './src/pages/index.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'js/[name].bundle.js',
-    publicPath: '/'
+    filename: isProduction ? 'js/[name].[contenthash:8].bundle.js' : 'js/[name].bundle.js',
+    publicPath: '/',
+    clean: true,
+    assetModuleFilename: 'images/[name][ext]'
   },
-  // Configuración para depuración
-  devtool: process.env.NODE_ENV === 'production' ? 'source-map' : 'eval-source-map',
+  devtool: isProduction ? 'source-map' : 'eval-source-map',
   module: {
     rules: [
       {
@@ -22,7 +25,7 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: '../', // Esto ayuda a resolver las rutas relativas en CSS
+              publicPath: '../',
             },
           },
           'css-loader',
@@ -30,16 +33,11 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'images'
-            }
-          }
-        ]
+        test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name][ext]'
+        }
       }
     ]
   },
@@ -47,19 +45,23 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: 'public/images', to: 'images' },
-        { from: 'public/css', to: 'css' },
-        { from: 'public/ads.txt', to: '[name][ext]' } // Copies to root of dist/
+        { from: 'public/ads.txt', to: '[name][ext]' }
       ],
     }),
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
+      filename: isProduction ? 'css/[name].[contenthash:8].css' : 'css/[name].css',
     }),
     new HtmlWebpackPlugin({
       template: './src/pages/index.html',
       filename: 'index.html',
-      chunks: ['index']
+      chunks: ['index'],
+      minify: isProduction ? {
+        collapseWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+      } : false,
     }),
-
   ],
   devServer: {
     static: {
@@ -68,5 +70,10 @@ module.exports = {
     compress: true,
     port: 3000,
     historyApiFallback: true
+  },
+  performance: {
+    hints: isProduction ? 'warning' : false,
+    maxAssetSize: 512000,
+    maxEntrypointSize: 512000,
   }
 };

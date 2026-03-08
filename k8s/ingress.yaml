@@ -1,0 +1,37 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mindtechpy-web-ingress
+  namespace: mindtechpy-web
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - mindtechpy.net
+        - www.mindtechpy.net
+      secretName: mindtechpy-web-tls
+  rules:
+    - host: mindtechpy.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mindtechpy-web-service
+                port:
+                  number: 80
+    - host: www.mindtechpy.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mindtechpy-web-service
+                port:
+                  number: 80
