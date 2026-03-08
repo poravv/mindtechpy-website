@@ -3,7 +3,7 @@
 .env
 .env.debug
 .env.http
-package-lock.json
+
 
 # Datos del contador de visitas (se genera automáticamente)
 /data/visitors.json
