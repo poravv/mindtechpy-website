@@ -20,6 +20,8 @@ spec:
         app: mindtechpy-web
         tier: frontend
     spec:
+      securityContext:
+        fsGroup: 1001
       terminationGracePeriodSeconds: 30
       containers:
       - name: mindtechpy-web
