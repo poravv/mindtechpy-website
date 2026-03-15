@@ -4,6 +4,9 @@
 .env.debug
 .env.http
 
+# Claude Code (per-developer config)
+.claude/
+.atl/
 
 # Datos del contador de visitas (se genera automáticamente)
 /data/visitors.json

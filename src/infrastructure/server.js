@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const dotenv = require('dotenv');
 const fs = require('fs');
+const compression = require('compression');
 const nodemailer = require('nodemailer');
 const VisitorCounter = require('./VisitorCounter');
 
@@ -38,6 +39,9 @@ if (DEBUG) {
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Gzip/Brotli compression
+app.use(compression());
+
 // Security headers
 app.use((req, res, next) => {
   res.setHeader('X-Content-Type-Options', 'nosniff');
@@ -48,9 +52,8 @@ app.use((req, res, next) => {
   next();
 });
 
-// Gzip compression (built-in approach without extra dependency)
+// Cache headers para assets estaticos
 app.use((req, res, next) => {
-  // Cache headers para assets estaticos
   if (req.url.match(/\.[a-f0-9]{8}\.(js|css)$/)) {
     // Archivos con content hash: cache largo (1 anio)
     res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
@@ -150,6 +153,16 @@ app.post('/api/visitors/visit', (req, res) => {
 // Rate limiting simple para el form de contacto
 const contactRateMap = new Map();
 const CONTACT_RATE_LIMIT_MS = 60000; // 1 minuto entre envios por IP
+
+// Clean up old rate limit entries every hour
+setInterval(() => {
+  const now = Date.now();
+  for (const [ip, timestamp] of contactRateMap.entries()) {
+    if (now - timestamp > 60 * 60 * 1000) {
+      contactRateMap.delete(ip);
+    }
+  }
+}, 60 * 60 * 1000);
 
 app.post('/api/contact', (req, res) => {
   try {
@@ -267,6 +280,11 @@ if (DEBUG) {
 // ─── Health check (para Docker) ───
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
+// 404 handler — serve index.html for client-side routing
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(__dirname, '../../dist/index.html'));
 });
 
 // Error handler

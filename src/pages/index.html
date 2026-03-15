@@ -38,7 +38,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-    rel="stylesheet">
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet">
+  </noscript>
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9482252021980242"
     crossorigin="anonymous"></script>
@@ -89,7 +94,10 @@
   <header>
     <nav aria-label="Navegacion principal">
       <a href="#hero" class="brand" aria-label="MindTechPy - Inicio">
-        <img src="/images/mindtechpy-logo.png" alt="MindTechPy" width="140" height="40">
+        <picture>
+          <source srcset="/images/mindtechpy-logo.webp" type="image/webp">
+          <img src="/images/mindtechpy-logo.png" alt="MindTechPy" width="140" height="40">
+        </picture>
       </a>
 
       <button id="menu-toggle" class="menu-toggle" type="button" aria-label="Abrir menu de navegacion"
@@ -146,7 +154,7 @@
 
         <p class="hero__subtitle">
           Somos su socio estrategico en desarrollo de software empresarial.
-          Desde mensajeria masiva hasta plataformas a medida, diseamos
+          Desde mensajeria masiva hasta plataformas a medida, dise&ntilde;amos
           soluciones que generan resultados tangibles.
         </p>
 
@@ -368,9 +376,8 @@
     <section id="proyectos" class="section">
       <div class="section__header">
         <span class="section__number">02</span>
-        <h2>Proyectos en los que Participamos</h2>
-        <p>Colaboramos con empresas en el desarrollo, mantenimiento y evolucion de sus plataformas digitales.
-          Estos son algunos proyectos donde aportamos nuestro expertise.</p>
+        <h2>Nuestros Proyectos y Colaboraciones</h2>
+        <p>Desarrollamos productos propios y colaboramos con empresas en la evolucion de sus plataformas digitales.</p>
       </div>
 
       <div class="projects-grid">
@@ -501,6 +508,189 @@
             </div>
           </div>
         </article>
+
+        <!-- WhatsApp Sender Pro -->
+        <article class="project-card project-card--cyan" data-reveal>
+          <div class="project-card__banner">
+            <div class="project-card__banner-bg" aria-hidden="true"></div>
+            <div class="project-card__banner-content">
+              <div class="project-card__icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+                </svg>
+              </div>
+              <div>
+                <h3>WhatsApp Sender Pro</h3>
+                <span class="project-card__type">Mensajeria Masiva</span>
+              </div>
+              <span class="project-card__status">
+                <span class="project-card__status-dot"></span>
+                Live
+              </span>
+            </div>
+          </div>
+
+          <div class="project-card__body">
+            <p>Plataforma empresarial de mensajeria masiva por WhatsApp con chatbot inteligente, inbox en tiempo real y panel de analisis. Permite enviar campanas con texto, imagenes y audio, gestionar contactos, crear flujos de bot con IA (OpenAI, Anthropic, Groq), y recibir/responder mensajes. Incluye planes de suscripcion, autenticacion con Google y creacion de cuentas con verificacion por email.</p>
+
+            <div class="project-card__section">
+              <span class="project-card__label">Nuestro rol</span>
+              <div class="project-card__role">
+                <span class="project-card__role-badge">Desarrollo Completo</span>
+                <span class="project-card__role-badge">Infraestructura</span>
+                <span class="project-card__role-badge">Producto Propio</span>
+              </div>
+            </div>
+
+            <div class="project-card__section">
+              <span class="project-card__label">Stack tecnologico</span>
+              <ul class="project-card__tags">
+                <li>Node.js / Express</li>
+                <li>Baileys WebSocket</li>
+                <li>PostgreSQL 16</li>
+                <li>Redis + BullMQ</li>
+                <li>Firebase Auth</li>
+                <li>OpenAI / Anthropic</li>
+                <li>Docker</li>
+                <li>Kubernetes + KEDA</li>
+              </ul>
+            </div>
+
+            <div class="project-card__links">
+              <a href="https://sender.mindtechpy.net" target="_blank" rel="noopener" class="project-card__link-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+                  <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+                </svg>
+                sender.mindtechpy.net
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Capa Store -->
+        <article class="project-card project-card--violet" data-reveal>
+          <div class="project-card__banner">
+            <div class="project-card__banner-bg" aria-hidden="true"></div>
+            <div class="project-card__banner-content">
+              <div class="project-card__icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
+                </svg>
+              </div>
+              <div>
+                <h3>Capa Store</h3>
+                <span class="project-card__type">E-Commerce</span>
+              </div>
+              <span class="project-card__status">
+                <span class="project-card__status-dot"></span>
+                Live
+              </span>
+            </div>
+          </div>
+
+          <div class="project-card__body">
+            <p>E-commerce completo para tienda de indumentaria en Paraguay. Catalogo con variantes (talle, color, SKU), carrito persistente en Redis, checkout multi-paso con zonas de envio geoespaciales via PostGIS, cupones y flash sales, resenas con calificaciones, notificaciones en tiempo real via WebSocket, y panel administrativo con analiticas de ventas y gestion de inventario.</p>
+
+            <div class="project-card__section">
+              <span class="project-card__label">Nuestro rol</span>
+              <div class="project-card__role">
+                <span class="project-card__role-badge">Desarrollo Full-Stack</span>
+                <span class="project-card__role-badge">Infraestructura</span>
+                <span class="project-card__role-badge">Producto Propio</span>
+              </div>
+            </div>
+
+            <div class="project-card__section">
+              <span class="project-card__label">Stack tecnologico</span>
+              <ul class="project-card__tags">
+                <li>Next.js 16 / React 19</li>
+                <li>Java 21 / Spring Boot</li>
+                <li>PostgreSQL + PostGIS</li>
+                <li>Redis 7</li>
+                <li>Cloudinary</li>
+                <li>WebSocket STOMP</li>
+                <li>Tailwind CSS</li>
+                <li>Docker + K8s</li>
+              </ul>
+            </div>
+
+            <div class="project-card__links">
+              <a href="https://capa.mindtechpy.net" target="_blank" rel="noopener" class="project-card__link-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+                  <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+                </svg>
+                capa.mindtechpy.net
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- El Impostor -->
+        <article class="project-card project-card--rose" data-reveal>
+          <div class="project-card__banner">
+            <div class="project-card__banner-bg" aria-hidden="true"></div>
+            <div class="project-card__banner-content">
+              <div class="project-card__icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="18" y1="11" x2="18.01" y2="11"/><path d="M17.32 5H6.68a4 4 0 00-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 003 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 019.828 16h4.344a2 2 0 011.414.586L17 18c.5.5 1 1 2 1a3 3 0 003-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0017.32 5z"/>
+                </svg>
+              </div>
+              <div>
+                <h3>El Impostor</h3>
+                <span class="project-card__type">Juego Multijugador</span>
+              </div>
+              <span class="project-card__status">
+                <span class="project-card__status-dot"></span>
+                Live
+              </span>
+            </div>
+          </div>
+
+          <div class="project-card__body">
+            <p>Juego de deduccion social multijugador en tiempo real para 3-15 jugadores. Salas con codigo, sistema de palabras con 9 categorias y dificultad progresiva, votacion en vivo, leaderboard global, notificaciones push y monetizacion con AdMob. Disponible en web y Android con sincronizacion WebSocket, autenticacion con Google y deep linking entre plataformas.</p>
+
+            <div class="project-card__section">
+              <span class="project-card__label">Nuestro rol</span>
+              <div class="project-card__role">
+                <span class="project-card__role-badge">Desarrollo Full-Stack</span>
+                <span class="project-card__role-badge">Game Design</span>
+                <span class="project-card__role-badge">Producto Propio</span>
+              </div>
+            </div>
+
+            <div class="project-card__section">
+              <span class="project-card__label">Stack tecnologico</span>
+              <ul class="project-card__tags">
+                <li>Next.js / React</li>
+                <li>Expo / React Native</li>
+                <li>Fastify + Socket.IO</li>
+                <li>PostgreSQL + Prisma</li>
+                <li>Redis 7</li>
+                <li>Firebase Auth + FCM</li>
+                <li>Google AdMob</li>
+                <li>Docker + K8s</li>
+              </ul>
+            </div>
+
+            <div class="project-card__links">
+              <a href="http://impostor.mindtechpy.net" target="_blank" rel="noopener" class="project-card__link-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+                  <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+                </svg>
+                impostor.mindtechpy.net
+              </a>
+              <a href="https://play.google.com/store/apps/details?id=net.mindtechpy.impostor" target="_blank" rel="noopener" class="project-card__link-secondary">
+                Google Play
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M7 17l9.2-9.2M17 17V7H7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -528,15 +718,24 @@
       <div class="tech-grid" role="tabpanel">
         <!-- Frontend -->
         <div class="tech-item" data-category="frontend" data-reveal>
-          <img src="/images/tech/html-css-js.png" alt="HTML CSS JavaScript" loading="lazy" width="48" height="48">
+          <picture>
+            <source srcset="/images/tech/html-css-js.webp" type="image/webp">
+            <img src="/images/tech/html-css-js.png" alt="HTML CSS JavaScript" loading="lazy" width="48" height="48">
+          </picture>
           <span class="tech-item__name">HTML/CSS/JS</span>
         </div>
         <div class="tech-item" data-category="frontend" data-reveal>
-          <img src="/images/tech/react.png" alt="React" loading="lazy" width="48" height="48">
+          <picture>
+            <source srcset="/images/tech/react.webp" type="image/webp">
+            <img src="/images/tech/react.png" alt="React" loading="lazy" width="48" height="48">
+          </picture>
           <span class="tech-item__name">React</span>
         </div>
         <div class="tech-item" data-category="frontend" data-reveal>
-          <img src="/images/tech/angular.png" alt="Angular" loading="lazy" width="48" height="48">
+          <picture>
+            <source srcset="/images/tech/angular.webp" type="image/webp">
+            <img src="/images/tech/angular.png" alt="Angular" loading="lazy" width="48" height="48">
+          </picture>
           <span class="tech-item__name">Angular</span>
         </div>
         <div class="tech-item" data-category="frontend" data-reveal>
@@ -562,7 +761,10 @@
           <span class="tech-item__name">Java 21</span>
         </div>
         <div class="tech-item" data-category="backend" data-reveal>
-          <img src="/images/tech/spring-boot.png" alt="Spring Boot" loading="lazy" width="48" height="48">
+          <picture>
+            <source srcset="/images/tech/spring-boot.webp" type="image/webp">
+            <img src="/images/tech/spring-boot.png" alt="Spring Boot" loading="lazy" width="48" height="48">
+          </picture>
           <span class="tech-item__name">Spring Boot</span>
         </div>
 
@@ -572,11 +774,17 @@
           <span class="tech-item__name">Flutter</span>
         </div>
         <div class="tech-item" data-category="mobile" data-reveal>
-          <img src="/images/tech/android.png" alt="Android" loading="lazy" width="48" height="48">
+          <picture>
+            <source srcset="/images/tech/android.webp" type="image/webp">
+            <img src="/images/tech/android.png" alt="Android" loading="lazy" width="48" height="48">
+          </picture>
           <span class="tech-item__name">Android</span>
         </div>
         <div class="tech-item" data-category="mobile" data-reveal>
-          <img src="/images/tech/ios.png" alt="iOS" loading="lazy" width="48" height="48">
+          <picture>
+            <source srcset="/images/tech/ios.webp" type="image/webp">
+            <img src="/images/tech/ios.png" alt="iOS" loading="lazy" width="48" height="48">
+          </picture>
           <span class="tech-item__name">iOS</span>
         </div>
         <div class="tech-item" data-category="mobile" data-reveal>
@@ -590,11 +798,17 @@
 
         <!-- Datos -->
         <div class="tech-item" data-category="data" data-reveal>
-          <img src="/images/tech/postgres.png" alt="PostgreSQL" loading="lazy" width="48" height="48">
+          <picture>
+            <source srcset="/images/tech/postgres.webp" type="image/webp">
+            <img src="/images/tech/postgres.png" alt="PostgreSQL" loading="lazy" width="48" height="48">
+          </picture>
           <span class="tech-item__name">PostgreSQL</span>
         </div>
         <div class="tech-item" data-category="data" data-reveal>
-          <img src="/images/tech/mongodb.jpg" alt="MongoDB" loading="lazy" width="48" height="48">
+          <picture>
+            <source srcset="/images/tech/mongodb.webp" type="image/webp">
+            <img src="/images/tech/mongodb.jpg" alt="MongoDB" loading="lazy" width="48" height="48">
+          </picture>
           <span class="tech-item__name">MongoDB</span>
         </div>
         <div class="tech-item" data-category="data" data-reveal>
@@ -602,17 +816,26 @@
           <span class="tech-item__name">Redis</span>
         </div>
         <div class="tech-item" data-category="data" data-reveal>
-          <img src="/images/tech/mysql.png" alt="MySQL" loading="lazy" width="48" height="48">
+          <picture>
+            <source srcset="/images/tech/mysql.webp" type="image/webp">
+            <img src="/images/tech/mysql.png" alt="MySQL" loading="lazy" width="48" height="48">
+          </picture>
           <span class="tech-item__name">MySQL</span>
         </div>
         <div class="tech-item" data-category="data" data-reveal>
-          <img src="/images/tech/oracle-db.jpeg" alt="Oracle" loading="lazy" width="48" height="48">
+          <picture>
+            <source srcset="/images/tech/oracle-db.webp" type="image/webp">
+            <img src="/images/tech/oracle-db.jpeg" alt="Oracle" loading="lazy" width="48" height="48">
+          </picture>
           <span class="tech-item__name">Oracle</span>
         </div>
 
         <!-- DevOps -->
         <div class="tech-item" data-category="devops" data-reveal>
-          <img src="/images/tech/docker.png" alt="Docker" loading="lazy" width="48" height="48">
+          <picture>
+            <source srcset="/images/tech/docker.webp" type="image/webp">
+            <img src="/images/tech/docker.png" alt="Docker" loading="lazy" width="48" height="48">
+          </picture>
           <span class="tech-item__name">Docker</span>
         </div>
         <div class="tech-item" data-category="devops" data-reveal>
@@ -640,12 +863,18 @@
           <span class="tech-item__name">Grafana</span>
         </div>
         <div class="tech-item" data-category="devops" data-reveal>
-          <img src="/images/tech/portainer.png" alt="Portainer" loading="lazy" width="48" height="48">
+          <picture>
+            <source srcset="/images/tech/portainer.webp" type="image/webp">
+            <img src="/images/tech/portainer.png" alt="Portainer" loading="lazy" width="48" height="48">
+          </picture>
           <span class="tech-item__name">Portainer</span>
         </div>
         <div class="tech-item" data-category="devops" data-reveal>
-          <img src="/images/tech/nginx-proxy-manager.png" alt="Nginx Proxy Manager" loading="lazy" width="48"
-            height="48">
+          <picture>
+            <source srcset="/images/tech/nginx-proxy-manager.webp" type="image/webp">
+            <img src="/images/tech/nginx-proxy-manager.png" alt="Nginx Proxy Manager" loading="lazy" width="48"
+              height="48">
+          </picture>
           <span class="tech-item__name">Nginx PM</span>
         </div>
 
@@ -655,19 +884,31 @@
           <span class="tech-item__name">AWS</span>
         </div>
         <div class="tech-item" data-category="cloud" data-reveal>
-          <img src="/images/tech/firebase.png" alt="Firebase" loading="lazy" width="48" height="48">
+          <picture>
+            <source srcset="/images/tech/firebase.webp" type="image/webp">
+            <img src="/images/tech/firebase.png" alt="Firebase" loading="lazy" width="48" height="48">
+          </picture>
           <span class="tech-item__name">Firebase</span>
         </div>
         <div class="tech-item" data-category="cloud" data-reveal>
-          <img src="/images/tech/keycloak.png" alt="Keycloak" loading="lazy" width="48" height="48">
+          <picture>
+            <source srcset="/images/tech/keycloak.webp" type="image/webp">
+            <img src="/images/tech/keycloak.png" alt="Keycloak" loading="lazy" width="48" height="48">
+          </picture>
           <span class="tech-item__name">Keycloak</span>
         </div>
         <div class="tech-item" data-category="cloud" data-reveal>
-          <img src="/images/tech/apache-kafka.png" alt="Apache Kafka" loading="lazy" width="48" height="48">
+          <picture>
+            <source srcset="/images/tech/apache-kafka.webp" type="image/webp">
+            <img src="/images/tech/apache-kafka.png" alt="Apache Kafka" loading="lazy" width="48" height="48">
+          </picture>
           <span class="tech-item__name">Kafka</span>
         </div>
         <div class="tech-item" data-category="cloud" data-reveal>
-          <img src="/images/tech/minio.png" alt="MinIO" loading="lazy" width="48" height="48">
+          <picture>
+            <source srcset="/images/tech/minio.webp" type="image/webp">
+            <img src="/images/tech/minio.png" alt="MinIO" loading="lazy" width="48" height="48">
+          </picture>
           <span class="tech-item__name">MinIO</span>
         </div>
       </div>
@@ -714,75 +955,137 @@
       <div class="section__header">
         <span class="section__number">04</span>
         <h2>Planes y Precios</h2>
-        <p>Modelos de contratacion flexibles con precios transparentes. Todos incluyen soporte tecnico, actualizaciones
-          de seguridad y capacitacion.</p>
+        <p>Planes flexibles para cada etapa de tu negocio. Precios transparentes en guaranies, sin costos ocultos.
+          Todos los planes incluyen soporte tecnico y actualizaciones.</p>
       </div>
 
-      <div class="pricing-grid">
-        <!-- WhatsApp -->
-        <article class="pricing-card" data-reveal>
+      <!-- WhatsApp Sender Pro Plans -->
+      <h3 class="pricing-section-title" data-reveal>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.5">
+          <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>
+        </svg>
+        WhatsApp Sender Pro
+      </h3>
+
+      <div class="pricing-plans" data-reveal>
+        <!-- Basico -->
+        <article class="pricing-card">
           <div class="pricing-card__header pricing-card__header--green">
-            <h3>WhatsApp Sender Pro</h3>
+            <h3>Basico</h3>
             <span class="pricing-card__model">Suscripcion mensual</span>
           </div>
-          <ul class="pricing-card__includes">
-            <li>Panel web con usuarios ilimitados</li>
-            <li>Dashboard de metricas en tiempo real</li>
-            <li>API REST documentada</li>
-            <li>Soporte email/WhatsApp (48hrs)</li>
-            <li>Almacenamiento 50GB adjuntos</li>
-          </ul>
-          <div class="pricing-card__tiers">
-            <div class="pricing-tier">
-              <strong>Starter</strong>
-              <span>10K msgs/mes</span>
-            </div>
-            <div class="pricing-tier pricing-tier--popular">
-              <strong>Business</strong>
-              <span>100K msgs/mes</span>
-              <span class="pricing-tier__tag">Popular</span>
-            </div>
-            <div class="pricing-tier">
-              <strong>Enterprise</strong>
-              <span>Ilimitados</span>
-            </div>
+          <div class="pricing-card__price">
+            <span class="pricing-card__currency">Gs.</span>
+            <span class="pricing-card__amount">199.000</span>
+            <span class="pricing-card__period">/mes</span>
           </div>
-          <a href="https://wa.me/595992756462?text=Hola,%20me%20interesa%20WhatsApp%20Sender%20Pro"
+          <ul class="pricing-card__includes">
+            <li>Hasta 1.000 mensajes/mes</li>
+            <li>1 linea de WhatsApp</li>
+            <li>Templates ilimitados</li>
+            <li>Soporte por email</li>
+            <li>Texto + imagenes + audio</li>
+          </ul>
+          <a href="https://wa.me/595992756462?text=Hola,%20me%20interesa%20el%20plan%20Basico%20de%20WhatsApp%20Sender%20Pro"
+            class="btn btn--outline" target="_blank" rel="noopener">Comenzar</a>
+        </article>
+
+        <!-- Profesional (Popular) -->
+        <article class="pricing-card pricing-card--featured">
+          <div class="pricing-card__featured-tag">Popular</div>
+          <div class="pricing-card__header pricing-card__header--green">
+            <h3>Profesional</h3>
+            <span class="pricing-card__model">Suscripcion mensual</span>
+          </div>
+          <div class="pricing-card__price">
+            <span class="pricing-card__currency">Gs.</span>
+            <span class="pricing-card__amount">499.000</span>
+            <span class="pricing-card__period">/mes</span>
+          </div>
+          <ul class="pricing-card__includes">
+            <li>Hasta 10.000 mensajes/mes</li>
+            <li>1 linea de WhatsApp</li>
+            <li>Templates ilimitados</li>
+            <li>Soporte prioritario</li>
+            <li>Texto + imagenes + audio</li>
+            <li>API de autenticacion + envio</li>
+            <li>Webhooks de estado de entrega</li>
+            <li>Dashboard de analiticas avanzadas</li>
+          </ul>
+          <a href="https://wa.me/595992756462?text=Hola,%20me%20interesa%20el%20plan%20Profesional%20de%20WhatsApp%20Sender%20Pro"
+            class="btn btn--outline" target="_blank" rel="noopener">Comenzar</a>
+        </article>
+
+        <!-- Premium -->
+        <article class="pricing-card">
+          <div class="pricing-card__header pricing-card__header--green">
+            <h3>Premium</h3>
+            <span class="pricing-card__model">Suscripcion mensual</span>
+          </div>
+          <div class="pricing-card__price">
+            <span class="pricing-card__currency">Gs.</span>
+            <span class="pricing-card__amount">899.000</span>
+            <span class="pricing-card__period">/mes</span>
+          </div>
+          <ul class="pricing-card__includes">
+            <li>Todo lo de Profesional, mas:</li>
+            <li>Chatbot inteligente / auto-responder</li>
+            <li>Inbox (recibir y responder mensajes)</li>
+            <li>Integracion con IA (OpenAI, Anthropic, Groq)</li>
+            <li>Historial de campanas con analiticas completas</li>
+            <li>Respuestas de clientes vinculadas a campanas</li>
+            <li>Soporte prioritario 24/7</li>
+          </ul>
+          <a href="https://wa.me/595992756462?text=Hola,%20me%20interesa%20el%20plan%20Premium%20de%20WhatsApp%20Sender%20Pro"
+            class="btn btn--outline" target="_blank" rel="noopener">Comenzar</a>
+        </article>
+
+        <!-- Empresarial -->
+        <article class="pricing-card">
+          <div class="pricing-card__header pricing-card__header--green">
+            <h3>Empresarial</h3>
+            <span class="pricing-card__model">Precio personalizado</span>
+          </div>
+          <div class="pricing-card__price">
+            <span class="pricing-card__amount pricing-card__amount--custom">Contactanos</span>
+          </div>
+          <ul class="pricing-card__includes">
+            <li>Mensajes ilimitados</li>
+            <li>Multiples lineas de WhatsApp</li>
+            <li>API completa + webhooks</li>
+            <li>SLA garantizado</li>
+            <li>Soporte dedicado</li>
+            <li>Integraciones personalizadas</li>
+          </ul>
+          <a href="https://wa.me/595992756462?text=Hola,%20me%20interesa%20el%20plan%20Empresarial%20de%20WhatsApp%20Sender%20Pro"
             class="btn btn--outline" target="_blank" rel="noopener">Solicitar Cotizacion</a>
         </article>
+      </div>
 
-        <!-- SMS -->
-        <article class="pricing-card" data-reveal>
-          <div class="pricing-card__header pricing-card__header--cyan">
-            <h3>SMS Sender Pro</h3>
-            <span class="pricing-card__model">Licencia perpetua</span>
-          </div>
-          <ul class="pricing-card__includes">
-            <li>App Android nativa</li>
-            <li>Dashboard con metricas y graficos</li>
-            <li>Gestion de contactos y plantillas</li>
-            <li>Importacion CSV con variables dinamicas</li>
-            <li>Soporte tecnico y actualizaciones</li>
-          </ul>
-          <div class="pricing-card__tiers">
-            <div class="pricing-tier">
-              <strong>Basica</strong>
-              <span>1 dispositivo</span>
-            </div>
-            <div class="pricing-tier pricing-tier--popular">
-              <strong>Business</strong>
-              <span>5 dispositivos</span>
-              <span class="pricing-tier__tag">Popular</span>
-            </div>
-            <div class="pricing-tier">
-              <strong>Corporativa</strong>
-              <span>Dispositivos ilimitados</span>
-            </div>
-          </div>
-          <a href="https://wa.me/595992756462?text=Hola,%20me%20interesa%20SMS%20Sender%20Pro" class="btn btn--outline"
-            target="_blank" rel="noopener">Solicitar Cotizacion</a>
-        </article>
+      <!-- SMS Sender Pro Companion Banner -->
+      <div class="sms-companion-banner" data-reveal>
+        <div class="sms-companion-banner__icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5">
+            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+            <line x1="12" y1="18" x2="12.01" y2="18"/>
+          </svg>
+        </div>
+        <div class="sms-companion-banner__content">
+          <h4>SMS Sender Pro
+            <span style="font-size:0.7rem;font-weight:600;color:var(--text-secondary);background:rgba(6,182,212,0.1);padding:0.15rem 0.5rem;border-radius:4px;margin-left:0.5rem;vertical-align:middle;">Android</span>
+          </h4>
+          <p>App complementaria para envio masivo de SMS. Importacion de contactos por CSV,
+            personalizacion de mensajes con variables y gestion de campanas.
+            Disponible exclusivamente para dispositivos Android.</p>
+        </div>
+        <a href="https://wa.me/595992756462?text=Hola,%20me%20interesa%20SMS%20Sender%20Pro"
+          class="btn btn--outline" target="_blank" rel="noopener">Consultar</a>
+      </div>
 
+      <!-- Servicios Adicionales -->
+      <h3 class="pricing-section-title" data-reveal>Servicios Adicionales</h3>
+
+      <div class="pricing-grid">
         <!-- Soporte y Mantenimiento -->
         <article class="pricing-card pricing-card--featured" data-reveal>
           <div class="pricing-card__featured-tag">Nuevo</div>
@@ -1386,7 +1689,10 @@
   <footer>
     <div class="footer__inner">
       <div class="footer__brand">
-        <img src="/images/mindtechpy-logo.png" alt="MindTechPy" width="140" height="40" loading="lazy">
+        <picture>
+          <source srcset="/images/mindtechpy-logo.webp" type="image/webp">
+          <img src="/images/mindtechpy-logo.png" alt="MindTechPy" width="140" height="40" loading="lazy">
+        </picture>
         <p>Soluciones de software empresarial para toda Latinoamerica. Transformacion digital con excelencia tecnica.
         </p>
       </div>

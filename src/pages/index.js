@@ -281,6 +281,13 @@ document.addEventListener('DOMContentLoaded', () => {
         `\nMensaje:\n${message}`
       );
 
+      // Send to API (fire-and-forget)
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, company, service, message })
+      }).catch(() => {});
+
       // Show success feedback
       setTimeout(() => {
         const feedback = form.querySelector('.form-feedback');
