@@ -30,9 +30,15 @@
   <meta name="twitter:image" content="https://mindtechpy.net/images/mindtechpy-logo.png">
 
   <link rel="canonical" href="https://mindtechpy.net">
+  <link rel="alternate" hreflang="es-PY" href="https://mindtechpy.net/" />
+  <link rel="alternate" hreflang="x-default" href="https://mindtechpy.net/" />
+  <meta http-equiv="content-language" content="es-PY">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/mindtechpy-logo.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/images/mindtechpy-logo.png">
   <link rel="apple-touch-icon" href="/images/mindtechpy-logo.png">
+
+  <!-- Preload critical above-fold assets -->
+  <link rel="preload" href="/images/mindtechpy-logo.webp" as="image" type="image/webp">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,11 +58,15 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["Organization", "LocalBusiness"],
     "name": "MindTechPy",
     "url": "https://mindtechpy.net",
     "logo": "https://mindtechpy.net/images/mindtechpy-logo.png",
     "description": "Empresa de desarrollo de software en Paraguay. WhatsApp Sender Pro, SMS Sender Pro, CuenlyApp (OCR+IA) y desarrollo a medida. Kubernetes, DevOps, Cloud.",
+    "slogan": "Construimos software que impulsa su negocio",
+    "telephone": "+595-992-756462",
+    "email": "andres.vera@mindtechpy.net",
+    "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Asuncion",
@@ -68,7 +78,268 @@
       "contactType": "sales",
       "availableLanguage": ["Spanish"]
     },
+    "areaServed": [
+      { "@type": "Country", "name": "Paraguay" },
+      { "@type": "Country", "name": "Argentina" },
+      { "@type": "Country", "name": "Brazil" },
+      { "@type": "Country", "name": "Uruguay" },
+      { "@type": "Country", "name": "Bolivia" },
+      { "@type": "Country", "name": "Chile" }
+    ],
+    "knowsAbout": [
+      "Software Development",
+      "WhatsApp Business API",
+      "SMS Marketing",
+      "OCR",
+      "Artificial Intelligence",
+      "Kubernetes",
+      "Docker",
+      "DevOps",
+      "Cloud Computing",
+      "Node.js",
+      "React",
+      "Angular",
+      "PostgreSQL",
+      "MongoDB",
+      "GitHub Actions"
+    ],
     "sameAs": []
+  }
+  </script>
+
+  <!-- Product Structured Data: WhatsApp Sender Pro -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "WhatsApp Sender Pro",
+    "description": "Plataforma empresarial de mensajeria masiva por WhatsApp. Dashboard con analiticas en tiempo real, colas de procesamiento y almacenamiento de multimedia.",
+    "url": "https://mindtechpy.net/#soluciones",
+    "brand": {
+      "@type": "Brand",
+      "name": "MindTechPy"
+    },
+    "category": "Software",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "PYG",
+      "price": "0",
+      "priceValidUntil": "2026-12-31",
+      "availability": "https://schema.org/InStock",
+      "description": "Consultar precio"
+    },
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web"
+  }
+  </script>
+
+  <!-- Product Structured Data: SMS Sender Pro -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "SMS Sender Pro",
+    "description": "App Android nativa para envio masivo de SMS. Envia directamente desde el dispositivo via SmsManager, sin depender de internet ni servicios externos.",
+    "url": "https://mindtechpy.net/#soluciones",
+    "brand": {
+      "@type": "Brand",
+      "name": "MindTechPy"
+    },
+    "category": "Software",
+    "operatingSystem": "Android",
+    "applicationCategory": "BusinessApplication",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "PYG",
+      "price": "0",
+      "availability": "https://schema.org/InStock",
+      "description": "Consultar precio"
+    }
+  }
+  </script>
+
+  <!-- Product Structured Data: CuenlyApp -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "CuenlyApp",
+    "description": "Plataforma de gestion financiera con OCR e inteligencia artificial. Proyecto colaborativo desarrollado por MindTechPy.",
+    "url": "https://cuenly.com",
+    "brand": {
+      "@type": "Brand",
+      "name": "MindTechPy"
+    },
+    "category": "Software",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "PYG",
+      "price": "0",
+      "availability": "https://schema.org/InStock",
+      "description": "Consultar precio"
+    },
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web"
+  }
+  </script>
+
+  <!-- Product Structured Data: FoxBox -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "FoxBox",
+    "description": "Sistema de delivery y logistica. Proyecto colaborativo desarrollado por MindTechPy.",
+    "url": "https://foxbox.com.py",
+    "brand": {
+      "@type": "Brand",
+      "name": "MindTechPy"
+    },
+    "category": "Software",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "PYG",
+      "price": "0",
+      "availability": "https://schema.org/InStock",
+      "description": "Consultar precio"
+    },
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web"
+  }
+  </script>
+
+  <!-- Service Structured Data: Soporte y Mantenimiento Mensual -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Soporte y Mantenimiento Mensual",
+    "description": "Servicio mensual de soporte tecnico, mantenimiento preventivo, actualizaciones de seguridad y mejoras continuas para sistemas en produccion.",
+    "url": "https://mindtechpy.net/#soluciones",
+    "provider": {
+      "@type": "Organization",
+      "name": "MindTechPy",
+      "url": "https://mindtechpy.net"
+    },
+    "serviceType": "Soporte Tecnico y Mantenimiento de Software",
+    "areaServed": {
+      "@type": "Place",
+      "name": "Latinoamerica"
+    },
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "PYG",
+      "price": "0",
+      "description": "Consultar precio"
+    }
+  }
+  </script>
+
+  <!-- FAQ Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Trabajan con clientes fuera de Paraguay?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Si, atendemos clientes en Argentina, Uruguay, Brasil, Chile, Mexico, Colombia, España y otros paises. Trabajamos 100% remoto con reuniones por videollamada."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Cual es el proyecto minimo que aceptan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No tenemos monto minimo, pero recomendamos presupuestos desde USD 2,000 para proyectos con valor real. Para consultorias puntuales ofrecemos sesiones de 2-4 horas."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ofrecen periodo de prueba?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "En suscripciones ofrecemos 14 dias de garantia de devolucion. En proyectos a medida, el primer sprint (2 semanas) sirve como validacion tecnica."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Que garantias ofrecen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "90 dias de correccion de bugs post-lanzamiento sin costo, SLA de 99.5% en servicios cloud, (de acuerdo al contrato) codigo fuente entregado completo y documentado."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Puedo solicitar cambios durante el desarrollo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Si, trabajamos con metodologia agil que permite ajustes cada 2 semanas. Cambios mayores de alcance se renegocian transparentemente."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- BreadcrumbList Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://mindtechpy.net/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Soluciones",
+        "item": "https://mindtechpy.net/#soluciones"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Proyectos",
+        "item": "https://mindtechpy.net/#proyectos"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Tecnologías",
+        "item": "https://mindtechpy.net/#tecnologias"
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "name": "Precios",
+        "item": "https://mindtechpy.net/#precios"
+      },
+      {
+        "@type": "ListItem",
+        "position": 6,
+        "name": "Empresa",
+        "item": "https://mindtechpy.net/#empresa"
+      },
+      {
+        "@type": "ListItem",
+        "position": 7,
+        "name": "IA Responsable",
+        "item": "https://mindtechpy.net/#ia-responsable"
+      },
+      {
+        "@type": "ListItem",
+        "position": 8,
+        "name": "Contacto",
+        "item": "https://mindtechpy.net/#contacto"
+      }
+    ]
   }
   </script>
 </head>

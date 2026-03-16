@@ -333,6 +333,46 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ─── Dynamic Page Title & Meta Description ───
+  const sectionMeta = {
+    'hero':           { title: 'MindTechPy — Ingeniería de Software & Transformación Digital | Paraguay', description: 'Empresa paraguaya de desarrollo de software, WhatsApp Sender Pro, SMS Sender Pro y transformación digital.' },
+    'soluciones':     { title: 'Soluciones Tecnológicas | WhatsApp Sender Pro, SMS Sender Pro | MindTechPy', description: 'Soluciones de mensajería empresarial, apps móviles y desarrollo web a medida en Paraguay.' },
+    'proyectos':      { title: 'Proyectos y Colaboraciones | CuenlyApp, FoxBox | MindTechPy', description: 'Proyectos de software: CuenlyApp, FoxBox y más colaboraciones tecnológicas en Paraguay.' },
+    'tecnologias':    { title: 'Stack Tecnológico | React, Node.js, Kubernetes | MindTechPy', description: 'Tecnologías que usamos: React, Angular, Node.js, Python, PostgreSQL, Docker, Kubernetes.' },
+    'precios':        { title: 'Planes y Precios | Desarrollo de Software | MindTechPy', description: 'Planes flexibles de desarrollo de software y soporte técnico para empresas en Paraguay.' },
+    'empresa':        { title: 'Sobre Nosotros | MindTechPy Paraguay', description: 'Equipo de ingenieros de software en Asunción, Paraguay. Transformación digital para empresas.' },
+    'ia-responsable': { title: 'IA Responsable | Ética en Inteligencia Artificial | MindTechPy', description: 'Nuestro compromiso con el uso ético y responsable de la inteligencia artificial.' },
+    'contacto':       { title: 'Contacto | MindTechPy Paraguay', description: 'Contactanos para tu próximo proyecto de software. Asunción, Paraguay.' }
+  };
+
+  const metaDescriptionTag = document.querySelector('meta[name="description"]');
+
+  function applySectionMeta(sectionId) {
+    const meta = sectionMeta[sectionId];
+    if (!meta) return;
+    document.title = meta.title;
+    if (metaDescriptionTag) metaDescriptionTag.setAttribute('content', meta.description);
+  }
+
+  const metaObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        applySectionMeta(entry.target.getAttribute('id'));
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('section[id]').forEach(section => {
+    if (sectionMeta[section.getAttribute('id')]) {
+      metaObserver.observe(section);
+    }
+  });
+
+  window.addEventListener('hashchange', () => {
+    const id = window.location.hash.replace('#', '');
+    applySectionMeta(id);
+  });
+
   // ─── Initialize ───
   updateScrollProgress();
   updateHeader();
