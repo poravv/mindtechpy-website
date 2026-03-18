@@ -261,7 +261,7 @@ a {
   align-items: center;
   gap: var(--space-md);
 
-  a {
+  a:not(.btn) {
     font-family: var(--font-display);
     font-weight: 500;
     font-size: 0.9rem;
