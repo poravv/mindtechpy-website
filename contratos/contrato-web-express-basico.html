@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contrato Web Express - Plan Básico | MindTechPy</title>
+    <style>
+        /* Reset and Base */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 11pt;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #fff;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20mm 25mm;
+        }
+
+        /* Header */
+        .contract-header {
+            text-align: center;
+            border-bottom: 3px double #1a1a1a;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .company-name {
+            font-size: 24pt;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+        }
+
+        .company-tagline {
+            font-size: 9pt;
+            color: #555;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .contract-title {
+            font-size: 14pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .contract-subtitle {
+            font-size: 11pt;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .contract-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            font-size: 10pt;
+        }
+
+        .contract-meta span {
+            display: inline-block;
+        }
+
+        /* Lugar y Fecha */
+        .lugar-fecha {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 11pt;
+        }
+
+        /* Sections */
+        .clause {
+            margin-bottom: 18px;
+        }
+
+        .clause-title {
+            font-size: 11pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 4px;
+        }
+
+        .clause p, .clause li {
+            text-align: justify;
+            margin-bottom: 6px;
+        }
+
+        .clause ol, .clause ul {
+            margin-left: 25px;
+            margin-bottom: 10px;
+        }
+
+        .clause ol li, .clause ul li {
+            margin-bottom: 4px;
+        }
+
+        .sub-clause {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .sub-clause-title {
+            font-weight: bold;
+            font-size: 10.5pt;
+            margin-bottom: 5px;
+        }
+
+        /* Party fields */
+        .party-block {
+            margin: 10px 0;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            background: #fafafa;
+        }
+
+        .party-block p {
+            margin-bottom: 4px;
+        }
+
+        .field-line {
+            border-bottom: 1px dotted #999;
+            display: inline-block;
+            min-width: 250px;
+            margin-left: 5px;
+        }
+
+        .field-line-short {
+            border-bottom: 1px dotted #999;
+            display: inline-block;
+            min-width: 150px;
+            margin-left: 5px;
+        }
+
+        /* Signatures */
+        .signatures {
+            margin-top: 40px;
+            page-break-before: always;
+        }
+
+        .signatures-title {
+            font-size: 11pt;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .sig-blocks {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .sig-block {
+            flex: 1;
+            text-align: center;
+        }
+
+        .sig-line {
+            border-top: 1px solid #1a1a1a;
+            margin-top: 80px;
+            padding-top: 5px;
+            font-size: 10pt;
+        }
+
+        .sig-field {
+            margin-top: 8px;
+            font-size: 9.5pt;
+            color: #555;
+        }
+
+        .witnesses {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #ccc;
+        }
+
+        .witnesses-title {
+            font-size: 10pt;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 25px;
+            color: #555;
+        }
+
+        /* Table styles */
+        .tariff-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 10pt;
+        }
+
+        .tariff-table th, .tariff-table td {
+            border: 1px solid #ccc;
+            padding: 6px 10px;
+            text-align: left;
+        }
+
+        .tariff-table th {
+            background: #f0f0f0;
+            font-weight: bold;
+        }
+
+        /* Highlight box */
+        .highlight-box {
+            border: 2px solid #333;
+            padding: 12px 15px;
+            margin: 12px 0;
+            background: #f9f9f9;
+        }
+
+        .highlight-box p {
+            font-weight: bold;
+            text-align: center;
+            font-size: 12pt;
+        }
+
+        /* Footer */
+        .page-footer {
+            margin-top: 30px;
+            padding-top: 10px;
+            border-top: 1px solid #ccc;
+            font-size: 8pt;
+            color: #999;
+            text-align: center;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                padding: 15mm 20mm;
+                font-size: 10.5pt;
+                max-width: none;
+            }
+
+            @page {
+                size: A4;
+                margin: 15mm 20mm;
+            }
+
+            .party-block {
+                background: none;
+                border: 1px solid #999;
+            }
+
+            .tariff-table th {
+                background: #eee;
+            }
+
+            .signatures {
+                page-break-before: always;
+            }
+
+            .clause {
+                page-break-inside: avoid;
+            }
+
+            .no-break {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="contract-header">
+        <div class="company-name">MindTechPy</div>
+        <div class="company-tagline">Soluciones Tecnologicas</div>
+        <div class="contract-title">Contrato de Prestacion de Servicios Web</div>
+        <div class="contract-subtitle">Plan Web Express &mdash; Basico</div>
+        <div class="contract-meta">
+            <span>N.&deg;: ____________________</span>
+            <span>Fecha: _____ / _____ / 20____</span>
+        </div>
+    </div>
+
+    <!-- Lugar y Fecha -->
+    <p class="lugar-fecha">
+        Lugar y fecha: Asuncion, _____ de _____________ de 20____
+    </p>
+
+    <!-- CLAUSULA 1: PARTES -->
+    <div class="clause">
+        <div class="clause-title">Clausula 1 &mdash; Partes</div>
+
+        <p>Celebran el presente contrato de prestacion de servicios web:</p>
+
+        <div class="party-block">
+            <p><strong>EL PRESTADOR:</strong></p>
+            <p>Razon Social: <strong>MindTechPy</strong></p>
+            <p>RUC: <span class="field-line">&nbsp;</span></p>
+            <p>Domicilio: <span class="field-line">&nbsp;</span></p>
+            <p>Representante Legal: <span class="field-line">&nbsp;</span></p>
+            <p>En adelante denominado <strong>"EL PRESTADOR"</strong>.</p>
+        </div>
+
+        <div class="party-block">
+            <p><strong>EL CLIENTE:</strong></p>
+            <p>Nombre / Razon Social: <span class="field-line">&nbsp;</span></p>
+            <p>RUC / C.I. N.&deg;: <span class="field-line">&nbsp;</span></p>
+            <p>Domicilio: <span class="field-line">&nbsp;</span></p>
+            <p>Telefono: <span class="field-line-short">&nbsp;</span></p>
+            <p>Correo electronico: <span class="field-line">&nbsp;</span></p>
+            <p>En adelante denominado <strong>"EL CLIENTE"</strong>.</p>
+        </div>
+
+        <p>Ambas partes, en pleno uso de sus facultades legales, acuerdan celebrar el presente contrato, el cual se regira por las clausulas que a continuacion se detallan.</p>
+    </div>
+
+    <!-- CLAUSULA 2: OBJETO -->
+    <div class="clause">
+        <div class="clause-title">Clausula 2 &mdash; Objeto del Contrato</div>
+        <p>El presente contrato tiene por objeto la prestacion del servicio denominado <strong>"Web Express &mdash; Plan Basico"</strong>, el cual comprende el diseno, desarrollo, alojamiento (hosting), registro de dominio y mantenimiento tecnico de un sitio web, conforme a las especificaciones detalladas en la Clausula 3 del presente instrumento.</p>
+    </div>
+
+    <!-- CLAUSULA 3: SERVICIOS INCLUIDOS -->
+    <div class="clause">
+        <div class="clause-title">Clausula 3 &mdash; Servicios Incluidos</div>
+        <p>El <strong>Plan Basico</strong> incluye los siguientes servicios:</p>
+        <ol type="a">
+            <li>Landing page (una pagina unica).</li>
+            <li>Dominio incluido (.com o .com.py).</li>
+            <li>Hosting (alojamiento web) incluido.</li>
+            <li>Un (1) correo electronico corporativo.</li>
+            <li>Plantilla predefinida personalizada con los datos del CLIENTE.</li>
+            <li>SEO basico (indexacion en Google).</li>
+            <li>Certificado SSL (conexion segura HTTPS).</li>
+            <li>Soporte tecnico conforme a lo estipulado en la Clausula 6 del presente contrato.</li>
+        </ol>
+    </div>
+
+    <!-- CLAUSULA 4: PLAZO Y VIGENCIA -->
+    <div class="clause">
+        <div class="clause-title">Clausula 4 &mdash; Plazo y Vigencia</div>
+        <ol>
+            <li>El presente contrato tendra una vigencia minima de <strong>doce (12) meses</strong>, contados a partir de la fecha de su firma.</li>
+            <li>Al vencimiento del plazo inicial, el contrato se renovara automaticamente por periodos iguales y consecutivos de doce (12) meses, salvo que cualquiera de las partes manifieste su voluntad de no renovar.</li>
+            <li>Cualquiera de las partes podra rescindir el contrato mediante notificacion por escrito con un preaviso minimo de <strong>treinta (30) dias</strong> de anticipacion a la fecha de vencimiento del periodo en curso.</li>
+            <li>En caso de que EL CLIENTE rescinda el contrato antes del cumplimiento del plazo minimo de doce (12) meses, debera abonar a EL PRESTADOR una penalidad equivalente a <strong>tres (3) mensualidades</strong> del plan contratado, en concepto de indemnizacion por rescision anticipada.</li>
+        </ol>
+    </div>
+
+    <!-- CLAUSULA 5: PRECIO Y FORMA DE PAGO -->
+    <div class="clause">
+        <div class="clause-title">Clausula 5 &mdash; Precio y Forma de Pago</div>
+
+        <div class="highlight-box">
+            <p>Cuota mensual: Gs. 250.000 (Guaranies doscientos cincuenta mil) &mdash; IVA incluido</p>
+        </div>
+
+        <ol>
+            <li>EL CLIENTE se obliga a abonar la cuota mensual indicada dentro de los primeros <strong>cinco (5) dias habiles</strong> de cada mes.</li>
+            <li>Los pagos podran realizarse mediante transferencia bancaria, giro o pago electronico, a las cuentas o medios que EL PRESTADOR indique por escrito.</li>
+            <li>En caso de mora superior a <strong>quince (15) dias</strong>, se aplicara un recargo del <strong>diez por ciento (10%) mensual</strong> sobre el saldo adeudado.</li>
+            <li>En caso de atraso superior a <strong>treinta (30) dias</strong>, EL PRESTADOR podra suspender el servicio sin previo aviso, sin que ello genere responsabilidad alguna para EL PRESTADOR.</li>
+            <li>En caso de atraso superior a <strong>sesenta (60) dias</strong>, el contrato se considerara rescindido de pleno derecho, quedando EL CLIENTE obligado al pago de las mensualidades adeudadas y la penalidad por rescision anticipada si correspondiere.</li>
+        </ol>
+    </div>
+
+    <!-- CLAUSULA 6: SOPORTE TECNICO -->
+    <div class="clause">
+        <div class="clause-title">Clausula 6 &mdash; Soporte Tecnico</div>
+
+        <div class="sub-clause">
+            <div class="sub-clause-title">6.1. Soporte incluido (sin costo adicional)</div>
+            <p>Los siguientes servicios se encuentran incluidos en la cuota mensual del plan contratado:</p>
+            <ul>
+                <li>Sitio web caido o inaccesible.</li>
+                <li>Errores tecnicos del sitio web.</li>
+                <li>Problemas con el dominio.</li>
+                <li>Correos electronicos que no funcionan correctamente.</li>
+                <li>Renovacion del certificado SSL.</li>
+                <li>Optimizacion basica de rendimiento.</li>
+                <li>Actualizaciones de seguridad.</li>
+            </ul>
+        </div>
+
+        <div class="sub-clause">
+            <div class="sub-clause-title">6.2. Soporte no incluido (requiere cotizacion adicional)</div>
+            <p>Los siguientes servicios <strong>no estan incluidos</strong> en la cuota mensual y requieren cotizacion independiente:</p>
+            <ul>
+                <li>Cambios de textos o contenido.</li>
+                <li>Cambios de imagenes.</li>
+                <li>Agregar nuevas secciones o paginas.</li>
+                <li>Rediseno parcial o total del sitio web.</li>
+                <li>Modificaciones esteticas.</li>
+                <li>Nuevas funcionalidades.</li>
+                <li>Integracion con sistemas externos no contemplados originalmente.</li>
+            </ul>
+            <p>Estos servicios se consideran <strong>"Mantenimiento Evolutivo"</strong> y se cotizan por separado conforme a las tarifas establecidas en el numeral 6.3.</p>
+        </div>
+
+        <div class="sub-clause">
+            <div class="sub-clause-title">6.3. Tarifas de Mantenimiento Evolutivo</div>
+            <table class="tariff-table">
+                <thead>
+                    <tr>
+                        <th>Tipo de Cambio</th>
+                        <th>Descripcion</th>
+                        <th>Tarifa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cambio simple</td>
+                        <td>Texto, imagen individual, color</td>
+                        <td>Gs. 120.000</td>
+                    </tr>
+                    <tr>
+                        <td>Cambio mediano</td>
+                        <td>Seccion completa, formulario, integracion</td>
+                        <td>Gs. 300.000</td>
+                    </tr>
+                    <tr>
+                        <td>Rediseno parcial o total</td>
+                        <td>Reestructuracion visual del sitio</td>
+                        <td>Cotizacion personalizada</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="sub-clause">
+            <div class="sub-clause-title">6.4. Planes de Mantenimiento Opcionales</div>
+            <table class="tariff-table">
+                <thead>
+                    <tr>
+                        <th>Plan</th>
+                        <th>Costo Adicional Mensual</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2 cambios por mes</td>
+                        <td>+ Gs. 150.000/mes</td>
+                    </tr>
+                    <tr>
+                        <td>5 cambios por mes</td>
+                        <td>+ Gs. 300.000/mes</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><strong>Nota:</strong> Los cambios no utilizados en un mes <strong>no son acumulables</strong> para meses posteriores.</p>
+        </div>
+
+        <div class="sub-clause">
+            <div class="sub-clause-title">6.5. Horario de Atencion y Tiempos de Respuesta</div>
+            <ol type="a">
+                <li><strong>Horario de atencion:</strong> Lunes a Viernes de 08:00 a 18:00 horas.</li>
+                <li><strong>Canales de comunicacion:</strong> WhatsApp y correo electronico.</li>
+                <li><strong>Tiempo de respuesta:</strong> hasta <strong>veinticuatro (24) horas habiles</strong>.</li>
+                <li><strong>Soporte fuera de horario:</strong> no disponible para este plan.</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- CLAUSULA 7: PROPIEDAD INTELECTUAL -->
+    <div class="clause">
+        <div class="clause-title">Clausula 7 &mdash; Propiedad Intelectual</div>
+        <ol>
+            <li>El diseno, codigo fuente y estructura del sitio web desarrollado en virtud del presente contrato son y seran propiedad exclusiva de EL PRESTADOR durante la vigencia del mismo.</li>
+            <li>El contenido proporcionado por EL CLIENTE (textos, imagenes, logotipos, material grafico) es y sera propiedad exclusiva de EL CLIENTE.</li>
+            <li>Al finalizar el contrato por cualquier causa, EL CLIENTE podra solicitar la entrega del codigo fuente del sitio web, previo pago de una licencia de cesion equivalente a <strong>seis (6) mensualidades</strong> del plan contratado.</li>
+            <li>El dominio registrado a nombre de EL CLIENTE es propiedad de EL CLIENTE en todo momento, independientemente de la vigencia del presente contrato.</li>
+        </ol>
+    </div>
+
+    <!-- CLAUSULA 8: RESPONSABILIDADES DEL CLIENTE -->
+    <div class="clause">
+        <div class="clause-title">Clausula 8 &mdash; Responsabilidades del Cliente</div>
+        <p>EL CLIENTE se compromete a:</p>
+        <ol type="a">
+            <li>Proveer toda la informacion necesaria para el desarrollo del sitio web, incluyendo pero no limitado a: logotipo, textos, imagenes, colores corporativos y demas elementos de identidad visual.</li>
+            <li>Responder las solicitudes de aprobacion realizadas por EL PRESTADOR en un plazo maximo de <strong>cinco (5) dias habiles</strong>. La falta de respuesta dentro de dicho plazo se entendera como aprobacion tacita.</li>
+            <li>Realizar los pagos en tiempo y forma segun lo establecido en la Clausula 5.</li>
+            <li>No modificar el codigo fuente del sitio web sin autorizacion previa y por escrito de EL PRESTADOR.</li>
+            <li>Mantener actualizados sus datos de contacto, comunicando cualquier cambio a EL PRESTADOR dentro de los cinco (5) dias habiles siguientes.</li>
+        </ol>
+    </div>
+
+    <!-- CLAUSULA 9: RESPONSABILIDADES DEL PRESTADOR -->
+    <div class="clause">
+        <div class="clause-title">Clausula 9 &mdash; Responsabilidades del Prestador</div>
+        <p>EL PRESTADOR se compromete a:</p>
+        <ol type="a">
+            <li>Entregar el sitio web funcional dentro de los <strong>cinco (5) dias habiles</strong> posteriores a la recepcion completa de toda la informacion requerida de parte de EL CLIENTE.</li>
+            <li>Garantizar una disponibilidad del sitio web (uptime) del <strong>noventa y nueve por ciento (99%) mensual</strong>, excluyendo periodos de mantenimiento programado y causas de fuerza mayor.</li>
+            <li>Realizar copias de seguridad (backups) del sitio web con periodicidad <strong>semanal</strong>.</li>
+            <li>Notificar a EL CLIENTE de cualquier mantenimiento programado con al menos <strong>veinticuatro (24) horas</strong> de anticipacion.</li>
+            <li>Mantener la confidencialidad de toda la informacion proporcionada por EL CLIENTE, conforme a lo establecido en la Clausula 11.</li>
+        </ol>
+    </div>
+
+    <!-- CLAUSULA 10: LIMITACION DE RESPONSABILIDAD -->
+    <div class="clause">
+        <div class="clause-title">Clausula 10 &mdash; Limitacion de Responsabilidad</div>
+        <ol>
+            <li>EL PRESTADOR no sera responsable por perdidas de datos de EL CLIENTE que no hayan sido debidamente respaldados por EL PRESTADOR conforme a sus obligaciones contractuales.</li>
+            <li>EL PRESTADOR no garantiza resultados especificos de posicionamiento en motores de busqueda (SEO), siendo el servicio de SEO basico una optimizacion tecnica sin garantia de posiciones determinadas.</li>
+            <li>EL PRESTADOR no sera responsable por contenido publicado por EL CLIENTE que viole derechos de propiedad intelectual, marcas registradas o cualquier otro derecho de terceros.</li>
+            <li>La responsabilidad maxima de EL PRESTADOR, por cualquier concepto derivado del presente contrato, se limita al monto equivalente a las <strong>ultimas tres (3) mensualidades</strong> efectivamente abonadas por EL CLIENTE.</li>
+        </ol>
+    </div>
+
+    <!-- CLAUSULA 11: CONFIDENCIALIDAD -->
+    <div class="clause">
+        <div class="clause-title">Clausula 11 &mdash; Confidencialidad</div>
+        <ol>
+            <li>Ambas partes se comprometen a mantener la mas estricta confidencialidad respecto de toda la informacion comercial, tecnica y estrategica intercambiada con motivo de la ejecucion del presente contrato.</li>
+            <li>Esta obligacion de confidencialidad subsistira por un periodo de <strong>dos (2) anos</strong> contados a partir de la finalizacion del contrato, cualquiera sea la causa de terminacion.</li>
+        </ol>
+    </div>
+
+    <!-- CLAUSULA 12: RESCISION -->
+    <div class="clause">
+        <div class="clause-title">Clausula 12 &mdash; Rescision</div>
+        <p>El presente contrato podra ser rescindido en los siguientes casos:</p>
+        <ol type="a">
+            <li>Por mutuo acuerdo de las partes, expresado por escrito.</li>
+            <li>Por incumplimiento de cualquiera de las partes de las obligaciones asumidas en el presente contrato, previa intimacion fehaciente con un plazo de <strong>quince (15) dias</strong> para subsanar el incumplimiento.</li>
+            <li>Por caso fortuito o fuerza mayor que imposibilite la prestacion del servicio por un periodo superior a <strong>treinta (30) dias continuos</strong>.</li>
+            <li>Por atraso en el pago superior a <strong>sesenta (60) dias</strong>, conforme a lo establecido en la Clausula 5.</li>
+        </ol>
+    </div>
+
+    <!-- CLAUSULA 13: RESOLUCION DE CONTROVERSIAS -->
+    <div class="clause">
+        <div class="clause-title">Clausula 13 &mdash; Resolucion de Controversias</div>
+        <ol>
+            <li>Las partes se comprometen a intentar resolver cualquier disputa o controversia derivada del presente contrato de forma amigable y de buena fe.</li>
+            <li>En caso de no alcanzar un acuerdo satisfactorio dentro de un plazo de <strong>treinta (30) dias</strong> desde el inicio de las negociaciones, las partes se someteran a la jurisdiccion de los <strong>Tribunales Ordinarios de la ciudad de Asuncion, Republica del Paraguay</strong>.</li>
+            <li>Queda expresamente excluido el recurso de arbitraje, salvo acuerdo expreso y por escrito de ambas partes.</li>
+        </ol>
+    </div>
+
+    <!-- CLAUSULA 14: DISPOSICIONES GENERALES -->
+    <div class="clause">
+        <div class="clause-title">Clausula 14 &mdash; Disposiciones Generales</div>
+        <ol>
+            <li>El presente contrato constituye el acuerdo completo entre las partes en relacion con su objeto, y reemplaza cualquier acuerdo, entendimiento o negociacion previa, ya sea oral o escrita.</li>
+            <li>Cualquier modificacion al presente contrato debera constar por escrito y ser firmada por ambas partes para tener plena validez.</li>
+            <li>La nulidad o invalidez de cualquiera de las clausulas del presente contrato no afectara la validez y vigencia de las demas clausulas.</li>
+            <li>EL PRESTADOR podra utilizar el sitio web desarrollado para EL CLIENTE como referencia en su portafolio profesional, salvo que EL CLIENTE manifieste expresamente lo contrario por escrito.</li>
+        </ol>
+    </div>
+
+    <!-- FIRMAS -->
+    <div class="signatures">
+        <div class="signatures-title">Firmas</div>
+        <p style="text-align: center; margin-bottom: 10px; font-size: 10pt;">En conformidad con todas las clausulas precedentes, las partes firman el presente contrato en dos (2) ejemplares de un mismo tenor y a un solo efecto.</p>
+
+        <div class="sig-blocks">
+            <div class="sig-block">
+                <div class="sig-line">EL PRESTADOR</div>
+                <div class="sig-field">Firma: ________________________________</div>
+                <div class="sig-field">Aclaracion: ____________________________</div>
+                <div class="sig-field">C.I. / RUC: ____________________________</div>
+                <div class="sig-field">Fecha: _____ / _____ / 20____</div>
+            </div>
+            <div class="sig-block">
+                <div class="sig-line">EL CLIENTE</div>
+                <div class="sig-field">Firma: ________________________________</div>
+                <div class="sig-field">Aclaracion: ____________________________</div>
+                <div class="sig-field">C.I. / RUC: ____________________________</div>
+                <div class="sig-field">Fecha: _____ / _____ / 20____</div>
+            </div>
+        </div>
+
+        <div class="witnesses">
+            <div class="witnesses-title">TESTIGOS (opcional)</div>
+            <div class="sig-blocks">
+                <div class="sig-block">
+                    <div class="sig-line">TESTIGO 1</div>
+                    <div class="sig-field">Firma: ________________________________</div>
+                    <div class="sig-field">Aclaracion: ____________________________</div>
+                    <div class="sig-field">C.I. N.&deg;: ______________________________</div>
+                </div>
+                <div class="sig-block">
+                    <div class="sig-line">TESTIGO 2</div>
+                    <div class="sig-field">Firma: ________________________________</div>
+                    <div class="sig-field">Aclaracion: ____________________________</div>
+                    <div class="sig-field">C.I. N.&deg;: ______________________________</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        MindTechPy &mdash; Contrato Web Express Plan Basico &mdash; Pagina {n} de {total}
+    </div>
+
+</body>
+</html>
