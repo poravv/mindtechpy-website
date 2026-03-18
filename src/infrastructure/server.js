@@ -107,6 +107,12 @@ app.get('/', (req, res) => {
   res.sendFile(filePath);
 });
 
+// Web Express
+app.get('/web-express', (req, res) => {
+  const filePath = path.join(__dirname, '../../dist/web-express.html');
+  res.sendFile(filePath);
+});
+
 // ─── API: Visitantes ───
 
 app.get('/api/visitors/stats', (req, res) => {

@@ -8,6 +8,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 module.exports = {
   entry: {
     index: './src/pages/index.js',
+    'web-express': './src/pages/web-express.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -55,6 +56,17 @@ module.exports = {
       template: './src/pages/index.html',
       filename: 'index.html',
       chunks: ['index'],
+      minify: isProduction ? {
+        collapseWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+      } : false,
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/pages/web-express.html',
+      filename: 'web-express.html',
+      chunks: ['web-express'],
       minify: isProduction ? {
         collapseWhitespace: true,
         removeComments: true,
