@@ -307,7 +307,7 @@ Privada — MindTechPy © 2025
 ## 📞 Soporte
 
 - **Email**: andres.vera@mindtechpy.net
-- **WhatsApp**: +595 992 756462
+- **WhatsApp**: +595 981 586823
 - **Ubicación**: Asunción, Paraguay
 
 ---
