@@ -303,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Redirect to WhatsApp
         setTimeout(() => {
-          window.open(`https://wa.me/595992756462?text=${whatsappMsg}`, '_blank');
+          window.open(`https://wa.me/595981586823?text=${whatsappMsg}`, '_blank');
         }, 800);
       }, 600);
     });
