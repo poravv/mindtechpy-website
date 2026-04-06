@@ -1240,6 +1240,17 @@ main {
     flex-shrink: 0;
   }
 
+  &__status--beta {
+    color: var(--amber);
+    background: rgba(245, 158, 11, 0.1);
+    border-color: rgba(245, 158, 11, 0.2);
+
+    .project-card__status-dot {
+      background: var(--amber);
+      box-shadow: 0 0 8px rgba(245, 158, 11, 0.3);
+    }
+  }
+
   &__status-dot {
     width: 6px;
     height: 6px;
