@@ -7,7 +7,7 @@ COPY package.json package-lock.json* ./
 RUN npm ci --include=dev
 
 COPY . .
-RUN npm run build
+RUN NODE_ENV=production npm run build
 
 # ── Stage 2: Production ──
 FROM node:20-alpine AS production
@@ -22,7 +22,6 @@ RUN npm ci --omit=dev && npm cache clean --force
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/public ./public
 COPY src/infrastructure ./src/infrastructure
-COPY .env* ./
 
 # Crear directorio de datos
 RUN mkdir -p data

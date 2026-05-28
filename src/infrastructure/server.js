@@ -55,14 +55,13 @@ app.use((req, res, next) => {
 // Cache headers para assets estaticos
 app.use((req, res, next) => {
   if (req.url.match(/\.[a-f0-9]{8}\.(js|css)$/)) {
-    // Archivos con content hash: cache largo (1 anio)
     res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+  } else if (req.url.match(/\.html$/)) {
+    res.setHeader('Cache-Control', 'no-cache');
   } else if (req.url.match(/\.(jpg|jpeg|png|gif|svg|webp|ico)$/)) {
-    // Imagenes: 7 dias
     res.setHeader('Cache-Control', 'public, max-age=604800');
   } else if (req.url.match(/\.(css|js)$/)) {
-    // CSS/JS sin hash: 1 dia
-    res.setHeader('Cache-Control', 'public, max-age=86400');
+    res.setHeader('Cache-Control', 'no-cache');
   }
   next();
 });
