@@ -345,6 +345,9 @@
 </head>
 
 <body>
+  <!-- Starfield Canvas Background -->
+  <canvas id="starfield" aria-hidden="true"></canvas>
+
   <!-- Skip Link -->
   <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
@@ -397,25 +400,11 @@
     <!-- HERO -->
     <!-- ============================================ -->
     <section id="hero" class="hero">
-      <div class="hero__grid" aria-hidden="true">
-        <div class="hero__grid-node" style="--x:15%;--y:20%;--delay:0s"></div>
-        <div class="hero__grid-node" style="--x:85%;--y:15%;--delay:0.5s"></div>
-        <div class="hero__grid-node" style="--x:70%;--y:60%;--delay:1s"></div>
-        <div class="hero__grid-node" style="--x:25%;--y:75%;--delay:1.5s"></div>
-        <div class="hero__grid-node" style="--x:50%;--y:40%;--delay:0.8s"></div>
-        <div class="hero__grid-node" style="--x:90%;--y:80%;--delay:1.2s"></div>
-        <div class="hero__grid-node" style="--x:10%;--y:50%;--delay:0.3s"></div>
-        <div class="hero__grid-node" style="--x:60%;--y:85%;--delay:1.7s"></div>
-        <div class="hero__orbit hero__orbit--1"></div>
-        <div class="hero__orbit hero__orbit--2"></div>
-        <div class="hero__orbit hero__orbit--3"></div>
-      </div>
-
       <div class="hero__content">
-        <div class="hero__badge">
+        <span class="hero__badge">
           <span class="hero__badge-dot"></span>
-          Transformacion Digital
-        </div>
+          Paraguay · LATAM · 99.5% uptime
+        </span>
 
         <h1 class="hero__title">
           Construimos<br>
@@ -462,6 +451,22 @@
         </div>
       </div>
 
+      <div class="hero__terminal" aria-hidden="true">
+        <div class="hero__terminal-bar">
+          <span class="hero__terminal-dot hero__terminal-dot--red"></span>
+          <span class="hero__terminal-dot hero__terminal-dot--yellow"></span>
+          <span class="hero__terminal-dot hero__terminal-dot--green"></span>
+          <span class="hero__terminal-title">deploy.yml</span>
+        </div>
+        <pre class="hero__terminal-code"><code class="hero__terminal-line" data-delay="0.2">$ kubectl get pods -n mindtechpy</code>
+<code class="hero__terminal-line" data-delay="0.4">NAME                    READY   STATUS</code>
+<code class="hero__terminal-line" data-delay="0.6">api-7d9f8b-xk2p9        1/1     <span class="hero__terminal-ok">Running</span></code>
+<code class="hero__terminal-line" data-delay="0.8">worker-5c6d7e-mn3q1     1/1     <span class="hero__terminal-ok">Running</span></code>
+<code class="hero__terminal-line" data-delay="1.0">redis-0                 1/1     <span class="hero__terminal-ok">Running</span></code>
+<code class="hero__terminal-line" data-delay="1.2">postgres-0              1/1     <span class="hero__terminal-ok">Running</span></code>
+<code class="hero__terminal-line hero__terminal-line--cursor" data-delay="1.4">$ <span class="hero__terminal-cursor">&#9607;</span></code></pre>
+      </div>
+
       <div class="hero__scroll-hint" aria-hidden="true">
         <span>scroll</span>
         <div class="hero__scroll-line"></div>
@@ -481,7 +486,7 @@
 
       <div class="solutions-grid">
         <!-- WhatsApp Sender Pro -->
-        <article class="solution-card solution-card--green" data-reveal>
+        <article class="solution-card solution-card--green solution-card--featured" data-reveal>
           <div class="solution-card__icon">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path
@@ -500,20 +505,22 @@
           </ul>
           <details class="solution-card__details">
             <summary>Ver mas detalles</summary>
-            <ul>
-              <li>Adjuntos multimedia (imagenes, PDFs, videos)</li>
-              <li>Plantillas reutilizables con variables dinamicas</li>
-              <li>Exportacion de estadisticas a Excel/CSV</li>
-              <li>Jobs asincronos con reintentos automaticos</li>
-              <li>Roles granulares: admin, operador, auditor</li>
-              <li>CI/CD con GitLab CI y deploy Docker automatizado</li>
-            </ul>
-            <p><strong>Stack:</strong> Node.js, Express, PostgreSQL, Redis, BullMQ, MinIO, Keycloak, Docker</p>
+            <div class="details-body">
+              <ul>
+                <li>Adjuntos multimedia (imagenes, PDFs, videos)</li>
+                <li>Plantillas reutilizables con variables dinamicas</li>
+                <li>Exportacion de estadisticas a Excel/CSV</li>
+                <li>Jobs asincronos con reintentos automaticos</li>
+                <li>Roles granulares: admin, operador, auditor</li>
+                <li>CI/CD con GitLab CI y deploy Docker automatizado</li>
+              </ul>
+              <p><strong>Stack:</strong> Node.js, Express, PostgreSQL, Redis, BullMQ, MinIO, Keycloak, Docker</p>
+            </div>
           </details>
         </article>
 
         <!-- SMS Sender Pro -->
-        <article class="solution-card solution-card--cyan" data-reveal>
+        <article class="solution-card solution-card--cyan" data-reveal data-reveal-x>
           <div class="solution-card__icon">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
@@ -532,14 +539,16 @@
           </ul>
           <details class="solution-card__details">
             <summary>Ver mas detalles</summary>
-            <ul>
-              <li>Envio nativo via Android SmsManager (sin internet)</li>
-              <li>Mensajes largos con division inteligente (word boundaries)</li>
-              <li>Grafico de actividad ultimos 7 dias</li>
-              <li>Sistema de licencias con autenticacion segura</li>
-              <li>Variables dinamicas para personalizacion masiva</li>
-            </ul>
-            <p><strong>Stack:</strong> Capacitor, Node.js, Express, Bootstrap 5</p>
+            <div class="details-body">
+              <ul>
+                <li>Envio nativo via Android SmsManager (sin internet)</li>
+                <li>Mensajes largos con division inteligente (word boundaries)</li>
+                <li>Grafico de actividad ultimos 7 dias</li>
+                <li>Sistema de licencias con autenticacion segura</li>
+                <li>Variables dinamicas para personalizacion masiva</li>
+              </ul>
+              <p><strong>Stack:</strong> Capacitor, Node.js, Express, Bootstrap 5</p>
+            </div>
           </details>
         </article>
 
@@ -563,18 +572,20 @@
           </ul>
           <details class="solution-card__details">
             <summary>Ver mas detalles</summary>
-            <ul>
-              <li>Backups automaticos y verificacion de integridad</li>
-              <li>Reportes mensuales de estado y rendimiento</li>
-              <li>Escalamiento de incidentes con prioridades</li>
-              <li>Horas de desarrollo incluidas segun plan</li>
-              <li>Atencion via WhatsApp, email y videollamada</li>
-            </ul>
+            <div class="details-body">
+              <ul>
+                <li>Backups automaticos y verificacion de integridad</li>
+                <li>Reportes mensuales de estado y rendimiento</li>
+                <li>Escalamiento de incidentes con prioridades</li>
+                <li>Horas de desarrollo incluidas segun plan</li>
+                <li>Atencion via WhatsApp, email y videollamada</li>
+              </ul>
+            </div>
           </details>
         </article>
 
         <!-- Software a Medida -->
-        <article class="solution-card solution-card--rose" data-reveal>
+        <article class="solution-card solution-card--rose" data-reveal data-reveal-x>
           <div class="solution-card__icon">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <polyline points="16 18 22 12 16 6" />
@@ -594,16 +605,18 @@
           </ul>
           <details class="solution-card__details">
             <summary>Ver mas detalles</summary>
-            <ul>
-              <li>Clean Architecture y Hexagonal (Ports & Adapters)</li>
-              <li>Punto de Venta (POS): React 19 + NestJS + PostgreSQL + SIFEN</li>
-              <li>Facturacion Electronica: Java 21 + Spring Boot 3.4 + Hexagonal</li>
-              <li>Apps desktop: Electron con build Windows/macOS</li>
-              <li>Seguridad: OWASP Top 10, Keycloak SSO</li>
-              <li>Bases de datos: MongoDB, PostgreSQL, MySQL, Oracle</li>
-              <li>Scrum con sprints de 2 semanas y demos</li>
-              <li>Entregables: 100% codigo fuente, docs, capacitacion, 90 dias soporte</li>
-            </ul>
+            <div class="details-body">
+              <ul>
+                <li>Clean Architecture y Hexagonal (Ports & Adapters)</li>
+                <li>Punto de Venta (POS): React 19 + NestJS + PostgreSQL + SIFEN</li>
+                <li>Facturacion Electronica: Java 21 + Spring Boot 3.4 + Hexagonal</li>
+                <li>Apps desktop: Electron con build Windows/macOS</li>
+                <li>Seguridad: OWASP Top 10, Keycloak SSO</li>
+                <li>Bases de datos: MongoDB, PostgreSQL, MySQL, Oracle</li>
+                <li>Scrum con sprints de 2 semanas y demos</li>
+                <li>Entregables: 100% codigo fuente, docs, capacitacion, 90 dias soporte</li>
+              </ul>
+            </div>
           </details>
         </article>
 
@@ -637,27 +650,37 @@
         <h3>Modelos de Contratacion</h3>
         <div class="contract-models__grid">
           <div class="contract-model">
-            <span class="contract-model__icon">&#8635;</span>
+            <span class="contract-model__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            </span>
             <strong>Suscripcion</strong>
             <span>Mensual/anual, SaaS</span>
           </div>
           <div class="contract-model">
-            <span class="contract-model__icon">&#9670;</span>
+            <span class="contract-model__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+            </span>
             <strong>Licencia</strong>
             <span>Perpetua, on-premise</span>
           </div>
           <div class="contract-model">
-            <span class="contract-model__icon">&#9650;</span>
+            <span class="contract-model__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
+            </span>
             <strong>Por Volumen</strong>
             <span>Tiers escalonados</span>
           </div>
           <div class="contract-model">
-            <span class="contract-model__icon">&#9632;</span>
+            <span class="contract-model__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg>
+            </span>
             <strong>Proyecto</strong>
             <span>Llave en mano o equipo</span>
           </div>
           <div class="contract-model">
-            <span class="contract-model__icon">&#9881;</span>
+            <span class="contract-model__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M16.712 4.33a9.027 9.027 0 011.652 1.306c.51.51.944 1.064 1.306 1.652M16.712 4.33l-3.448 4.138m3.448-4.138a9.014 9.014 0 00-9.424 0M19.67 7.288l-4.138 3.448m4.138-3.448a9.014 9.014 0 010 9.424m-4.138-5.976a3.736 3.736 0 00-.88-1.388 3.737 3.737 0 00-1.388-.88m2.268 2.268a3.765 3.765 0 010 2.528m-2.268-4.796a3.765 3.765 0 00-2.528 0m4.796 4.796c-.181.506-.475.982-.88 1.388a3.736 3.736 0 01-1.388.88m2.268-2.268l4.138 3.448m0 0a9.027 9.027 0 01-1.306 1.652c-.51.51-1.064.944-1.652 1.306m0 0l-3.448-4.138m3.448 4.138a9.014 9.014 0 01-9.424 0m5.976-4.138a3.765 3.765 0 01-2.528 0m0 0a3.736 3.736 0 01-1.388-.88 3.737 3.737 0 01-.88-1.388m2.268 2.268L7.288 19.67m0 0a9.024 9.024 0 01-1.652-1.306 9.027 9.027 0 01-1.306-1.652m0 0l4.138-3.448M4.33 16.712a9.014 9.014 0 010-9.424m4.138 5.976a3.765 3.765 0 010-2.528m0 0c.181-.506.475-.982.88-1.388a3.736 3.736 0 011.388-.88m-2.268 2.268L4.33 7.288m6.406 1.18L7.288 4.33m0 0a9.024 9.024 0 00-1.652 1.306A9.025 9.025 0 004.33 7.288"/></svg>
+            </span>
             <strong>Soporte</strong>
             <span>Mensualidad continua</span>
           </div>
@@ -692,6 +715,7 @@
               <div>
                 <h3>CuenlyApp</h3>
                 <span class="project-card__type">Plataforma OCR + IA</span>
+                <p class="project-card__stack-preview">Python / Angular / K8s</p>
               </div>
               <span class="project-card__status">
                 <span class="project-card__status-dot"></span>
@@ -761,6 +785,7 @@
               <div>
                 <h3>FoxBox</h3>
                 <span class="project-card__type">Logistica & Importacion</span>
+                <p class="project-card__stack-preview">Node.js / Docker / SMTP</p>
               </div>
               <span class="project-card__status">
                 <span class="project-card__status-dot"></span>
@@ -817,6 +842,7 @@
               <div>
                 <h3>WhatsApp Sender Pro</h3>
                 <span class="project-card__type">Mensajeria Masiva</span>
+                <p class="project-card__stack-preview">Node.js / PostgreSQL / K8s</p>
               </div>
               <span class="project-card__status">
                 <span class="project-card__status-dot"></span>
@@ -876,6 +902,7 @@
               <div>
                 <h3>Capa Store</h3>
                 <span class="project-card__type">E-Commerce</span>
+                <p class="project-card__stack-preview">Next.js / Spring Boot / PostgreSQL</p>
               </div>
               <span class="project-card__status">
                 <span class="project-card__status-dot"></span>
@@ -935,6 +962,7 @@
               <div>
                 <h3>El Impostor</h3>
                 <span class="project-card__type">Juego Multijugador</span>
+                <p class="project-card__stack-preview">Next.js / Fastify / Socket.IO</p>
               </div>
               <span class="project-card__status">
                 <span class="project-card__status-dot"></span>
@@ -1000,6 +1028,7 @@
               <div>
                 <h3>Zyra</h3>
                 <span class="project-card__type">Gestion de Operadores</span>
+                <p class="project-card__stack-preview">Java 21 / Flutter / Angular</p>
               </div>
               <span class="project-card__status project-card__status--beta">
                 <span class="project-card__status-dot"></span>
@@ -1060,6 +1089,7 @@
               <div>
                 <h3>BIE - Verificacion de Identidad</h3>
                 <span class="project-card__type">Motor Biometrico</span>
+                <p class="project-card__stack-preview">Java 21 / Flutter / PostgreSQL</p>
               </div>
               <span class="project-card__status project-card__status--beta">
                 <span class="project-card__status-dot"></span>
@@ -1355,7 +1385,11 @@
           <span>GitHub + GitLab + Nexus</span>
         </div>
         <div class="arch-badge">
-          <span class="arch-badge__icon">&#x1F4CA;</span>
+          <span class="arch-badge__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20" aria-hidden="true">
+              <path d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/>
+            </svg>
+          </span>
           <strong>Observabilidad</strong>
           <span>Prometheus + Grafana + Loki</span>
         </div>
@@ -1390,15 +1424,16 @@
           </div>
           <div class="pricing-card__price">
             <span class="pricing-card__currency">Gs.</span>
-            <span class="pricing-card__amount">199.000</span>
+            <span class="pricing-card__amount" data-target="199000">199.000</span>
             <span class="pricing-card__period">/mes</span>
           </div>
           <ul class="pricing-card__includes">
-            <li>Hasta 1.000 mensajes/mes</li>
+            <li>Hasta 12.000 mensajes/mes</li>
             <li>1 linea de WhatsApp</li>
-            <li>Templates ilimitados</li>
-            <li>Soporte por email</li>
+            <li>Hasta 1.000 contactos</li>
+            <li>20 templates reutilizables</li>
             <li>Texto + imagenes + audio</li>
+            <li>Soporte por email</li>
           </ul>
           <a href="https://wa.me/595981586823?text=Hola,%20me%20interesa%20el%20plan%20Basico%20de%20WhatsApp%20Sender%20Pro"
             class="btn btn--outline" target="_blank" rel="noopener">Comenzar</a>
@@ -1413,18 +1448,19 @@
           </div>
           <div class="pricing-card__price">
             <span class="pricing-card__currency">Gs.</span>
-            <span class="pricing-card__amount">499.000</span>
+            <span class="pricing-card__amount" data-target="499000">499.000</span>
             <span class="pricing-card__period">/mes</span>
           </div>
           <ul class="pricing-card__includes">
-            <li>Hasta 10.000 mensajes/mes</li>
+            <li>Hasta 30.000 mensajes/mes</li>
             <li>1 linea de WhatsApp</li>
+            <li>Contactos ilimitados</li>
             <li>Templates ilimitados</li>
-            <li>Soporte prioritario</li>
-            <li>Texto + imagenes + audio</li>
+            <li>Inbox (recibir y responder mensajes)</li>
             <li>API de autenticacion + envio</li>
             <li>Webhooks de estado de entrega</li>
             <li>Dashboard de analiticas avanzadas</li>
+            <li>Soporte prioritario</li>
           </ul>
           <a href="https://wa.me/595981586823?text=Hola,%20me%20interesa%20el%20plan%20Profesional%20de%20WhatsApp%20Sender%20Pro"
             class="btn btn--outline" target="_blank" rel="noopener">Comenzar</a>
@@ -1438,13 +1474,13 @@
           </div>
           <div class="pricing-card__price">
             <span class="pricing-card__currency">Gs.</span>
-            <span class="pricing-card__amount">899.000</span>
+            <span class="pricing-card__amount" data-target="899000">899.000</span>
             <span class="pricing-card__period">/mes</span>
           </div>
           <ul class="pricing-card__includes">
+            <li>Hasta 60.000 mensajes/mes</li>
             <li>Todo lo de Profesional, mas:</li>
             <li>Chatbot inteligente / auto-responder</li>
-            <li>Inbox (recibir y responder mensajes)</li>
             <li>Integracion con IA (OpenAI, Anthropic, Groq)</li>
             <li>Historial de campanas con analiticas completas</li>
             <li>Respuestas de clientes vinculadas a campanas</li>
@@ -1627,7 +1663,7 @@
 
       <!-- Values -->
       <div class="values-grid" data-reveal>
-        <div class="value-card">
+        <div class="value-card value-card--cyan">
           <div class="value-card__icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
@@ -1637,7 +1673,7 @@
           <h4>Transparencia</h4>
           <p>Comunicacion continua, procesos abiertos y visibilidad total del progreso de cada proyecto.</p>
         </div>
-        <div class="value-card">
+        <div class="value-card value-card--violet">
           <div class="value-card__icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -1646,7 +1682,7 @@
           <h4>Calidad Tecnica</h4>
           <p>Revision por pares, testing automatizado y arquitectura probada en cada entrega.</p>
         </div>
-        <div class="value-card">
+        <div class="value-card value-card--rose">
           <div class="value-card__icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
@@ -1904,29 +1940,38 @@
         <div class="faq-list">
           <details class="faq-item">
             <summary>Trabajan con clientes fuera de Paraguay?</summary>
-            <p>Si, atendemos clientes en Argentina, Uruguay, Brasil, Chile, Mexico, Colombia, España y otros paises.
-              Trabajamos 100% remoto con reuniones por videollamada.</p>
+            <div class="details-body">
+              <p>Si, atendemos clientes en Argentina, Uruguay, Brasil, Chile, Mexico, Colombia, España y otros paises.
+                Trabajamos 100% remoto con reuniones por videollamada.</p>
+            </div>
           </details>
           <details class="faq-item">
             <summary>Cual es el proyecto minimo que aceptan?</summary>
-            <p>No tenemos monto minimo, pero recomendamos presupuestos desde USD 2,000 para proyectos con valor real.
-              Para consultorias puntuales ofrecemos sesiones de 2-4 horas.</p>
+            <div class="details-body">
+              <p>No tenemos monto minimo, pero recomendamos presupuestos desde USD 2,000 para proyectos con valor real.
+                Para consultorias puntuales ofrecemos sesiones de 2-4 horas.</p>
+            </div>
           </details>
           <details class="faq-item">
             <summary>Ofrecen periodo de prueba?</summary>
-            <p>En suscripciones ofrecemos 14 dias de garantia de devolucion. En proyectos a medida, el primer sprint (2
-              semanas) sirve como validacion tecnica.</p>
+            <div class="details-body">
+              <p>En suscripciones ofrecemos 14 dias de garantia de devolucion. En proyectos a medida, el primer sprint (2
+                semanas) sirve como validacion tecnica.</p>
+            </div>
           </details>
           <details class="faq-item">
             <summary>Que garantias ofrecen?</summary>
-            <p>90 dias de correccion de bugs post-lanzamiento sin costo, SLA de 99.5% en servicios cloud, (de acuerdo al
-              contrato) codigo fuente
-              entregado completo y documentado.</p>
+            <div class="details-body">
+              <p>90 dias de correccion de bugs post-lanzamiento sin costo, SLA de 99.5% en servicios cloud, (de acuerdo al
+                contrato) codigo fuente entregado completo y documentado.</p>
+            </div>
           </details>
           <details class="faq-item">
             <summary>Puedo solicitar cambios durante el desarrollo?</summary>
-            <p>Si, trabajamos con metodologia agil que permite ajustes cada 2 semanas. Cambios mayores de alcance se
-              renegocian transparentemente.</p>
+            <div class="details-body">
+              <p>Si, trabajamos con metodologia agil que permite ajustes cada 2 semanas. Cambios mayores de alcance se
+                renegocian transparentemente.</p>
+            </div>
           </details>
         </div>
       </div>
@@ -1946,78 +1991,98 @@
 
         <details class="legal-section" open>
           <summary>1. Aceptacion de los Terminos</summary>
-          <p>Al contratar cualquier servicio de MindTechPy (en adelante "la Empresa"), el cliente acepta estar
-            legalmente vinculado por estos Terminos y Condiciones.</p>
+          <div class="details-body">
+            <p>Al contratar cualquier servicio de MindTechPy (en adelante "la Empresa"), el cliente acepta estar
+              legalmente vinculado por estos Terminos y Condiciones.</p>
+          </div>
         </details>
 
         <details class="legal-section">
           <summary>2. Descripcion de Servicios</summary>
-          <p>MindTechPy ofrece: Suscripciones SaaS (WhatsApp Masivo), Licencias de Software (SMS Masivo, Lectura de
-            Facturas), Desarrollo a Medida y Consultoria Tecnica.</p>
+          <div class="details-body">
+            <p>MindTechPy ofrece: Suscripciones SaaS (WhatsApp Masivo), Licencias de Software (SMS Masivo, Lectura de
+              Facturas), Desarrollo a Medida y Consultoria Tecnica.</p>
+          </div>
         </details>
 
         <details class="legal-section">
           <summary>3. Obligaciones del Cliente</summary>
-          <ul>
-            <li>Proporcionar informacion veraz y completa</li>
-            <li>Cumplir con normativas de proteccion de datos (GDPR, LGPD)</li>
-            <li>No utilizar servicios para spam, phishing o actividades ilegales</li>
-            <li>Mantener confidenciales las credenciales de acceso</li>
-            <li>Realizar pagos en los plazos acordados</li>
-          </ul>
+          <div class="details-body">
+            <ul>
+              <li>Proporcionar informacion veraz y completa</li>
+              <li>Cumplir con normativas de proteccion de datos (GDPR, LGPD)</li>
+              <li>No utilizar servicios para spam, phishing o actividades ilegales</li>
+              <li>Mantener confidenciales las credenciales de acceso</li>
+              <li>Realizar pagos en los plazos acordados</li>
+            </ul>
+          </div>
         </details>
 
         <details class="legal-section">
           <summary>4. Obligaciones de MindTechPy</summary>
-          <ul>
-            <li>Proveer servicios con estandares profesionales de calidad y seguridad</li>
-            <li>Garantizar disponibilidad de 99.5% en servicios cloud (SLA con creditos)</li>
-            <li>Respetar confidencialidad de datos del cliente segun NDA</li>
-            <li>Notificar incidentes de seguridad en maximo 24 horas</li>
-            <li>Proveer soporte tecnico segun plan contratado</li>
-          </ul>
+          <div class="details-body">
+            <ul>
+              <li>Proveer servicios con estandares profesionales de calidad y seguridad</li>
+              <li>Garantizar disponibilidad de 99.5% en servicios cloud (SLA con creditos)</li>
+              <li>Respetar confidencialidad de datos del cliente segun NDA</li>
+              <li>Notificar incidentes de seguridad en maximo 24 horas</li>
+              <li>Proveer soporte tecnico segun plan contratado</li>
+            </ul>
+          </div>
         </details>
 
         <details class="legal-section">
           <summary>5. Propiedad Intelectual</summary>
-          <p><strong>Proyectos a Medida:</strong> El codigo fuente es propiedad del cliente una vez completado el pago.
-            MindTechPy conserva derechos sobre bibliotecas genericas y frameworks propios.</p>
-          <p><strong>Productos SaaS:</strong> La Empresa retiene todos los derechos de propiedad intelectual. El cliente
-            tiene licencia de uso no exclusiva.</p>
+          <div class="details-body">
+            <p><strong>Proyectos a Medida:</strong> El codigo fuente es propiedad del cliente una vez completado el pago.
+              MindTechPy conserva derechos sobre bibliotecas genericas y frameworks propios.</p>
+            <p><strong>Productos SaaS:</strong> La Empresa retiene todos los derechos de propiedad intelectual. El cliente
+              tiene licencia de uso no exclusiva.</p>
+          </div>
         </details>
 
         <details class="legal-section">
           <summary>6. Confidencialidad y Proteccion de Datos</summary>
-          <ul>
-            <li>Cumplimiento con GDPR, LGPD y normativas locales</li>
-            <li>Datos cifrados en transito (TLS 1.3) y en reposo (AES-256)</li>
-            <li>No compartimos datos con terceros sin consentimiento</li>
-            <li>Backups diarios con retencion de 30-90 dias</li>
-          </ul>
+          <div class="details-body">
+            <ul>
+              <li>Cumplimiento con GDPR, LGPD y normativas locales</li>
+              <li>Datos cifrados en transito (TLS 1.3) y en reposo (AES-256)</li>
+              <li>No compartimos datos con terceros sin consentimiento</li>
+              <li>Backups diarios con retencion de 30-90 dias</li>
+            </ul>
+          </div>
         </details>
 
         <details class="legal-section">
           <summary>7. Precios y Facturacion</summary>
-          <p>Suscripciones con facturacion mensual anticipada. Proyectos con pagos por hitos. Precios no incluyen IVA.
-            Metodos: transferencia bancaria, PayPal, tarjeta de credito.</p>
+          <div class="details-body">
+            <p>Suscripciones con facturacion mensual anticipada. Proyectos con pagos por hitos. Precios no incluyen IVA.
+              Metodos: transferencia bancaria, PayPal, tarjeta de credito.</p>
+          </div>
         </details>
 
         <details class="legal-section">
           <summary>8. Cancelacion y Reembolsos</summary>
-          <p>Suscripciones mensuales sin penalidad con 7 dias de aviso. Anuales con reembolso prorrateado en primeros 30
-            dias. Proyectos facturados por trabajo completado.</p>
+          <div class="details-body">
+            <p>Suscripciones mensuales sin penalidad con 7 dias de aviso. Anuales con reembolso prorrateado en primeros 30
+              dias. Proyectos facturados por trabajo completado.</p>
+          </div>
         </details>
 
         <details class="legal-section">
           <summary>9. Limitacion de Responsabilidad</summary>
-          <p>MindTechPy no sera responsable por danos indirectos, interrupciones de terceros, o perdida de datos por
-            negligencia del cliente. Responsabilidad maxima limitada al monto pagado en los ultimos 12 meses.</p>
+          <div class="details-body">
+            <p>MindTechPy no sera responsable por danos indirectos, interrupciones de terceros, o perdida de datos por
+              negligencia del cliente. Responsabilidad maxima limitada al monto pagado en los ultimos 12 meses.</p>
+          </div>
         </details>
 
         <details class="legal-section">
           <summary>10. Resolucion de Disputas</summary>
-          <p>Jurisdiccion: Tribunales de Asuncion, Paraguay. Ley aplicable: Codigo Civil y Comercial de Paraguay.
-            Mediacion obligatoria de 30 dias antes de litigio.</p>
+          <div class="details-body">
+            <p>Jurisdiccion: Tribunales de Asuncion, Paraguay. Ley aplicable: Codigo Civil y Comercial de Paraguay.
+              Mediacion obligatoria de 30 dias antes de litigio.</p>
+          </div>
         </details>
 
         <p>Contacto legal: <a href="mailto:andres.vera@mindtechpy.net">andres.vera@mindtechpy.net</a></p>
@@ -2028,66 +2093,82 @@
 
         <details class="legal-section" open>
           <summary>1. Introduccion</summary>
-          <p>En MindTechPy valoramos su privacidad. Cumplimos con GDPR, LGPD y normativas locales aplicables. Esta
-            politica explica que informacion recopilamos, como la usamos y cuales son sus derechos.</p>
+          <div class="details-body">
+            <p>En MindTechPy valoramos su privacidad. Cumplimos con GDPR, LGPD y normativas locales aplicables. Esta
+              politica explica que informacion recopilamos, como la usamos y cuales son sus derechos.</p>
+          </div>
         </details>
 
         <details class="legal-section">
           <summary>2. Datos que Recopilamos</summary>
-          <p><strong>Comerciales:</strong> Nombre, email, telefono, empresa, datos fiscales, historial de
-            comunicaciones.</p>
-          <p><strong>Uso de plataformas:</strong> Credenciales (contraseña hasheada bcrypt), logs de actividad,
-            contenido de mensajes y facturas procesadas.</p>
-          <p><strong>Tecnicos:</strong> IP, user-agent, cookies de sesion, metricas de rendimiento.</p>
+          <div class="details-body">
+            <p><strong>Comerciales:</strong> Nombre, email, telefono, empresa, datos fiscales, historial de
+              comunicaciones.</p>
+            <p><strong>Uso de plataformas:</strong> Credenciales (contraseña hasheada bcrypt), logs de actividad,
+              contenido de mensajes y facturas procesadas.</p>
+            <p><strong>Tecnicos:</strong> IP, user-agent, cookies de sesion, metricas de rendimiento.</p>
+          </div>
         </details>
 
         <details class="legal-section">
           <summary>3. Finalidad del Tratamiento</summary>
-          <ul>
-            <li>Prestacion de servicios contratados</li>
-            <li>Facturacion y cobros</li>
-            <li>Soporte tecnico</li>
-            <li>Mejora de productos (analisis anonimizado)</li>
-            <li>Comunicaciones comerciales (con opt-in)</li>
-            <li>Cumplimiento legal</li>
-          </ul>
+          <div class="details-body">
+            <ul>
+              <li>Prestacion de servicios contratados</li>
+              <li>Facturacion y cobros</li>
+              <li>Soporte tecnico</li>
+              <li>Mejora de productos (analisis anonimizado)</li>
+              <li>Comunicaciones comerciales (con opt-in)</li>
+              <li>Cumplimiento legal</li>
+            </ul>
+          </div>
         </details>
 
         <details class="legal-section">
           <summary>4. Compartir Datos con Terceros</summary>
-          <p>No vendemos datos. Compartimos unicamente con: proveedores de infraestructura (AWS, Firebase, MongoDB
-            Atlas), pasarelas de pago (Stripe, PayPal), y autoridades ante requerimiento legal. Todos firman DPAs.</p>
+          <div class="details-body">
+            <p>No vendemos datos. Compartimos unicamente con: proveedores de infraestructura (AWS, Firebase, MongoDB
+              Atlas), pasarelas de pago (Stripe, PayPal), y autoridades ante requerimiento legal. Todos firman DPAs.</p>
+          </div>
         </details>
 
         <details class="legal-section">
           <summary>5. Seguridad de Datos</summary>
-          <ul>
-            <li>Cifrado TLS 1.3 en transito, AES-256 en reposo</li>
-            <li>Autenticacion MFA y RBAC</li>
-            <li>Logs inmutables de accesos</li>
-            <li>Backups cifrados diarios</li>
-            <li>Pentesting anual por terceros</li>
-          </ul>
+          <div class="details-body">
+            <ul>
+              <li>Cifrado TLS 1.3 en transito, AES-256 en reposo</li>
+              <li>Autenticacion MFA y RBAC</li>
+              <li>Logs inmutables de accesos</li>
+              <li>Backups cifrados diarios</li>
+              <li>Pentesting anual por terceros</li>
+            </ul>
+          </div>
         </details>
 
         <details class="legal-section">
           <summary>6. Sus Derechos (GDPR/LGPD)</summary>
-          <p>Usted tiene derecho a: acceso, rectificacion, eliminacion, portabilidad, oposicion, limitacion y retiro de
-            consentimiento. Solicite a <a href="mailto:andres.vera@mindtechpy.net">andres.vera@mindtechpy.net</a> con
-            asunto "Derechos GDPR/LGPD". Respondemos en 30 dias.</p>
+          <div class="details-body">
+            <p>Usted tiene derecho a: acceso, rectificacion, eliminacion, portabilidad, oposicion, limitacion y retiro de
+              consentimiento. Solicite a <a href="mailto:andres.vera@mindtechpy.net">andres.vera@mindtechpy.net</a> con
+              asunto "Derechos GDPR/LGPD". Respondemos en 30 dias.</p>
+          </div>
         </details>
 
         <details class="legal-section">
           <summary>7. Cookies</summary>
-          <p>Usamos cookies esenciales (sesion, preferencias), analiticas (Google Analytics anonimizado) y marketing
-            (solo con consentimiento explicito).</p>
+          <div class="details-body">
+            <p>Usamos cookies esenciales (sesion, preferencias), analiticas (Google Analytics anonimizado) y marketing
+              (solo con consentimiento explicito).</p>
+          </div>
         </details>
 
         <details class="legal-section">
           <summary>8. Contacto DPO</summary>
-          <p>Delegado de Proteccion de Datos: <a href="mailto:andres.vera@mindtechpy.net">andres.vera@mindtechpy.net</a>
-            | Asunto: "Consulta Privacidad"</p>
-          <p>Autoridades de control: MITIC (Paraguay), AEPD (España), ANPD (Brasil)</p>
+          <div class="details-body">
+            <p>Delegado de Proteccion de Datos: <a href="mailto:andres.vera@mindtechpy.net">andres.vera@mindtechpy.net</a>
+              | Asunto: "Consulta Privacidad"</p>
+            <p>Autoridades de control: MITIC (Paraguay), AEPD (España), ANPD (Brasil)</p>
+          </div>
         </details>
       </div>
     </section>
@@ -2097,7 +2178,7 @@
   <!-- Footer -->
   <footer>
     <div class="footer__inner">
-      <div class="footer__brand">
+      <div class="footer__brand" data-reveal>
         <picture>
           <source srcset="/images/mindtechpy-logo.webp" type="image/webp">
           <img src="/images/mindtechpy-logo.png" alt="MindTechPy" width="140" height="40" loading="lazy">
@@ -2106,7 +2187,7 @@
         </p>
       </div>
 
-      <div class="footer__col">
+      <div class="footer__col" data-reveal>
         <strong>Soluciones</strong>
         <ul>
           <li><a href="#soluciones">WhatsApp Masivo</a></li>

@@ -71,23 +71,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ─── Throttled Scroll Handler ───
+  // ─── Throttled Scroll Handler (extended below with parallax) ───
   let scrollTicking = false;
 
-  window.addEventListener('scroll', () => {
-    if (!scrollTicking) {
-      requestAnimationFrame(() => {
-        updateScrollProgress();
-        updateHeader();
-        updateActiveSection();
-        scrollTicking = false;
-      });
-      scrollTicking = true;
-    }
-  }, { passive: true });
-
   // ─── Scroll Reveal (IntersectionObserver) ───
-  const revealElements = document.querySelectorAll('[data-reveal]');
+  const revealElements = document.querySelectorAll('[data-reveal], [data-reveal-x]');
 
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -103,8 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   revealElements.forEach(el => revealObserver.observe(el));
 
-  // ─── Counter Animation ───
-  const counters = document.querySelectorAll('[data-target]');
+  // ─── Counter Animation (stats only — small numbers like 90, 24, 5) ───
+  const statCounters = document.querySelectorAll('[data-target]:not(.pricing-card__amount)');
 
   const counterObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -115,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { threshold: 0.3 });
 
-  counters.forEach(counter => counterObserver.observe(counter));
+  statCounters.forEach(counter => counterObserver.observe(counter));
 
   function animateCounter(el) {
     const target = parseInt(el.getAttribute('data-target'), 10);
@@ -126,18 +114,28 @@ document.addEventListener('DOMContentLoaded', () => {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      const current = Math.round(eased * target);
-      el.textContent = current;
-
-      if (progress < 1) {
-        requestAnimationFrame(update);
-      }
+      el.textContent = Math.round(eased * target);
+      if (progress < 1) requestAnimationFrame(update);
     }
 
     requestAnimationFrame(update);
   }
 
-  // ─── Tech Filter ───
+  // ─── Pricing reveal (CSS-based — no digit counting for large numbers) ───
+  const pricingAmounts = document.querySelectorAll('.pricing-card__amount[data-target]');
+
+  const pricingObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('pricing-card__amount--revealed');
+        pricingObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  pricingAmounts.forEach(el => pricingObserver.observe(el));
+
+  // ─── Tech Filter (animated hide/show) ───
   const filterButtons = document.querySelectorAll('.tech-filter');
   const techItems = document.querySelectorAll('.tech-item');
 
@@ -152,16 +150,41 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.classList.add('active');
       btn.setAttribute('aria-selected', 'true');
 
+      const toShow = [];
+      const toHide = [];
+
       techItems.forEach(item => {
         const category = item.getAttribute('data-category');
-        if (filter === 'all' || category === filter) {
-          item.classList.remove('hidden');
-          item.style.animation = 'none';
-          item.offsetHeight; // reflow
-          item.style.animation = '';
-        } else {
-          item.classList.add('hidden');
+        const shouldBeVisible = filter === 'all' || category === filter;
+        const isHidden = item.classList.contains('hidden');
+
+        if (shouldBeVisible && isHidden) {
+          toShow.push(item);
+        } else if (!shouldBeVisible && !isHidden) {
+          toHide.push(item);
         }
+      });
+
+      // Hide outgoing items
+      toHide.forEach(item => {
+        item.classList.add('tech-item--hiding');
+        setTimeout(() => {
+          item.classList.add('hidden');
+          item.classList.remove('tech-item--hiding');
+        }, 200);
+      });
+
+      // Show incoming items with stagger
+      toShow.forEach((item, i) => {
+        item.classList.remove('hidden');
+        requestAnimationFrame(() => {
+          item.classList.add('tech-item--showing');
+          item.style.animationDelay = `${i * 0.03}s`;
+          setTimeout(() => {
+            item.classList.remove('tech-item--showing');
+            item.style.animationDelay = '';
+          }, 400 + i * 30);
+        });
       });
     });
   });
@@ -373,8 +396,208 @@ document.addEventListener('DOMContentLoaded', () => {
     applySectionMeta(id);
   });
 
+  // ─── Details toggle (is-open class for smooth transitions) ───
+  document.querySelectorAll('details').forEach(el => {
+    el.addEventListener('toggle', () => {
+      el.classList.toggle('is-open', el.open);
+    });
+    // Set initial state if already open
+    if (el.open) el.classList.add('is-open');
+  });
+
+  // ─── Timeline line animation ───
+  const timeline = document.querySelector('.timeline');
+  if (timeline) {
+    const timelineObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const isMobile = window.innerWidth <= 768;
+          if (isMobile) {
+            timeline.style.setProperty('--line-progress', '100%');
+          } else {
+            timeline.style.setProperty('--line-progress', '100%');
+          }
+          // Stagger timeline steps
+          timeline.querySelectorAll('.timeline__step').forEach((step, i) => {
+            step.style.transitionDelay = `${i * 0.1}s`;
+            step.classList.add('revealed');
+          });
+          timelineObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    timelineObserver.observe(timeline);
+  }
+
+  // ─── Hero terminal line delays ───
+  document.querySelectorAll('.hero__terminal-line').forEach((line, i) => {
+    line.style.animationDelay = `${0.8 + i * 0.15}s`;
+  });
+
+  // ─── Parallax on project card banners ───
+  const projectBanners = document.querySelectorAll('.project-card__banner-bg');
+
+  function updateParallax() {
+    const viewH = window.innerHeight;
+    projectBanners.forEach(banner => {
+      const card = banner.closest('.project-card');
+      if (!card) return;
+      const rect = card.getBoundingClientRect();
+      const progress = (viewH - rect.top) / (viewH + rect.height);
+      const clamped = Math.max(0, Math.min(1, progress));
+      banner.style.transform = `translateY(${-20 * clamped}px) scale(1.05)`;
+    });
+  }
+
+  // Extend the scroll handler to include parallax
+  window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+      requestAnimationFrame(() => {
+        updateScrollProgress();
+        updateHeader();
+        updateActiveSection();
+        updateParallax();
+        scrollTicking = false;
+      });
+      scrollTicking = true;
+    }
+  }, { passive: true });
+
   // ─── Initialize ───
   updateScrollProgress();
   updateHeader();
   updateActiveSection();
+  updateParallax();
+
+  // ─── Starfield ───
+  new StarField();
 });
+
+// ─── Starfield Background ───────────────────────────────────────────────────
+class StarField {
+  constructor() {
+    this.canvas = document.getElementById('starfield');
+    if (!this.canvas) return;
+    this.ctx = this.canvas.getContext('2d');
+    this.stars = [];
+    this.scrollY = 0;
+    this.targetScrollY = 0;
+    this.rafId = null;
+
+    this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    this.resize();
+    this.init();
+
+    if (!this.reducedMotion) {
+      this.bindEvents();
+      this.animate();
+    } else {
+      this.drawStatic();
+    }
+  }
+
+  resize() {
+    this.canvas.width = window.innerWidth;
+    this.canvas.height = window.innerHeight;
+    this.W = this.canvas.width;
+    this.H = this.canvas.height;
+  }
+
+  init() {
+    this.stars = [];
+    const isMobile = window.innerWidth < 768;
+    const count = isMobile ? 60 : 150;
+    const colors = ['rgba(255,255,255,', 'rgba(6,182,212,', 'rgba(139,92,246,'];
+
+    for (let i = 0; i < count; i++) {
+      const colorBase = colors[Math.floor(Math.random() * colors.length)];
+      const finalColor = Math.random() > 0.25 ? 'rgba(255,255,255,' : colorBase;
+      this.stars.push({
+        x: Math.random() * this.W,
+        y: Math.random() * this.H,
+        r: Math.random() * 1.5 + 0.3,
+        speed: Math.random() * 0.15 + 0.02,
+        opacity: Math.random() * 0.6 + 0.2,
+        color: finalColor,
+        shimmerPhase: Math.random() * Math.PI * 2,
+        shimmerSpeed: Math.random() * 0.01 + 0.003,
+        parallaxFactor: Math.random() * 0.3 + 0.05,
+        twinkle: Math.random() > 0.7,
+      });
+    }
+  }
+
+  bindEvents() {
+    window.addEventListener('resize', () => {
+      this.resize();
+      this.init();
+    }, { passive: true });
+
+    window.addEventListener('scroll', () => {
+      this.targetScrollY = window.scrollY;
+    }, { passive: true });
+  }
+
+  drawNebula() {
+    const ctx = this.ctx;
+    const grad1 = ctx.createRadialGradient(this.W * 0.8, this.H * 0.2, 0, this.W * 0.8, this.H * 0.2, this.W * 0.4);
+    grad1.addColorStop(0, 'rgba(6,182,212,0.04)');
+    grad1.addColorStop(1, 'rgba(6,182,212,0)');
+    ctx.fillStyle = grad1;
+    ctx.fillRect(0, 0, this.W, this.H);
+
+    const grad2 = ctx.createRadialGradient(this.W * 0.15, this.H * 0.75, 0, this.W * 0.15, this.H * 0.75, this.W * 0.35);
+    grad2.addColorStop(0, 'rgba(139,92,246,0.05)');
+    grad2.addColorStop(1, 'rgba(139,92,246,0)');
+    ctx.fillStyle = grad2;
+    ctx.fillRect(0, 0, this.W, this.H);
+  }
+
+  draw() {
+    const ctx = this.ctx;
+    ctx.clearRect(0, 0, this.W, this.H);
+
+    this.scrollY += (this.targetScrollY - this.scrollY) * 0.05;
+
+    this.drawNebula();
+
+    for (const star of this.stars) {
+      star.y -= star.speed;
+      if (star.y < -2) star.y = this.H + 2;
+
+      const parallaxOffset = (this.scrollY * star.parallaxFactor * 0.08) % this.H;
+      const drawY = (star.y - parallaxOffset + this.H) % this.H;
+
+      let opacity = star.opacity;
+      if (star.twinkle) {
+        star.shimmerPhase += star.shimmerSpeed;
+        opacity = star.opacity * (0.6 + 0.4 * Math.sin(star.shimmerPhase));
+      }
+
+      ctx.beginPath();
+      ctx.arc(star.x, drawY, star.r, 0, Math.PI * 2);
+      ctx.fillStyle = `${star.color}${opacity})`;
+      ctx.fill();
+
+      if (star.r > 1.2) {
+        ctx.beginPath();
+        ctx.arc(star.x, drawY, star.r * 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = `${star.color}${opacity * 0.15})`;
+        ctx.fill();
+      }
+    }
+  }
+
+  drawStatic() {
+    this.draw();
+  }
+
+  animate() {
+    this.rafId = requestAnimationFrame(() => {
+      this.draw();
+      this.animate();
+    });
+  }
+}
