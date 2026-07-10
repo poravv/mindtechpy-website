@@ -25,7 +25,7 @@ spec:
       terminationGracePeriodSeconds: 30
       containers:
       - name: mindtechpy-web
-        image: ghcr.io/poravv/mindtechpy-website:latest
+        image: ghcr.io/poravv/mindtechpy-website:sha-7394819
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
@@ -62,11 +62,11 @@ spec:
               key: MAIL_TO
         resources:
           requests:
-            memory: "64Mi"
-            cpu: "50m"
+            memory: "48Mi"
+            cpu: "10m"
           limits:
             memory: "128Mi"
-            cpu: "200m"
+            cpu: "100m"
         livenessProbe:
           httpGet:
             path: /api/health
