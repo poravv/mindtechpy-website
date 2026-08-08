@@ -112,6 +112,18 @@ app.get('/web-express', (req, res) => {
   res.sendFile(filePath);
 });
 
+// Staff Augmentation (comercial)
+app.get('/staff-augmentation', (req, res) => {
+  const filePath = path.join(__dirname, '../../dist/staff-augmentation.html');
+  res.sendFile(filePath);
+});
+
+// Trabaja con nosotros (empleos)
+app.get('/trabaja-con-nosotros', (req, res) => {
+  const filePath = path.join(__dirname, '../../dist/trabaja-con-nosotros.html');
+  res.sendFile(filePath);
+});
+
 // ─── API: Visitantes ───
 
 app.get('/api/visitors/stats', (req, res) => {

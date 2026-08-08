@@ -10,6 +10,8 @@ module.exports = (env, argv) => {
     entry: {
       index: './src/pages/index.js',
       'web-express': './src/pages/web-express.js',
+      'staff-augmentation': './src/pages/staff-augmentation.js',
+      'trabaja-con-nosotros': './src/pages/trabaja-con-nosotros.js',
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
@@ -68,6 +70,28 @@ module.exports = (env, argv) => {
         template: './src/pages/web-express.html',
         filename: 'web-express.html',
         chunks: ['web-express'],
+        minify: isProduction ? {
+          collapseWhitespace: true,
+          removeComments: true,
+          removeRedundantAttributes: true,
+          useShortDoctype: true,
+        } : false,
+      }),
+      new HtmlWebpackPlugin({
+        template: './src/pages/staff-augmentation.html',
+        filename: 'staff-augmentation.html',
+        chunks: ['staff-augmentation'],
+        minify: isProduction ? {
+          collapseWhitespace: true,
+          removeComments: true,
+          removeRedundantAttributes: true,
+          useShortDoctype: true,
+        } : false,
+      }),
+      new HtmlWebpackPlugin({
+        template: './src/pages/trabaja-con-nosotros.html',
+        filename: 'trabaja-con-nosotros.html',
+        chunks: ['trabaja-con-nosotros'],
         minify: isProduction ? {
           collapseWhitespace: true,
           removeComments: true,
