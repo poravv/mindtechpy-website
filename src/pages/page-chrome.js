@@ -78,6 +78,22 @@ export default function initPageChrome() {
     });
   });
 
+  // Muchos navegadores no tienen cliente de correo asociado y el mailto no abre nada.
+  // Copiamos la direccion al portapapeles para que el clic siempre tenga un resultado visible.
+  document.querySelectorAll('a[href^="mailto:"].btn').forEach(link => {
+    link.addEventListener('click', () => {
+      if (!navigator.clipboard) return;
+
+      const address = link.getAttribute('href').replace(/^mailto:/, '').split('?')[0];
+      const original = link.innerHTML;
+
+      navigator.clipboard.writeText(address).then(() => {
+        link.textContent = 'Correo copiado ✓';
+        setTimeout(() => { link.innerHTML = original; }, 2000);
+      }).catch(() => {});
+    });
+  });
+
   updateScrollProgress();
   updateHeader();
 }
