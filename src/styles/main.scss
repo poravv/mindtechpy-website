@@ -1485,16 +1485,20 @@ main {
   border: 1px solid $line-strong;
   border-radius: $radius-panel;
   background: $surface;
-  padding: 32px 24px;
+  padding: 24px 16px;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 32px;
+
+  > * {
+    min-width: 0;
+  }
 }
 
 .cierre-intro {
   h2 {
     font-weight: 700;
-    font-size: clamp(28px, 3vw, 42px);
+    font-size: clamp(25px, 7vw, 32px);
     line-height: 1.08;
     letter-spacing: -0.03em;
     margin: 0 0 20px;
@@ -1506,6 +1510,23 @@ main {
   }
 }
 
+.cierre-whatsapp {
+  width: 100%;
+  margin-top: 24px;
+  padding: 13px 20px;
+}
+
+.cierre-whatsapp__icon {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.75;
+}
+
 .cierre-channels {
   margin: 0;
   padding: 24px 0 0;
@@ -1515,9 +1536,9 @@ main {
   gap: 14px;
 
   li {
-    display: flex;
-    gap: 16px;
-    align-items: baseline;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
     font-size: 14.5px;
     color: $muted;
   }
@@ -1527,8 +1548,6 @@ main {
   }
 
   &__label {
-    flex-shrink: 0;
-    width: 88px;
     font-family: $font-mono;
     font-size: 11px;
     letter-spacing: 0.1em;
@@ -1545,7 +1564,7 @@ main {
 
   &__row {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 20px;
   }
 }
@@ -1553,6 +1572,7 @@ main {
 .form-group {
   display: grid;
   gap: 7px;
+  min-width: 0;
 
   label {
     font-size: 13.5px;
@@ -1570,7 +1590,7 @@ main {
     color: $paper;
     padding: 12px 14px;
     font-family: $font-body;
-    font-size: 15px;
+    font-size: 16px;
     outline: none;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
@@ -1648,8 +1668,32 @@ main {
 }
 
 @media (min-width: $bp-tablet) {
+  .cierre-panel {
+    padding: 36px;
+    gap: 40px;
+  }
+
+  .cierre-intro h2 {
+    font-size: clamp(32px, 3.8vw, 42px);
+  }
+
+  .cierre-whatsapp {
+    width: auto;
+  }
+
+  .cierre-channels li {
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+  }
+
+  .cierre-channels__label {
+    flex-shrink: 0;
+    width: 88px;
+  }
+
   .contact-form__row {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
