@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       let hasErrors = false;
@@ -231,31 +231,51 @@ document.addEventListener('DOMContentLoaded', () => {
         `\nMensaje:\n${message}`
       );
 
-      // Send to API (fire-and-forget)
-      fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, company, service, message })
-      }).catch(() => {});
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, company, service, message })
+        });
+        const result = await response.json();
 
-      // Show success feedback
-      setTimeout(() => {
+        // La Pages Function responde { ok }, el server Express { success }
+        if (!response.ok || !(result.ok || result.success)) {
+          throw new Error(result.message || result.error || 'La API de contacto devolvió un error.');
+        }
+
+        // Show success feedback
+        setTimeout(() => {
+          const feedback = form.querySelector('.form-feedback');
+          if (feedback) {
+            feedback.hidden = false;
+            feedback.className = 'form-feedback success';
+            feedback.textContent = 'Redirigiendo a WhatsApp para completar su consulta...';
+          }
+
+          if (btnText) btnText.hidden = false;
+          if (btnLoading) btnLoading.hidden = true;
+          if (submitBtn) submitBtn.disabled = false;
+
+          // Redirect to WhatsApp
+          setTimeout(() => {
+            window.open(`https://wa.me/595981586823?text=${whatsappMsg}`, '_blank');
+          }, 800);
+        }, 600);
+      } catch (error) {
+        console.error('No se pudo enviar la consulta:', error);
+
         const feedback = form.querySelector('.form-feedback');
         if (feedback) {
           feedback.hidden = false;
-          feedback.className = 'form-feedback success';
-          feedback.textContent = 'Redirigiendo a WhatsApp para completar su consulta...';
+          feedback.className = 'form-feedback error';
+          feedback.textContent = 'No se pudo enviar la consulta. Probá de nuevo o escribinos por WhatsApp.';
         }
 
         if (btnText) btnText.hidden = false;
         if (btnLoading) btnLoading.hidden = true;
         if (submitBtn) submitBtn.disabled = false;
-
-        // Redirect to WhatsApp
-        setTimeout(() => {
-          window.open(`https://wa.me/595981586823?text=${whatsappMsg}`, '_blank');
-        }, 800);
-      }, 600);
+      }
     });
   }
 
