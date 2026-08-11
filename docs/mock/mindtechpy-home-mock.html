@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="1778ceb6-cc7a-495d-92c4-e5ba7dd0fcf3"></script>
+
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<style>/* cyrillic-ext */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("cd59072e-f39b-4dcf-98de-975151d1c3d5") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("d43b02e1-bfad-45b9-af94-a0ef5f1f2ab1") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("c25a56be-34d6-496d-8f56-5ef45127d545") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("62a9d453-0845-440a-b721-d9a42e639f0e") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("0a829a61-1650-4c55-ba3a-b2d2b2ab1ea0") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("82d3cb55-f870-4171-8a75-354213dac3c8") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("4f148860-1f49-4a29-82af-d242902a7fae") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("376e7521-3eb5-48d8-a05e-9f861883190e") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("5bdc9715-c8b3-4f38-8f8d-e06eed77e44a") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("89e95bdd-082c-4549-b047-6b917909eb0c") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("f5ee5fef-d45c-498e-9023-2f9808a6d41d") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("4fbd3186-85d8-431a-bc5e-f85f44320e4b") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("5cad4e37-3f69-4f96-bfb6-47d6c9720f74") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("3e29c377-47fd-486d-a1e9-3b483f642daa") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("14f65d7b-988a-4303-b0a0-034efe6c9d33") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("1e80d132-4ac6-481f-ae2c-ed614b4c6c9e") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("f5ee5fef-d45c-498e-9023-2f9808a6d41d") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("4fbd3186-85d8-431a-bc5e-f85f44320e4b") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("5cad4e37-3f69-4f96-bfb6-47d6c9720f74") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("3e29c377-47fd-486d-a1e9-3b483f642daa") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("14f65d7b-988a-4303-b0a0-034efe6c9d33") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("1e80d132-4ac6-481f-ae2c-ed614b4c6c9e") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("f5ee5fef-d45c-498e-9023-2f9808a6d41d") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("4fbd3186-85d8-431a-bc5e-f85f44320e4b") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("5cad4e37-3f69-4f96-bfb6-47d6c9720f74") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("3e29c377-47fd-486d-a1e9-3b483f642daa") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("14f65d7b-988a-4303-b0a0-034efe6c9d33") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("1e80d132-4ac6-481f-ae2c-ed614b4c6c9e") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("a68b031d-7c02-49b9-9e6c-7e78b6d77fec") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("63ceed81-0484-4331-b026-5ce13620c61c") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("a68b031d-7c02-49b9-9e6c-7e78b6d77fec") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("63ceed81-0484-4331-b026-5ce13620c61c") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("a68b031d-7c02-49b9-9e6c-7e78b6d77fec") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("63ceed81-0484-4331-b026-5ce13620c61c") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("a68b031d-7c02-49b9-9e6c-7e78b6d77fec") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("63ceed81-0484-4331-b026-5ce13620c61c") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>
+  html, body { margin: 0; padding: 0; background: #11131A; }
+  * { box-sizing: border-box; }
+  a { color: #8B7CFF; text-decoration: none; }
+  a:hover { color: #A79CFF; }
+  ::selection { background: #8B7CFF; color: #11131A; }
+  input, textarea, select, button { font: inherit; }
+  @keyframes thread-in { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+  [data-scroller]::-webkit-scrollbar { height: 6px; }
+  [data-scroller]::-webkit-scrollbar-thumb { background: #353A49; border-radius: 99px; }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</helmet>
+
+<div style="background: #11131A; color: #F4F2FA; font-family: Manrope, system-ui, sans-serif; min-height: 100vh; overflow-x: hidden;">
+
+  <header style="position: sticky; top: 0; z-index: 40; height: 68px; background: rgba(17,19,26,0.86); backdrop-filter: blur(14px); border-bottom: 1px solid #262A36;">
+    <div style="max-width: 1280px; margin: 0 auto; height: 68px; padding: 0 32px; display: flex; align-items: center; gap: 40px;">
+      <a href="#top" style="display: flex; align-items: center; gap: 10px; color: #F4F2FA;">
+        <span style="width: 26px; height: 26px; border-radius: 8px; border: 1px solid #8B7CFF; display: grid; place-items: center;">
+          <span style="width: 8px; height: 8px; border-radius: 99px; background: #8B7CFF; display: block;"></span>
+        </span>
+        <span style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 17px; letter-spacing: -0.01em;">MindTechPy</span>
+      </a>
+      <nav style="display: flex; align-items: center; gap: 28px; margin-left: auto;">
+        <a href="#capacidades" style="color: #B7B5C2; font-size: 14.5px; font-weight: 500;" style-hover="color: #F4F2FA;">Servicios</a>
+        <a href="#evidencia" style="color: #B7B5C2; font-size: 14.5px; font-weight: 500;" style-hover="color: #F4F2FA;">Productos</a>
+        <a href="#criterio" style="color: #B7B5C2; font-size: 14.5px; font-weight: 500;" style-hover="color: #F4F2FA;">Cómo trabajamos</a>
+        <a href="#cierre" style="color: #B7B5C2; font-size: 14.5px; font-weight: 500;" style-hover="color: #F4F2FA;">Nosotros</a>
+        <a href="#cierre" style="margin-left: 8px; background: #8B7CFF; color: #11131A; font-weight: 700; font-size: 14.5px; padding: 11px 20px; border-radius: 99px;" style-hover="background: #A79CFF; color: #11131A;">Iniciar conversación</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" style="max-width: 1280px; margin: 0 auto; padding: 0 32px;">
+
+    <section style="display: grid; grid-template-columns: 64px 5fr 7fr; gap: 0 40px; padding: 96px 0 88px; align-items: start;">
+      <div style="position: relative; height: 100%; min-height: 420px;">
+        <div data-thread="1" style="position: absolute; left: 0; top: 8px; bottom: -88px; width: 1px; background: linear-gradient(180deg, #8B7CFF 0%, #8B7CFF 72%, rgba(139,124,255,0.15) 100%); transform-origin: top;"></div>
+        <div style="position: absolute; left: -3px; top: 8px; width: 7px; height: 7px; border-radius: 99px; background: #8B7CFF;"></div>
+        <div style="position: absolute; left: 1px; top: 132px; width: 40px; height: 1px; background: rgba(139,124,255,0.4);"></div>
+      </div>
+
+      <div data-reveal="1" style="padding-top: 4px;">
+        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #8B7CFF; margin: 0 0 28px;">Software empresarial · Paraguay · LATAM</p>
+        <h1 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(40px, 4.6vw, 66px); line-height: 1.02; letter-spacing: -0.03em; margin: 0 0 24px; text-wrap: pretty;">Software que entra en operación.</h1>
+        <p style="font-size: 18.5px; line-height: 1.6; color: #B7B5C2; margin: 0 0 40px; max-width: 30em; text-wrap: pretty;">Diseñamos sistemas, automatizaciones y equipos técnicos para operaciones que necesitan avanzar.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 14px;">
+          <a href="#cierre" style="background: #8B7CFF; color: #11131A; font-weight: 700; font-size: 15.5px; padding: 15px 26px; border-radius: 99px; box-shadow: 0 8px 30px rgba(139,124,255,0.16);" style-hover="background: #A79CFF; color: #11131A;">Iniciar conversación</a>
+          <a href="#capacidades" style="border: 1px solid #353A49; color: #F4F2FA; font-weight: 600; font-size: 15.5px; padding: 15px 26px; border-radius: 99px;" style-hover="border-color: #8B7CFF; color: #F4F2FA; background: #1A1D27;">Explorar capacidades</a>
+        </div>
+      </div>
+
+      <div data-reveal="2" style="position: relative;">
+        <div style="position: relative; border: 1px solid #353A49; border-radius: 16px; background: #1A1D27; aspect-ratio: 4 / 3; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 24px;">
+          <div style="position: absolute; inset: 0; background: repeating-linear-gradient(135deg, rgba(53,58,73,0.5) 0 1px, transparent 1px 14px);"></div>
+          <div style="position: absolute; inset: 0; background: radial-gradient(120% 90% at 82% 12%, rgba(139,124,255,0.16), transparent 60%);"></div>
+          <div style="position: absolute; top: 20px; left: 20px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #8B7CFF; border: 1px solid rgba(139,124,255,0.45); border-radius: 99px; padding: 6px 12px;">Pendiente de contenido</div>
+          <div style="position: relative;">
+            <p style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 20px; margin: 0 0 8px;">Hero · 1600 × 1200</p>
+            <p style="font-size: 14.5px; line-height: 1.55; color: #B7B5C2; margin: 0; max-width: 34em;">Sesión de trabajo real: plano cenital de arquitectura, notas y dos personas colaborando. Luz violeta solo como detalle de contexto. Sin texto incrustado. Debe leerse en escala de grises.</p>
+          </div>
+        </div>
+        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: #6E7285; margin: 12px 0 0;">En móvil: proporción 4:3 a ancho completo, debajo de las acciones.</p>
+      </div>
+    </section>
+
+    <section id="criterio" style="border-top: 1px solid #262A36; padding: 72px 0 88px;">
+      <div style="display: grid; grid-template-columns: 64px 1fr; gap: 40px;">
+        <div style="position: relative;">
+          <div data-thread="2" style="position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: rgba(139,124,255,0.35); transform-origin: top;"></div>
+        </div>
+        <div>
+          <div style="display: flex; align-items: baseline; gap: 20px; margin-bottom: 44px; flex-wrap: wrap;">
+            <h2 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(26px, 2.6vw, 36px); letter-spacing: -0.02em; margin: 0;">De la necesidad a la operación.</h2>
+            <p style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #6E7285; margin: 0;">El hilo de ejecución</p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #262A36; border: 1px solid #262A36; border-radius: 16px; overflow: hidden;">
+            <div tabindex="0" sc-camel-on-mouse-enter="{{ setV0 }}" sc-camel-on-focus="{{ setV0 }}" style="background: #11131A; padding: 26px 24px 30px; outline: none; cursor: default; opacity: {{ o0 }};" style-hover="background: #1A1D27;" style-focus="background: #1A1D27;">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+                <span style="width: 7px; height: 7px; border-radius: 99px; background: {{ d0 }}; display: block;"></span>
+                <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6E7285;">01</span>
+              </div>
+              <p style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: -0.01em; margin: 0 0 12px;">Entender</p>
+              <p style="font-size: 14.5px; line-height: 1.55; color: #B7B5C2; margin: 0;">Alineamos el problema, los datos y las restricciones antes de elegir tecnología.</p>
+            </div>
+            <div tabindex="0" sc-camel-on-mouse-enter="{{ setV1 }}" sc-camel-on-focus="{{ setV1 }}" style="background: #11131A; padding: 26px 24px 30px; outline: none; opacity: {{ o1 }};" style-hover="background: #1A1D27;" style-focus="background: #1A1D27;">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+                <span style="width: 7px; height: 7px; border-radius: 99px; background: {{ d1 }}; display: block;"></span>
+                <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6E7285;">02</span>
+              </div>
+              <p style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: -0.01em; margin: 0 0 12px;">Diseñar</p>
+              <p style="font-size: 14.5px; line-height: 1.55; color: #B7B5C2; margin: 0;">Definimos una arquitectura que el equipo pueda mantener.</p>
+            </div>
+            <div tabindex="0" sc-camel-on-mouse-enter="{{ setV2 }}" sc-camel-on-focus="{{ setV2 }}" style="background: #11131A; padding: 26px 24px 30px; outline: none; opacity: {{ o2 }};" style-hover="background: #1A1D27;" style-focus="background: #1A1D27;">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+                <span style="width: 7px; height: 7px; border-radius: 99px; background: {{ d2 }}; display: block;"></span>
+                <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6E7285;">03</span>
+              </div>
+              <p style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: -0.01em; margin: 0 0 12px;">Integrar</p>
+              <p style="font-size: 14.5px; line-height: 1.55; color: #B7B5C2; margin: 0;">Conectamos productos, procesos y canales sin forzar reemplazos innecesarios.</p>
+            </div>
+            <div tabindex="0" sc-camel-on-mouse-enter="{{ setV3 }}" sc-camel-on-focus="{{ setV3 }}" style="background: #11131A; padding: 26px 24px 30px; outline: none; opacity: {{ o3 }};" style-hover="background: #1A1D27;" style-focus="background: #1A1D27;">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+                <span style="width: 7px; height: 7px; border-radius: 99px; background: {{ d3 }}; display: block;"></span>
+                <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6E7285;">04</span>
+              </div>
+              <p style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: -0.01em; margin: 0 0 12px;">Acompañar</p>
+              <p style="font-size: 14.5px; line-height: 1.55; color: #B7B5C2; margin: 0;">Medimos, corregimos y evolucionamos el sistema después de la entrega.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="capacidades" style="border-top: 1px solid #262A36; padding: 72px 0 88px;">
+      <div style="display: grid; grid-template-columns: 64px 1fr; gap: 40px;">
+        <div style="position: relative;">
+          <div data-thread="3" style="position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: rgba(139,124,255,0.35); transform-origin: top;"></div>
+          <div style="position: absolute; left: 1px; top: 120px; width: 39px; height: 1px; background: rgba(139,124,255,0.3);"></div>
+          <div style="position: absolute; left: 1px; top: 460px; width: 39px; height: 1px; background: rgba(139,124,255,0.3);"></div>
+        </div>
+        <div>
+          <div style="max-width: 46em; margin-bottom: 44px;">
+            <h2 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(26px, 2.6vw, 36px); letter-spacing: -0.02em; margin: 0 0 14px;">Cuatro rutas que parten del mismo proceso.</h2>
+            <p style="font-size: 17px; line-height: 1.6; color: #B7B5C2; margin: 0;">Cada capacidad entra en operación con responsables, documentación y criterios de continuidad definidos.</p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 7fr 5fr; grid-auto-rows: min-content; gap: 20px;">
+
+            <a href="#cierre" data-reveal="3" style="grid-column: 1 / -1; display: grid; grid-template-columns: 1.15fr 1fr; gap: 0; border: 1px solid #353A49; border-radius: 16px; background: #1A1D27; overflow: hidden; color: #F4F2FA; transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;" style-hover="border-color: #8B7CFF; transform: translateY(-3px); box-shadow: 0 14px 40px rgba(139,124,255,0.1); color: #F4F2FA;">
+              <div style="padding: 34px 34px 30px;">
+                <p style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #8B7CFF; margin: 0 0 20px;">Capacidad 01</p>
+                <h3 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 28px; letter-spacing: -0.02em; margin: 0 0 14px;">Software a medida</h3>
+                <p style="font-size: 15.5px; line-height: 1.6; color: #B7B5C2; margin: 0 0 26px; max-width: 30em;">Sistemas web, móviles y de integración hechos para el contexto de la empresa.</p>
+                <span style="font-weight: 600; font-size: 14.5px; color: #8B7CFF;">Conocer software a medida →</span>
+              </div>
+              <div style="position: relative; min-height: 260px; border-left: 1px solid #262A36; background: #16192161;">
+                <div style="position: absolute; inset: 0; background: repeating-linear-gradient(135deg, rgba(53,58,73,0.45) 0 1px, transparent 1px 14px);"></div>
+                <div style="position: absolute; inset: 0; padding: 24px; display: flex; flex-direction: column; justify-content: space-between;">
+                  <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #8B7CFF; border: 1px solid rgba(139,124,255,0.45); border-radius: 99px; padding: 5px 11px; align-self: flex-start;">Pendiente · 1200 × 900</span>
+                  <span style="font-size: 13.5px; line-height: 1.5; color: #8C90A0;">Revisión de producto o planificación técnica real.</span>
+                </div>
+              </div>
+            </a>
+
+            <div data-reveal="4" style="border: 1px solid #353A49; border-radius: 16px; background: #1A1D27; padding: 32px; display: flex; flex-direction: column; gap: 22px; transition: transform .25s ease, border-color .25s ease;" style-hover="border-color: #8B7CFF; transform: translateY(-3px);">
+              <p style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #8B7CFF; margin: 0;">Capacidad 02</p>
+              <div style="position: relative; border: 1px solid #262A36; border-radius: 10px; aspect-ratio: 4 / 5; background: #161921; overflow: hidden; padding: 18px; display: flex; align-items: flex-end;">
+                <div style="position: absolute; inset: 0; background: repeating-linear-gradient(135deg, rgba(53,58,73,0.45) 0 1px, transparent 1px 14px);"></div>
+                <span style="position: relative; font-size: 13px; line-height: 1.5; color: #8C90A0;">Imagen editorial: documentos, flujos o procesamiento físico. <span style="color: #8B7CFF;">Pendiente.</span></span>
+              </div>
+              <div>
+                <h3 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: -0.02em; margin: 0 0 12px;">Automatización e IA</h3>
+                <p style="font-size: 15.5px; line-height: 1.6; color: #B7B5C2; margin: 0 0 22px;">Convertimos tareas repetitivas en procesos trazables y útiles.</p>
+                <a href="#cierre" style="font-weight: 600; font-size: 14.5px;">Conocer automatización e IA →</a>
+              </div>
+            </div>
+
+            <div data-reveal="5" style="display: grid; gap: 20px; grid-auto-rows: min-content;">
+              <div style="border: 1px solid #262A36; border-radius: 16px; background: #11131A; padding: 30px; transition: border-color .25s ease, background .25s ease;" style-hover="border-color: #8B7CFF; background: #1A1D27;">
+                <p style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #8B7CFF; margin: 0 0 18px;">Capacidad 03</p>
+                <h3 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 22px; letter-spacing: -0.02em; margin: 0 0 12px;">Cloud y operación</h3>
+                <p style="font-size: 15px; line-height: 1.6; color: #B7B5C2; margin: 0 0 22px;">Despliegues, observabilidad y mantenimiento sin depender de improvisaciones.</p>
+                <div style="display: flex; align-items: center; gap: 12px; padding: 14px 0; border-top: 1px solid #262A36; border-bottom: 1px solid #262A36; margin-bottom: 20px;">
+                  <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: #8C90A0;">Diagrama real, simplificado y revisado por el equipo técnico.</span>
+                </div>
+                <a href="#cierre" style="font-weight: 600; font-size: 14.5px;">Conocer cloud y operación →</a>
+              </div>
+
+              <div style="border: 1px solid #262A36; border-radius: 16px; background: #11131A; padding: 30px; transition: border-color .25s ease, background .25s ease;" style-hover="border-color: #8B7CFF; background: #1A1D27;">
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 18px;">
+                  <p style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #8B7CFF; margin: 0;">Nuevo</p>
+                  <p style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6E7285; margin: 0;">Suscripción mensual</p>
+                </div>
+                <h3 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 22px; letter-spacing: -0.02em; margin: 0 0 12px;">Web Express</h3>
+                <p style="font-size: 15px; line-height: 1.6; color: #B7B5C2; margin: 0 0 22px;">Presencia digital llave en mano para empresas que necesitan estar operando ya, con mantenimiento incluido.</p>
+                <a href="#cierre" style="font-weight: 600; font-size: 14.5px;">Conocer Web Express →</a>
+              </div>
+            </div>
+
+            <a href="#cierre" data-reveal="6" style="grid-column: 1 / -1; position: relative; border: 1px solid #353A49; border-radius: 16px; background: #1A1D27; overflow: hidden; min-height: 300px; display: flex; align-items: flex-end; color: #F4F2FA; transition: border-color .25s ease, transform .25s ease;" style-hover="border-color: #8B7CFF; transform: translateY(-3px); color: #F4F2FA;">
+              <div style="position: absolute; inset: 0; background: repeating-linear-gradient(135deg, rgba(53,58,73,0.4) 0 1px, transparent 1px 16px);"></div>
+              <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(17,19,26,0.94) 0%, rgba(17,19,26,0.6) 55%, rgba(139,124,255,0.1) 100%);"></div>
+              <span style="position: absolute; top: 24px; right: 24px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #8B7CFF; border: 1px solid rgba(139,124,255,0.45); border-radius: 99px; padding: 5px 11px;">Pendiente · 1200 × 900</span>
+              <div style="position: relative; padding: 34px; max-width: 40em;">
+                <p style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #8B7CFF; margin: 0 0 18px;">Capacidad 04</p>
+                <h3 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 28px; letter-spacing: -0.02em; margin: 0 0 14px;">Staff Augmentation</h3>
+                <p style="font-size: 15.5px; line-height: 1.6; color: #B7B5C2; margin: 0 0 24px;">Capacidad técnica que se integra con objetivos, rituales y estándares definidos.</p>
+                <span style="font-weight: 600; font-size: 14.5px; color: #8B7CFF;">Conocer Staff Augmentation →</span>
+              </div>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="evidencia" style="border-top: 1px solid #262A36; padding: 72px 0 88px;">
+      <div style="display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 40px;">
+        <div style="position: relative;">
+          <div data-thread="4" style="position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: rgba(139,124,255,0.35); transform-origin: top;"></div>
+        </div>
+        <div style="min-width: 0;">
+          <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap; margin-bottom: 36px;">
+            <div style="max-width: 40em;">
+              <h2 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(26px, 2.6vw, 36px); letter-spacing: -0.02em; margin: 0 0 14px;">Evidencia antes que promesas.</h2>
+              <p style="font-size: 17px; line-height: 1.6; color: #B7B5C2; margin: 0;">Productos propios y colaboraciones en operación. Cada módulo espera una captura real con datos anonimizados.</p>
+            </div>
+            <p style="font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: #6E7285; margin: 0;">Desliza →</p>
+          </div>
+
+          <div data-scroller="1" style="min-width: 0; max-width: 100%; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(300px, 34%); gap: 20px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; padding-bottom: 18px;">
+            <article style="scroll-snap-align: start; border: 1px solid #353A49; border-radius: 16px; background: #1A1D27; overflow: hidden; display: flex; flex-direction: column;">
+              <div style="position: relative; aspect-ratio: 1440 / 1000; background: #161921; border-bottom: 1px solid #262A36;">
+                <div style="position: absolute; inset: 0; background: repeating-linear-gradient(135deg, rgba(53,58,73,0.45) 0 1px, transparent 1px 14px);"></div>
+                <span style="position: absolute; bottom: 16px; left: 16px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #8B7CFF;">Pendiente · 1440 × 1000</span>
+              </div>
+              <div style="padding: 26px;">
+                <p style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #6E7285; margin: 0 0 14px;">Producto propio</p>
+                <h3 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 21px; letter-spacing: -0.02em; margin: 0 0 10px;">WhatsApp Sender Pro</h3>
+                <p style="font-size: 15px; line-height: 1.6; color: #B7B5C2; margin: 0;">Conversaciones y campañas con control empresarial.</p>
+              </div>
+            </article>
+
+            <article style="scroll-snap-align: start; border: 1px solid #353A49; border-radius: 16px; background: #1A1D27; overflow: hidden; display: flex; flex-direction: column;">
+              <div style="position: relative; aspect-ratio: 1440 / 1000; background: #161921; border-bottom: 1px solid #262A36;">
+                <div style="position: absolute; inset: 0; background: repeating-linear-gradient(135deg, rgba(53,58,73,0.45) 0 1px, transparent 1px 14px);"></div>
+                <span style="position: absolute; bottom: 16px; left: 16px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #8B7CFF;">Pendiente · foto de dispositivo</span>
+              </div>
+              <div style="padding: 26px;">
+                <p style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #6E7285; margin: 0 0 14px;">Producto propio</p>
+                <h3 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 21px; letter-spacing: -0.02em; margin: 0 0 10px;">SMS Sender Pro</h3>
+                <p style="font-size: 15px; line-height: 1.6; color: #B7B5C2; margin: 0;">Mensajería crítica cuando el canal debe seguir disponible.</p>
+              </div>
+            </article>
+
+            <article style="scroll-snap-align: start; border: 1px solid #353A49; border-radius: 16px; background: #1A1D27; overflow: hidden; display: flex; flex-direction: column;">
+              <div style="position: relative; aspect-ratio: 1440 / 1000; background: #161921; border-bottom: 1px solid #262A36;">
+                <div style="position: absolute; inset: 0; background: repeating-linear-gradient(135deg, rgba(53,58,73,0.45) 0 1px, transparent 1px 14px);"></div>
+                <span style="position: absolute; bottom: 16px; left: 16px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #8B7CFF;">Pendiente · extracción anonimizada</span>
+              </div>
+              <div style="padding: 26px;">
+                <p style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #6E7285; margin: 0 0 14px;">Producto propio</p>
+                <h3 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 21px; letter-spacing: -0.02em; margin: 0 0 10px;">CuenlyApp / FacturaIA</h3>
+                <p style="font-size: 15px; line-height: 1.6; color: #B7B5C2; margin: 0;">Facturas que llegan como datos listos para trabajar.</p>
+              </div>
+            </article>
+
+            <article style="scroll-snap-align: start; border: 1px solid #262A36; border-radius: 16px; background: #11131A; overflow: hidden; display: flex; flex-direction: column;">
+              <div style="position: relative; aspect-ratio: 1440 / 1000; background: #161921; border-bottom: 1px solid #262A36;">
+                <div style="position: absolute; inset: 0; background: repeating-linear-gradient(135deg, rgba(53,58,73,0.3) 0 1px, transparent 1px 14px);"></div>
+                <span style="position: absolute; bottom: 16px; left: 16px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #8B7CFF;">Pendiente · captura del sitio</span>
+              </div>
+              <div style="padding: 26px;">
+                <p style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #6E7285; margin: 0 0 14px;">Colaboración</p>
+                <h3 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 21px; letter-spacing: -0.02em; margin: 0 0 10px;">FoxBox</h3>
+                <p style="font-size: 15px; line-height: 1.6; color: #B7B5C2; margin: 0 0 16px;">Proyecto en operación con MindTechPy.</p>
+                <a href="https://foxbox.com.py" style="font-family: 'IBM Plex Mono', monospace; font-size: 12.5px;">foxbox.com.py</a>
+              </div>
+            </article>
+
+            <article style="scroll-snap-align: start; border: 1px solid #262A36; border-radius: 16px; background: #11131A; overflow: hidden; display: flex; flex-direction: column;">
+              <div style="position: relative; aspect-ratio: 1440 / 1000; background: #161921; border-bottom: 1px solid #262A36;">
+                <div style="position: absolute; inset: 0; background: repeating-linear-gradient(135deg, rgba(53,58,73,0.3) 0 1px, transparent 1px 14px);"></div>
+                <span style="position: absolute; bottom: 16px; left: 16px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #8B7CFF;">Pendiente · captura del sitio</span>
+              </div>
+              <div style="padding: 26px;">
+                <p style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #6E7285; margin: 0 0 14px;">Colaboración</p>
+                <h3 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: 21px; letter-spacing: -0.02em; margin: 0 0 10px;">Yvága Açai</h3>
+                <p style="font-size: 15px; line-height: 1.6; color: #B7B5C2; margin: 0 0 16px;">Proyecto en operación con MindTechPy.</p>
+                <a href="https://yvaga-acai.com.py" style="font-family: 'IBM Plex Mono', monospace; font-size: 12.5px;">yvaga-acai.com.py</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cierre" style="border-top: 1px solid #262A36; padding: 72px 0 96px;">
+      <div style="display: grid; grid-template-columns: 64px 1fr; gap: 40px;">
+        <div style="position: relative;">
+          <div data-thread="5" style="position: absolute; left: 0; top: 0; height: 340px; width: 1px; background: linear-gradient(180deg, rgba(139,124,255,0.35), #8B7CFF); transform-origin: top;"></div>
+          <div style="position: absolute; left: 1px; top: 340px; width: 39px; height: 1px; background: #8B7CFF;"></div>
+        </div>
+        <div style="border: 1px solid #353A49; border-radius: 16px; background: #1A1D27; padding: 48px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px;">
+          <div>
+            <h2 style="font-family: Outfit, sans-serif; font-weight: 700; font-size: clamp(28px, 3vw, 42px); line-height: 1.08; letter-spacing: -0.03em; margin: 0 0 20px; text-wrap: pretty;">Contanos qué necesita empezar a funcionar mejor.</h2>
+            <p style="font-size: 16.5px; line-height: 1.6; color: #B7B5C2; margin: 0 0 36px;">Respondemos con una lectura del problema y un próximo paso concreto. Sin propuestas genéricas.</p>
+            <div style="border-top: 1px solid #262A36; padding-top: 24px; display: grid; gap: 14px;">
+              <p style="font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #6E7285; margin: 0;">Compromisos verificables</p>
+              <p style="font-size: 14.5px; line-height: 1.6; color: #B7B5C2; margin: 0;">NDA desde el inicio · Facturación y atención comercial desde Paraguay · Entregas con documentación y trazabilidad acordadas.</p>
+            </div>
+            <div style="border-top: 1px solid #262A36; margin-top: 28px; padding-top: 24px;">
+              <p style="font-family: Outfit, sans-serif; font-weight: 600; font-size: 17px; margin: 0 0 8px;">Buen trabajo técnico empieza con conversaciones claras.</p>
+              <a href="/trabaja-con-nosotros" style="font-size: 14.5px; font-weight: 600;">Trabaja con nosotros →</a>
+            </div>
+          </div>
+
+          <form sc-camel-on-submit="{{ onSubmit }}" sc-camel-no-validate="{{ true }}" style="display: grid; gap: 20px; align-content: start;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+              <label style="display: grid; gap: 7px;">
+                <span style="font-size: 13.5px; font-weight: 600; color: #F4F2FA;">Nombre</span>
+                <input name="nombre" sc-camel-on-blur="{{ onBlur }}" placeholder="Tu nombre" style="background: #11131A; border: 1px solid #353A49; border-radius: 10px; color: #F4F2FA; padding: 12px 14px; font-size: 15px; outline: none;" style-focus="border-color: #8B7CFF; box-shadow: 0 0 0 3px rgba(139,124,255,0.2);">
+                <span style="font-size: 12.5px; color: {{ cNombre }};">{{ eNombre }}</span>
+              </label>
+              <label style="display: grid; gap: 7px;">
+                <span style="font-size: 13.5px; font-weight: 600; color: #F4F2FA;">Empresa</span>
+                <input name="empresa" sc-camel-on-blur="{{ onBlur }}" placeholder="Razón social o nombre comercial" style="background: #11131A; border: 1px solid #353A49; border-radius: 10px; color: #F4F2FA; padding: 12px 14px; font-size: 15px; outline: none;" style-focus="border-color: #8B7CFF; box-shadow: 0 0 0 3px rgba(139,124,255,0.2);">
+                <span style="font-size: 12.5px; color: {{ cEmpresa }};">{{ eEmpresa }}</span>
+              </label>
+            </div>
+            <label style="display: grid; gap: 7px;">
+              <span style="font-size: 13.5px; font-weight: 600; color: #F4F2FA;">Correo</span>
+              <input name="correo" type="email" sc-camel-on-blur="{{ onBlur }}" placeholder="nombre@empresa.com.py" style="background: #11131A; border: 1px solid #353A49; border-radius: 10px; color: #F4F2FA; padding: 12px 14px; font-size: 15px; outline: none;" style-focus="border-color: #8B7CFF; box-shadow: 0 0 0 3px rgba(139,124,255,0.2);">
+              <span style="font-size: 12.5px; color: {{ cCorreo }};">{{ eCorreo }}</span>
+            </label>
+            <label style="display: grid; gap: 7px;">
+              <span style="font-size: 13.5px; font-weight: 600; color: #F4F2FA;">Tipo de necesidad</span>
+              <sc-raw-select name="tipo" sc-camel-on-blur="{{ onBlur }}" style="background: #11131A; border: 1px solid #353A49; border-radius: 10px; color: #F4F2FA; padding: 12px 14px; font-size: 15px; outline: none; appearance: none;" style-focus="border-color: #8B7CFF; box-shadow: 0 0 0 3px rgba(139,124,255,0.2);">
+                <option value="">Seleccioná una opción</option>
+                <option>Software a medida</option>
+                <option>Automatización e IA</option>
+                <option>Cloud y operación</option>
+                <option>Staff Augmentation</option>
+                <option>Web Express</option>
+                <option>Productos (WhatsApp / SMS / CuenlyApp)</option>
+                <option>Todavía no lo tengo claro</option>
+              </sc-raw-select>
+              <span style="font-size: 12.5px; color: {{ cTipo }};">{{ eTipo }}</span>
+            </label>
+            <label style="display: grid; gap: 7px;">
+              <span style="font-size: 13.5px; font-weight: 600; color: #F4F2FA;">Contexto</span>
+              <textarea name="contexto" rows="4" sc-camel-on-blur="{{ onBlur }}" placeholder="Qué proceso está trabado hoy, quién lo usa y qué sistemas hay involucrados." style="background: #11131A; border: 1px solid #353A49; border-radius: 10px; color: #F4F2FA; padding: 12px 14px; font-size: 15px; outline: none; resize: vertical; font-family: Manrope, sans-serif;" style-focus="border-color: #8B7CFF; box-shadow: 0 0 0 3px rgba(139,124,255,0.2);"></textarea>
+              <span style="font-size: 12.5px; color: #6E7285;">Opcional, pero acelera la primera respuesta.</span>
+            </label>
+            <div style="display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 4px;">
+              <button type="submit" style="background: #8B7CFF; color: #11131A; font-weight: 700; font-size: 15.5px; padding: 15px 26px; border: none; border-radius: 99px; cursor: pointer;" style-hover="background: #A79CFF;">Iniciar conversación</button>
+              <span style="font-size: 13.5px; color: {{ cEstado }};">{{ estado }}</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="border-top: 1px solid #262A36; margin-top: 8px;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+      <p style="font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: #6E7285; margin: 0;">MindTechPy · Asunción, Paraguay</p>
+      <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+        <a href="/trabaja-con-nosotros" style="font-size: 13.5px; color: #B7B5C2;" style-hover="color: #F4F2FA;">Trabaja con nosotros</a>
+        <a href="/politicas" style="font-size: 13.5px; color: #B7B5C2;" style-hover="color: #F4F2FA;">Políticas</a>
+        <a href="#cierre" style="font-size: 13.5px; color: #B7B5C2;" style-hover="color: #F4F2FA;">Contacto</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;acento&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#8B7CFF&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#8B7CFF&quot;,&quot;#7C8BFF&quot;,&quot;#A78BFF&quot;,&quot;#8BFFD1&quot;],&quot;section&quot;:&quot;Marca&quot;},&quot;movimiento&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Interacción&quot;},&quot;atenuarInactivos&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Interacción&quot;}}">
+class Component extends DCLogic {
+  state = { v: 0, err: {}, estado: "" };
+
+  componentDidMount() {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (this.props.movimiento === false || reduced) return;
+
+    const threads = Array.from(document.querySelectorAll("[data-thread]"));
+    const reveals = Array.from(document.querySelectorAll("[data-reveal]"));
+    const all = threads.concat(reveals);
+
+    // Fail-open by construction: nothing is hidden unless it is measurably below
+    // the fold right now, and showing never depends on remembered state (this
+    // lifecycle can run twice, and IntersectionObserver never fires in a
+    // backgrounded frame).
+    const isThread = el => el.hasAttribute("data-thread");
+    const rectOf = el => (isThread(el) ? (el.parentElement || el) : el).getBoundingClientRect();
+    const inView = el => { const r = rectOf(el); return r.top < (window.innerHeight || 800) * 0.92 && r.bottom > -80; };
+    const show = el => {
+      if (isThread(el)) el.style.transform = "scaleY(1)";
+      else { el.style.opacity = "1"; el.style.transform = "translateY(0)"; }
+    };
+    const hide = el => {
+      if (isThread(el)) { el.style.transition = "transform 1.1s cubic-bezier(.22,.61,.36,1)"; el.style.transform = "scaleY(0)"; }
+      else { el.style.transition = "opacity .7s ease, transform .7s cubic-bezier(.22,.61,.36,1)"; el.style.opacity = "0"; el.style.transform = "translateY(18px)"; }
+    };
+
+    all.forEach(el => { if (inView(el)) show(el); else hide(el); });
+
+    const tick = () => {
+      let pending = 0;
+      all.forEach(el => { if (inView(el)) show(el); else pending++; });
+      if (!pending) this.cleanup();
+    };
+    this._tick = () => { if (this._raf) return; this._raf = requestAnimationFrame(() => { this._raf = 0; tick(); }); };
+    this._revealAll = () => { all.forEach(show); this.cleanup(); };
+
+    window.addEventListener("scroll", this._tick, { passive: true });
+    window.addEventListener("resize", this._tick, { passive: true });
+    this._timer = setTimeout(this._revealAll, 4000);
+    document.addEventListener("visibilitychange", this._tick);
+  }
+
+  cleanup() {
+    if (this._tick) {
+      window.removeEventListener("scroll", this._tick);
+      window.removeEventListener("resize", this._tick);
+      document.removeEventListener("visibilitychange", this._tick);
+    }
+    if (this._timer) { clearTimeout(this._timer); this._timer = 0; }
+  }
+
+  componentWillUnmount() { this.cleanup(); }
+
+  setV(i) { if (this.state.v !== i) this.setState({ v: i }); }
+
+  validate(name, value) {
+    const v = (value || "").trim();
+    if (name === "nombre") return v ? "" : "Necesitamos un nombre para responderte.";
+    if (name === "empresa") return v ? "" : "Indicá la empresa u organización.";
+    if (name === "correo") return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? "" : "Revisá el correo: falta el formato nombre@dominio.";
+    if (name === "tipo") return v ? "" : "Elegí el tipo de necesidad.";
+    return "";
+  }
+
+  onBlur = (e) => {
+    const { name, value } = e.target;
+    const msg = this.validate(name, value);
+    this.setState(s => ({ err: Object.assign({}, s.err, { [name]: msg }) }));
+  };
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    const f = e.target;
+    const err = {};
+    ["nombre", "empresa", "correo", "tipo"].forEach(n => {
+      const msg = this.validate(n, f.elements[n] ? f.elements[n].value : "");
+      if (msg) err[n] = msg;
+    });
+    const ok = Object.keys(err).length === 0;
+    this.setState({ err, estado: ok ? "Enviado. Respondemos en el mismo día hábil." : "Faltan datos para enviar." });
+  };
+
+  help(name, fallback) {
+    return this.state.err[name] || fallback;
+  }
+
+  renderVals() {
+    const accent = this.props.acento || "#8B7CFF";
+    const dim = this.props.atenuarInactivos === false ? 1 : 0.5;
+    const v = this.state.v;
+    const o = i => (v === i ? 1 : dim);
+    const d = i => (v === i ? accent : "#353A49");
+    const e = this.state.err;
+    return {
+      setV0: () => this.setV(0), setV1: () => this.setV(1), setV2: () => this.setV(2), setV3: () => this.setV(3),
+      o0: o(0), o1: o(1), o2: o(2), o3: o(3),
+      d0: d(0), d1: d(1), d2: d(2), d3: d(3),
+      onBlur: this.onBlur, onSubmit: this.onSubmit,
+      eNombre: this.help("nombre", "Como querés que te llamemos."),
+      eEmpresa: this.help("empresa", "Nos ayuda a entender el contexto."),
+      eCorreo: this.help("correo", "Ahí enviamos la respuesta."),
+      eTipo: this.help("tipo", "Podés cambiarlo después."),
+      cNombre: e.nombre ? "#FF9A8B" : "#6E7285",
+      cEmpresa: e.empresa ? "#FF9A8B" : "#6E7285",
+      cCorreo: e.correo ? "#FF9A8B" : "#6E7285",
+      cTipo: e.tipo ? "#FF9A8B" : "#6E7285",
+      estado: this.state.estado,
+      cEstado: this.state.estado.indexOf("Faltan") === 0 ? "#FF9A8B" : "#B7B5C2"
+    };
+  }
+}
+
+</script>
+
+
+</body></html>
