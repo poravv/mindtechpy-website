@@ -3,6 +3,8 @@
 // Requiere el markup .we-header / #we-menu-toggle / .we-scroll-progress__bar.
 
 export default function initPageChrome() {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   const yearEl = document.getElementById('y');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
@@ -31,7 +33,7 @@ export default function initPageChrome() {
   function updateScrollProgress() {
     if (!progressBar) return;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    progressBar.style.width = (docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0) + '%';
+    progressBar.style.transform = 'scaleX(' + (docHeight > 0 ? window.scrollY / docHeight : 0) + ')';
   }
 
   function updateHeader() {
@@ -50,16 +52,22 @@ export default function initPageChrome() {
     }
   }, { passive: true });
 
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  const revealElements = document.querySelectorAll('[data-reveal]');
 
-  document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+  } else {
+    revealElements.forEach(el => el.classList.add('revealed'));
+  }
 
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
@@ -73,7 +81,7 @@ export default function initPageChrome() {
       const headerHeight = header ? header.offsetHeight : 0;
       const targetPosition = targetEl.getBoundingClientRect().top + window.scrollY - headerHeight - 20;
 
-      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+      window.scrollTo({ top: targetPosition, behavior: reducedMotion ? 'auto' : 'smooth' });
       history.pushState(null, '', targetId);
     });
   });
