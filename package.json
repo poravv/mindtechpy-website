@@ -10,7 +10,9 @@
     "update-styles": "node update-styles.js",
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development",
-    "build:all": "node build-site.js"
+    "build:all": "node build-site.js",
+    "pretest": "npm run build",
+    "test": "node --test test/"
   },
   "keywords": [
     "website",

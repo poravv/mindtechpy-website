@@ -8,13 +8,16 @@ const VisitorCounter = require('./VisitorCounter');
 
 dotenv.config();
 
-const visitorCounter = new VisitorCounter();
+// DATA_DIR permite aislar la persistencia en tests (visitors.json, contacts.json)
+const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, '../../data');
+const visitorCounter = new VisitorCounter(path.join(DATA_DIR, 'visitors.json'));
 const DEBUG = process.env.DEBUG === 'true';
 const DEBUG_LEVEL = process.env.DEBUG_LEVEL || 'info';
+const IS_TEST = process.env.NODE_ENV === 'test';
 
-// SMTP transporter (se configura solo si las variables estan presentes)
+// SMTP transporter (se configura solo si las variables estan presentes; nunca en tests)
 let mailTransporter = null;
-if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
+if (!IS_TEST && process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
   mailTransporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: parseInt(process.env.SMTP_PORT || '587', 10),
@@ -179,7 +182,7 @@ setInterval(() => {
       contactRateMap.delete(ip);
     }
   }
-}, 60 * 60 * 1000);
+}, 60 * 60 * 1000).unref();
 
 app.post('/api/contact', (req, res) => {
   try {
@@ -221,7 +224,7 @@ app.post('/api/contact', (req, res) => {
       ip
     };
 
-    const contactsDir = path.join(__dirname, '../../data');
+    const contactsDir = DATA_DIR;
     const contactsFile = path.join(contactsDir, 'contacts.json');
 
     if (!fs.existsSync(contactsDir)) {
@@ -318,10 +321,14 @@ app.use((err, req, res, next) => {
   }
 });
 
-// Iniciar servidor
-const server = app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
-  if (DEBUG) {
-    console.log('Modo depuracion activado');
-  }
-});
+// Iniciar servidor solo cuando se ejecuta directamente (no al importarlo en tests)
+if (require.main === module) {
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+    if (DEBUG) {
+      console.log('Modo depuracion activado');
+    }
+  });
+}
+
+module.exports = app;
