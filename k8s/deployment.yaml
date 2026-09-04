@@ -25,7 +25,7 @@ spec:
       terminationGracePeriodSeconds: 30
       containers:
       - name: mindtechpy-web
-        image: ghcr.io/poravv/mindtechpy-website:sha-3e889dd
+        image: ghcr.io/poravv/mindtechpy-website:sha-b6b345a
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
