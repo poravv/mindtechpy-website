@@ -7,7 +7,7 @@ metadata:
     app: mindtechpy-web
     tier: frontend
 spec:
-  replicas: 1
+  replicas: 0  # sitio migrado a Cloudflare Pages
   strategy:
     type: Recreate
   selector:
