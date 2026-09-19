@@ -292,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'hero':            { title: 'MindTechPy — Ingeniería de Software & Transformación Digital | Paraguay', description: 'Software que entra en operación: sistemas, automatizaciones y equipos técnicos desde Paraguay para toda LATAM.' },
     'criterio':        { title: 'Cómo ejecutamos | De la necesidad a la operación | MindTechPy', description: 'Entender, diseñar, integrar y acompañar: el hilo de ejecución de MindTechPy.' },
     'capacidades':     { title: 'Servicios | Software a Medida, Automatización, Cloud, Staff Augmentation | MindTechPy', description: 'Software a medida, automatización e IA, cloud y operación, Staff Augmentation y Web Express en Paraguay.' },
-    'evidencia':       { title: 'Productos y Colaboraciones | Boti, Gift Hub, CuenlyApp, FoxBox | MindTechPy', description: 'Productos propios y colaboraciones en operación: Boti, Gift Hub, CuenlyApp, FoxBox y más.' },
+    'evidencia':       { title: 'Productos y Colaboraciones | Gift Hub, CuenlyApp, FoxBox | MindTechPy', description: 'Productos propios y colaboraciones en operación: Gift Hub, CuenlyApp, FoxBox y más.' },
     'como-trabajamos': { title: 'Cómo Trabajamos | MindTechPy Paraguay', description: 'Alineamos el contexto, hacemos avanzar la primera entrega y dejamos capacidad instalada.' },
     'empresa':         { title: 'Nosotros | Compromisos Verificables | MindTechPy Paraguay', description: 'NDA desde el inicio, facturación desde Paraguay, gestión de acceso por roles y entregas documentadas.' },
     'talento':         { title: 'Talento | Trabaja con Nosotros | MindTechPy', description: 'Buen trabajo técnico empieza con conversaciones claras. Sumate al equipo de MindTechPy.' },
