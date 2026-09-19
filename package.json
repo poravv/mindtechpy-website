@@ -5,12 +5,8 @@
   "scripts": {
     "start": "node src/infrastructure/server.js",
     "dev": "export DEBUG=true && nodemon src/infrastructure/server.js",
-    "dev:full": "node dev.js",
-    "compile-sass": "node sass-compile.js",
-    "update-styles": "node update-styles.js",
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development",
-    "build:all": "node build-site.js",
     "pretest": "npm run build",
     "test": "node --test test/"
   },
@@ -25,7 +21,6 @@
   "license": "ISC",
   "description": "Sitio web moderno y responsivo para MindTechPy",
   "dependencies": {
-    "axios": "^1.6.0",
     "compression": "^1.8.1",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
@@ -34,15 +29,12 @@
   "devDependencies": {
     "copy-webpack-plugin": "^13.0.0",
     "css-loader": "^6.8.1",
-    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.3",
     "mini-css-extract-plugin": "^2.7.6",
     "nodemon": "^3.0.1",
     "sass": "^1.69.5",
     "sass-loader": "^13.3.2",
-    "style-loader": "^3.3.3",
     "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
+    "webpack-cli": "^5.1.4"
   }
 }
