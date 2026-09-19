@@ -12,6 +12,7 @@ module.exports = (env, argv) => {
       'web-express': './src/pages/web-express.js',
       'staff-augmentation': './src/pages/staff-augmentation.js',
       'trabaja-con-nosotros': './src/pages/trabaja-con-nosotros.js',
+      legal: './src/pages/legal.js',
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
@@ -49,7 +50,9 @@ module.exports = (env, argv) => {
       new CopyPlugin({
         patterns: [
           { from: 'public/images', to: 'images' },
-          { from: 'public/ads.txt', to: '[name][ext]' }
+          { from: 'public/ads.txt', to: '[name][ext]' },
+          { from: 'public/robots.txt', to: '[name][ext]' },
+          { from: 'public/sitemap.xml', to: '[name][ext]' }
         ],
       }),
       new MiniCssExtractPlugin({
@@ -99,15 +102,19 @@ module.exports = (env, argv) => {
           useShortDoctype: true,
         } : false,
       }),
+      // Las tres paginas legales comparten el chunk `legal`
+      ...['privacidad', 'terminos', 'eliminacion-de-datos'].map((page) => new HtmlWebpackPlugin({
+        template: `./src/pages/${page}.html`,
+        filename: `${page}.html`,
+        chunks: ['legal'],
+        minify: isProduction ? {
+          collapseWhitespace: true,
+          removeComments: true,
+          removeRedundantAttributes: true,
+          useShortDoctype: true,
+        } : false,
+      })),
     ],
-    devServer: {
-      static: {
-        directory: path.join(__dirname, 'dist'),
-      },
-      compress: true,
-      port: 3000,
-      historyApiFallback: true
-    },
     performance: {
       hints: isProduction ? 'warning' : false,
       maxAssetSize: 512000,

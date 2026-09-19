@@ -1,5 +1,11 @@
 import '../styles/main.scss';
 
+// Los textos legales vivian en el home (#legal, #terminos, #privacidad): los enlaces viejos siguen funcionando.
+const legacyLegalRoutes = { '#legal': '/terminos', '#terminos': '/terminos', '#privacidad': '/privacidad' };
+if (legacyLegalRoutes[window.location.hash]) {
+  window.location.replace(legacyLegalRoutes[window.location.hash]);
+}
+
 // Marca JS activo: los revelados solo ocultan contenido cuando esta clase existe (fail-open sin JS)
 document.documentElement.classList.add('js');
 
@@ -115,28 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Red de seguridad: nada queda oculto si el observer no dispara
     setTimeout(() => revealElements.forEach(el => el.classList.add('revealed')), 4000);
   }
-
-  // ─── Legal Tabs ───
-  const legalTabs = document.querySelectorAll('.legal-tab');
-  const legalContents = document.querySelectorAll('.legal-content');
-
-  legalTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const target = tab.getAttribute('data-legal');
-
-      legalTabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-
-      legalContents.forEach(content => {
-        const id = content.id.replace('legal-', '');
-        if (id === target) {
-          content.removeAttribute('hidden');
-        } else {
-          content.setAttribute('hidden', '');
-        }
-      });
-    });
-  });
 
   // ─── Contact Form Validation ───
   const form = document.getElementById('contact-form');

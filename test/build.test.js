@@ -36,3 +36,26 @@ test('should_include_canonical_and_json_ld_in_head', () => {
   assert.match(head[0], /<link[^>]*rel="canonical"/i, 'falta canonical en el head');
   assert.match(head[0], /<script[^>]*type="application\/ld\+json"/i, 'falta JSON-LD en el head');
 });
+
+test('should_not_embed_legal_texts_in_home', () => {
+  assert.doesNotMatch(html, /id="legal(-terminos|-privacidad)?"/);
+  assert.match(html, /href="\/privacidad"/);
+  assert.match(html, /href="\/terminos"/);
+  assert.match(html, /href="\/eliminacion-de-datos"/);
+});
+
+test('should_build_each_legal_page_with_legal_identity_and_canonical', () => {
+  for (const page of ['privacidad', 'terminos', 'eliminacion-de-datos']) {
+    const legalHtml = fs.readFileSync(path.join(__dirname, `../dist/${page}.html`), 'utf8');
+    assert.match(legalHtml, /RUC 5379057-0/, `${page}: falta el RUC`);
+    assert.match(legalHtml, /Andrés Valentín Vera Chávez/, `${page}: falta el titular`);
+    assert.match(legalHtml, new RegExp(`rel="canonical" href="https://mindtechpy.net/${page}"`), `${page}: canonical`);
+    assert.equal(legalHtml.match(/<h1[\s>]/g).length, 1, `${page}: debe tener un solo h1`);
+  }
+});
+
+test('should_publish_sitemap_and_robots_at_dist_root', () => {
+  const sitemap = fs.readFileSync(path.join(__dirname, '../dist/sitemap.xml'), 'utf8');
+  assert.match(sitemap, /https:\/\/mindtechpy\.net\/privacidad</);
+  assert.ok(fs.existsSync(path.join(__dirname, '../dist/robots.txt')), 'falta dist/robots.txt');
+});

@@ -45,6 +45,14 @@ test('should_respond_ok_when_health_check_is_requested', async () => {
   assert.equal(body.status, 'ok');
 });
 
+test('should_serve_each_legal_page_at_its_clean_url', async () => {
+  for (const route of ['/privacidad', '/terminos', '/eliminacion-de-datos']) {
+    const res = await fetch(`${baseUrl}${route}`);
+    assert.equal(res.status, 200, `${route} no responde 200`);
+    assert.match(await res.text(), /RUC 5379057-0/, `${route} no contiene el RUC`);
+  }
+});
+
 test('should_return_visitor_stats_with_expected_shape', async () => {
   const res = await fetch(`${baseUrl}/api/visitors/stats`);
   assert.equal(res.status, 200);

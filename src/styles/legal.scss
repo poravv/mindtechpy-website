@@ -1,0 +1,218 @@
+// =============================================
+// Legal — Privacidad, Términos y Eliminación de datos
+// Extiende el sistema Operaciones Visibles de web-express.scss con un
+// layout de lectura: una sola columna angosta, sin paneles ni efectos.
+// =============================================
+
+@use 'web-express';
+
+.we-nav-links a[aria-current="page"] {
+  color: var(--paper);
+}
+
+.legal {
+  max-width: 70ch;
+  padding: 48px 0 0;
+
+  a:not(.btn) {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  &__head {
+    margin-bottom: 40px;
+
+    h1 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(30px, 4.2vw, 44px);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--paper);
+      margin: 0 0 16px;
+    }
+  }
+
+  &__lead {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--muted);
+    margin: 0 0 20px;
+  }
+
+  &__updated {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--muted-2);
+    margin: 0;
+  }
+
+  // Responsable / titular: ficha sobria, mismo peso visual que el resto del texto
+  &__owner {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-panel);
+    background: var(--surface);
+    padding: 24px;
+    margin-bottom: 16px;
+
+    h2 {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted-2);
+      margin: 0 0 12px;
+    }
+
+    p {
+      font-size: 15.5px;
+      line-height: 1.65;
+      color: var(--paper);
+      margin: 0 0 20px;
+    }
+
+    dl {
+      display: grid;
+      gap: 14px;
+      margin: 0;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    dt {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted-2);
+      margin-bottom: 2px;
+    }
+
+    dd {
+      font-size: 14.5px;
+      color: var(--muted);
+      margin: 0;
+      overflow-wrap: anywhere;
+    }
+  }
+
+  &__section {
+    padding: 32px 0;
+    border-bottom: 1px solid var(--line);
+
+    h2 {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 21px;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+      color: var(--paper);
+      margin: 0 0 14px;
+    }
+
+    p, li {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    ul {
+      margin: 0 0 12px;
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 6px;
+
+      &::marker {
+        color: var(--violet);
+      }
+    }
+
+    strong {
+      color: var(--paper);
+      font-weight: 600;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--violet);
+    flex-shrink: 0;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 20px 0 0;
+  }
+
+  &__related {
+    padding-top: 32px;
+
+    h2 {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted-2);
+      margin: 0 0 14px;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    a {
+      font-size: 15.5px;
+      font-weight: 600;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .legal {
+    padding-top: 72px;
+
+    &__head {
+      margin-bottom: 48px;
+    }
+
+    &__owner {
+      padding: 28px 32px;
+
+      dl {
+        grid-template-columns: auto auto 1fr;
+        gap: 40px;
+      }
+    }
+
+    &__actions {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+}

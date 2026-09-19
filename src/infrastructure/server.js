@@ -127,6 +127,13 @@ app.get('/trabaja-con-nosotros', (req, res) => {
   res.sendFile(filePath);
 });
 
+// Paginas legales (URLs registradas en plataformas externas: no renombrar)
+['privacidad', 'terminos', 'eliminacion-de-datos'].forEach((page) => {
+  app.get(`/${page}`, (req, res) => {
+    res.sendFile(path.join(__dirname, `../../dist/${page}.html`));
+  });
+});
+
 // ─── API: Visitantes ───
 
 app.get('/api/visitors/stats', (req, res) => {

@@ -1722,8 +1722,7 @@ main {
   gap: 12px;
 }
 
-.faq-item,
-.legal-section {
+.faq-item {
   border: 1px solid $line;
   border-radius: $radius-field;
   background: $surface;
@@ -1793,68 +1792,7 @@ main {
   }
 }
 
-// ─── 16. LEGAL ───
-
-.section--legal {
-  display: block;
-  padding-top: 56px;
-}
-
-.legal-tabs {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 28px;
-}
-
-.legal-tab {
-  font-family: $font-body;
-  font-size: 14px;
-  font-weight: 600;
-  color: $muted;
-  background: transparent;
-  border: 1px solid $line-strong;
-  border-radius: $radius-pill;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-
-  &:hover {
-    color: $paper;
-    border-color: $violet;
-  }
-
-  &.active {
-    color: $ink;
-    background: $violet;
-    border-color: $violet;
-  }
-}
-
-.legal-content {
-  display: grid;
-  gap: 12px;
-
-  &[hidden] {
-    display: none;
-  }
-
-  > p {
-    font-size: 14.5px;
-    line-height: 1.65;
-    color: $muted;
-
-    a {
-      font-weight: 600;
-    }
-  }
-
-  em {
-    color: $muted-2;
-  }
-}
-
-// ─── 17. FOOTER ───
+// ─── 16. FOOTER ───
 
 footer {
   border-top: 1px solid $line;
@@ -1929,6 +1867,13 @@ footer {
     font-size: 11.5px;
     color: $muted-2;
   }
+
+}
+
+// Identidad legal del titular: mismo peso que el copyright, sin énfasis
+.footer__legal {
+  display: block;
+  margin-top: 6px;
 }
 
 @media (min-width: $bp-tablet) {
@@ -1948,7 +1893,7 @@ footer {
   }
 }
 
-// ─── 18. REVELADOS Y MOVIMIENTO ───
+// ─── 17. REVELADOS Y MOVIMIENTO ───
 
 // Solo se ocultan elementos si JS está activo (fail-open sin JS)
 .js [data-reveal] {
