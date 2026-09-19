@@ -203,7 +203,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const name = fields.name.el.value.trim();
       const email = fields.email.el.value.trim();
       const company = document.getElementById('contact-company')?.value.trim() || '';
-      const service = document.getElementById('contact-service')?.value || '';
+      const serviceSelect = document.getElementById('contact-service');
+      const service = serviceSelect?.value || '';
+      const serviceLabel = service ? serviceSelect.selectedOptions[0].text : '';
       const message = fields.message.el.value.trim();
 
       const whatsappMsg = encodeURIComponent(
@@ -211,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `Nombre: ${name}\n` +
         `Email: ${email}\n` +
         (company ? `Empresa: ${company}\n` : '') +
-        (service ? `Servicio: ${service}\n` : '') +
+        (serviceLabel ? `Servicio: ${serviceLabel}\n` : '') +
         `\nMensaje:\n${message}`
       );
 
