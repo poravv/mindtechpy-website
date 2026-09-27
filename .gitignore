@@ -9,9 +9,5 @@
 .claude/
 .atl/
 
-# Datos que genera el servidor Express (visitas, contactos): nunca al repo
-/data/*
-!/data/.gitkeep
-
 # Logs de CLIs
 *-debug.log

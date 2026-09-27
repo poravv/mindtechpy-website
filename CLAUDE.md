@@ -38,7 +38,7 @@ Each page is an HTML template in `src/pages/` built by its own `HtmlWebpackPlugi
 - **`src/pages/page-chrome.js`** — Shared secondary-page behaviour (`initPageChrome`: mobile nav, scroll progress bar, compact header, scroll reveals, smooth scroll) imported by every secondary-page entry.
 - **`src/styles/main.scss`** — Home design system. **`src/styles/web-express.scss`** — tokens and shared components for secondary pages; `talento.scss` and `legal.scss` extend it with `@use 'web-express'`.
 - **`functions/api/contact.js`** — Cloudflare Pages Function for `POST /api/contact` (`onRequestPost`): validates the payload and sends the email over SMTP via `cloudflare:sockets`. Configured through the Pages environment variables `MAIL_HOST`, `MAIL_PORT`, `MAIL_USERNAME`, `MAIL_PASSWORD`, `MAIL_FROM`, `CONTACT_TO`. This is the production contact endpoint.
-- **`src/infrastructure/server.js`** — Express server for local dev/Docker: serves `dist/` then `public/`, one route per page, plus `POST /api/contact` (persists to `data/contacts.json`, optional nodemailer SMTP via `SMTP_*` env, disabled when `NODE_ENV=test`) and `GET /api/health`. Exports `app` without listening so tests can import it; `DATA_DIR` isolates persistence in tests.
+- **`src/infrastructure/server.js`** — Express server for local dev/Docker: serves `dist/` then `public/`, one route per page and `GET /api/health`. It has no `/api/contact`: the contact form only works where the Pages Function runs (production, or `npx wrangler pages dev dist`). Exports `app` without listening so tests can import it.
 - **`test/`** — `build.test.js` (asserts on built HTML in `dist/`), `server.test.js` (Express endpoints), `contact-function.test.js` (Pages Function validation and MIME building).
 
 ## Key Conventions
@@ -46,8 +46,7 @@ Each page is an HTML template in `src/pages/` built by its own `HtmlWebpackPlugi
 - Server-side files use CommonJS (`require`/`module.exports`); client-side files and `functions/` use ES modules (`import`/`export`)
 - Only the `public/` paths listed in the CopyWebpackPlugin patterns of `webpack.config.js` (images, `ads.txt`, `robots.txt`, `sitemap.xml`) reach `dist/` — a new static file must be added there or Cloudflare Pages will not serve it. `public/css/` and `public/js/` are legacy and unused.
 - Tech logo images live in `src/assets/` (bundled by webpack) and `public/images/tech/`
-- Local environment config via `.env` file (PORT, NODE_ENV, `SMTP_*`); DEBUG mode enabled by `export DEBUG=true`
-- `data/` holds what the Express server writes (`contacts.json`); git-ignored except `.gitkeep`
+- Local environment config via `.env` file (PORT, NODE_ENV); DEBUG mode enabled by `export DEBUG=true`
 - Test names follow `should_[expected]_when_[condition]`
 - No linter or formatter configured
 

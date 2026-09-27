@@ -8,8 +8,6 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=3000
-    volumes:
-      - app-data:/app/data
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000/api/health"]
@@ -34,12 +32,8 @@ services:
       - ./src:/app/src
       - ./public:/app/public
       - ./dist:/app/dist
-      - app-data:/app/data
     command: >
       sh -c "npm run build && npm run dev"
     restart: unless-stopped
     profiles:
       - dev
-
-volumes:
-  app-data:

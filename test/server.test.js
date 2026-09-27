@@ -1,14 +1,9 @@
 const { test, before, after } = require('node:test');
 const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const os = require('node:os');
-const path = require('node:path');
 
-// Aislar entorno ANTES de requerir la app: sin SMTP, sin data/ real, sin logs de debug
+// Aislar entorno ANTES de requerir la app: sin logs de debug
 process.env.NODE_ENV = 'test';
 process.env.DEBUG = 'false';
-const tempDataDir = fs.mkdtempSync(path.join(os.tmpdir(), 'mindtechpy-test-'));
-process.env.DATA_DIR = tempDataDir;
 
 const app = require('../src/infrastructure/server');
 
@@ -24,19 +19,7 @@ before(async () => {
 
 after(async () => {
   await new Promise((resolve) => server.close(resolve));
-  fs.rmSync(tempDataDir, { recursive: true, force: true });
 });
-
-function postJson(route, body, ip) {
-  return fetch(`${baseUrl}${route}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Forwarded-For': ip
-    },
-    body: JSON.stringify(body)
-  });
-}
 
 test('should_respond_ok_when_health_check_is_requested', async () => {
   const res = await fetch(`${baseUrl}/api/health`);
@@ -51,48 +34,4 @@ test('should_serve_each_legal_page_at_its_clean_url', async () => {
     assert.equal(res.status, 200, `${route} no responde 200`);
     assert.match(await res.text(), /RUC 5379057-0/, `${route} no contiene el RUC`);
   }
-});
-
-test('should_reject_contact_when_payload_is_empty', async () => {
-  const res = await postJson('/api/contact', {}, '203.0.113.20');
-  assert.equal(res.status, 400);
-  const body = await res.json();
-  assert.equal(body.success, false);
-});
-
-test('should_reject_contact_when_email_is_invalid', async () => {
-  const res = await postJson('/api/contact', {
-    name: 'Juan Perez',
-    email: 'no-es-un-email',
-    message: 'Hola, quiero consultar por un desarrollo web.'
-  }, '203.0.113.21');
-  assert.equal(res.status, 400);
-});
-
-test('should_reject_contact_when_message_is_too_short', async () => {
-  const res = await postJson('/api/contact', {
-    name: 'Juan Perez',
-    email: 'juan@example.com',
-    message: 'corto'
-  }, '203.0.113.22');
-  assert.equal(res.status, 400);
-});
-
-test('should_accept_contact_and_persist_it_when_payload_is_valid', async () => {
-  const res = await postJson('/api/contact', {
-    name: 'Juan Perez',
-    email: 'juan@example.com',
-    company: 'Acme',
-    service: 'web',
-    message: 'Hola, quiero consultar por un desarrollo web.'
-  }, '203.0.113.23');
-  assert.equal(res.status, 200);
-  const body = await res.json();
-  assert.equal(body.success, true);
-
-  const contacts = JSON.parse(
-    fs.readFileSync(path.join(tempDataDir, 'contacts.json'), 'utf8')
-  );
-  assert.equal(contacts.length, 1);
-  assert.equal(contacts[0].email, 'juan@example.com');
 });
