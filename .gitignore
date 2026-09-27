@@ -9,5 +9,9 @@
 .claude/
 .atl/
 
-# Datos del contador de visitas (se genera automáticamente)
-/data/visitors.json
+# Datos que genera el servidor Express (visitas, contactos): nunca al repo
+/data/*
+!/data/.gitkeep
+
+# Logs de CLIs
+*-debug.log
