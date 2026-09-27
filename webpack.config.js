@@ -7,6 +7,9 @@ module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
 
   return {
+    // webpack >=5.110 minifica el HTML por su cuenta y quita comillas de atributos;
+    // el HTML ya lo minifica HtmlWebpackPlugin
+    experiments: { html: false },
     entry: {
       index: './src/pages/index.js',
       'web-express': './src/pages/web-express.js',
