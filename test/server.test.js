@@ -53,30 +53,6 @@ test('should_serve_each_legal_page_at_its_clean_url', async () => {
   }
 });
 
-test('should_return_visitor_stats_with_expected_shape', async () => {
-  const res = await fetch(`${baseUrl}/api/visitors/stats`);
-  assert.equal(res.status, 200);
-  const body = await res.json();
-  assert.equal(body.success, true);
-  assert.equal(typeof body.data.totalVisits, 'number');
-});
-
-test('should_count_visit_once_when_same_ip_visits_twice', async () => {
-  const ip = '203.0.113.10';
-
-  const first = await postJson('/api/visitors/visit', {}, ip);
-  assert.equal(first.status, 200);
-  const firstBody = await first.json();
-  assert.equal(firstBody.success, true);
-  assert.equal(firstBody.data.isNewVisit, true);
-
-  const second = await postJson('/api/visitors/visit', {}, ip);
-  assert.equal(second.status, 200);
-  const secondBody = await second.json();
-  assert.equal(secondBody.data.isNewVisit, false);
-  assert.equal(secondBody.data.totalVisits, firstBody.data.totalVisits);
-});
-
 test('should_reject_contact_when_payload_is_empty', async () => {
   const res = await postJson('/api/contact', {}, '203.0.113.20');
   assert.equal(res.status, 400);

@@ -4,13 +4,11 @@ const dotenv = require('dotenv');
 const fs = require('fs');
 const compression = require('compression');
 const nodemailer = require('nodemailer');
-const VisitorCounter = require('./VisitorCounter');
 
 dotenv.config();
 
-// DATA_DIR permite aislar la persistencia en tests (visitors.json, contacts.json)
+// DATA_DIR permite aislar la persistencia de contacts.json en tests
 const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, '../../data');
-const visitorCounter = new VisitorCounter(path.join(DATA_DIR, 'visitors.json'));
 const DEBUG = process.env.DEBUG === 'true';
 const DEBUG_LEVEL = process.env.DEBUG_LEVEL || 'info';
 const IS_TEST = process.env.NODE_ENV === 'test';
@@ -134,47 +132,6 @@ app.get('/trabaja-con-nosotros', (req, res) => {
   });
 });
 
-// ─── API: Visitantes ───
-
-app.get('/api/visitors/stats', (req, res) => {
-  try {
-    const stats = visitorCounter.getStats();
-    res.json({
-      success: true,
-      data: { totalVisits: stats.totalVisits }
-    });
-  } catch (error) {
-    console.error('Error al obtener stats:', error);
-    res.status(500).json({ success: false, error: 'Error al obtener estadisticas' });
-  }
-});
-
-app.post('/api/visitors/visit', (req, res) => {
-  try {
-    const ip = req.headers['x-forwarded-for']?.split(',')[0].trim()
-               || req.headers['x-real-ip']
-               || req.connection.remoteAddress
-               || req.socket.remoteAddress;
-
-    const result = visitorCounter.incrementVisit(ip);
-
-    if (DEBUG) {
-      console.log(`Visita desde IP ${ip}: ${result.message}`);
-    }
-
-    res.json({
-      success: true,
-      data: {
-        totalVisits: result.totalVisits,
-        isNewVisit: result.isNewVisit
-      }
-    });
-  } catch (error) {
-    console.error('Error al registrar visita:', error);
-    res.status(500).json({ success: false, error: 'Error al registrar visita' });
-  }
-});
-
 // ─── API: Contacto ───
 
 // Rate limiting simple para el form de contacto
@@ -295,14 +252,6 @@ app.post('/api/contact', (req, res) => {
     res.status(500).json({ success: false, error: 'Error al procesar el mensaje' });
   }
 });
-
-// Reset (solo debug)
-if (DEBUG) {
-  app.post('/api/visitors/reset', (req, res) => {
-    const result = visitorCounter.reset();
-    res.json({ success: true, data: result, message: 'Contador reseteado' });
-  });
-}
 
 // ─── Health check (para Docker) ───
 app.get('/api/health', (req, res) => {

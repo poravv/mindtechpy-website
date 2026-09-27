@@ -1,2 +1,1 @@
-# Este directorio contiene el archivo visitors.json
-# El archivo se crea automáticamente al iniciar el servidor
+# Aquí escribe el servidor Express (contacts.json). Ignorado por git salvo este archivo.
