@@ -1143,6 +1143,8 @@ main {
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
+  // overflow-x también recorta en vertical: deja lugar al lift de 3px del hover
+  padding-top: 6px;
   padding-bottom: 18px;
   scrollbar-width: thin;
   scrollbar-color: $line-strong transparent;
