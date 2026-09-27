@@ -12,7 +12,7 @@ MindTechPy corporate website: a static multi-page site with a single dark visual
 - `npm run build` — Webpack production build to `dist/` (hashed JS/CSS filenames)
 - `npm run build:dev` — Webpack development build (with source maps)
 - `npm start` — Start Express server (serves from `dist/`)
-- `npm test` — `node --test test/`; `pretest` runs `npm run build` first, because the tests read the built `dist/`
+- `npm test` — `node --test test/*.test.js`; `pretest` runs `npm run build` first, because the tests read the built `dist/`
 
 Development requires two terminals: `npm run dev` (server) + `npm run build:dev` (webpack).
 

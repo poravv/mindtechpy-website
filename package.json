@@ -8,7 +8,7 @@
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development",
     "pretest": "npm run build",
-    "test": "node --test test/"
+    "test": "node --test test/*.test.js"
   },
   "keywords": [
     "website",
@@ -35,5 +35,8 @@
     "sass-loader": "^13.3.2",
     "webpack": "^5.111.1",
     "webpack-cli": "^5.1.4"
+  },
+  "engines": {
+    "node": ">=24"
   }
 }
