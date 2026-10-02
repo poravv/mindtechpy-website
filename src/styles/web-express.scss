@@ -1148,6 +1148,30 @@ a {
     }
   }
 
+  &__social {
+    display: flex;
+    gap: 8px;
+
+    a {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--line-strong);
+      border-radius: 10px;
+      color: var(--muted);
+      transition: color 200ms ease, border-color 200ms ease, background-color 200ms ease, transform 200ms ease;
+
+      &:hover,
+      &:focus-visible {
+        color: var(--paper);
+        border-color: var(--violet-soft);
+        background-color: var(--violet-dim);
+        transform: translateY(-2px);
+      }
+    }
+  }
+
   &__links {
     display: flex;
     gap: 24px;
