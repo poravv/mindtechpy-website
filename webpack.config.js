@@ -14,7 +14,6 @@ module.exports = (env, argv) => {
       index: './src/pages/index.js',
       'web-express': './src/pages/web-express.js',
       'staff-augmentation': './src/pages/staff-augmentation.js',
-      'trabaja-con-nosotros': './src/pages/trabaja-con-nosotros.js',
       legal: './src/pages/legal.js',
     },
     output: {
@@ -87,17 +86,6 @@ module.exports = (env, argv) => {
         template: './src/pages/staff-augmentation.html',
         filename: 'staff-augmentation.html',
         chunks: ['staff-augmentation'],
-        minify: isProduction ? {
-          collapseWhitespace: true,
-          removeComments: true,
-          removeRedundantAttributes: true,
-          useShortDoctype: true,
-        } : false,
-      }),
-      new HtmlWebpackPlugin({
-        template: './src/pages/trabaja-con-nosotros.html',
-        filename: 'trabaja-con-nosotros.html',
-        chunks: ['trabaja-con-nosotros'],
         minify: isProduction ? {
           collapseWhitespace: true,
           removeComments: true,

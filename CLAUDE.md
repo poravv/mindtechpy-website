@@ -31,7 +31,6 @@ Each page is an HTML template in `src/pages/` built by its own `HtmlWebpackPlugi
 | `/` | `index.html` | `index.js` | `main.scss` |
 | `/web-express` | `web-express.html` | `web-express.js` | `web-express.scss` |
 | `/staff-augmentation` | `staff-augmentation.html` | `staff-augmentation.js` | `talento.scss` |
-| `/trabaja-con-nosotros` | `trabaja-con-nosotros.html` | `trabaja-con-nosotros.js` | `talento.scss` |
 | `/privacidad`, `/terminos`, `/eliminacion-de-datos` | one `.html` each | `legal.js` (shared chunk) | `legal.scss` |
 
 - **`src/pages/index.js`** — Home entry: IntersectionObserver reveals, per-section meta, contact form (`POST /api/contact`, then WhatsApp redirect). Redirects the legacy hashes `/#legal`, `/#terminos`, `/#privacidad` to the standalone legal pages.

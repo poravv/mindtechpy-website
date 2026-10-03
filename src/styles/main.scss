@@ -1452,35 +1452,6 @@ main {
   }
 }
 
-// ─── 14. TALENTO ───
-
-.section--talento {
-  padding-bottom: 64px;
-}
-
-.talento-block {
-  max-width: 52em;
-
-  h2 {
-    font-weight: 700;
-    font-size: clamp(26px, 2.8vw, 38px);
-    letter-spacing: -0.02em;
-    margin: 0 0 14px;
-  }
-
-  .section__lead {
-    max-width: 38em;
-  }
-
-  &__actions {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    flex-wrap: wrap;
-    margin-top: 28px;
-  }
-}
-
 // ─── 15. CIERRE / CONTACTO ───
 
 .cierre-panel {

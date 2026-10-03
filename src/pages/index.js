@@ -297,7 +297,6 @@ document.addEventListener('DOMContentLoaded', () => {
     'evidencia':       { title: 'Productos y Colaboraciones | Gift Hub, CuenlyApp, FoxBox | MindTechPy', description: 'Productos propios y colaboraciones en operación: Gift Hub, CuenlyApp, FoxBox y más.' },
     'como-trabajamos': { title: 'Cómo Trabajamos | MindTechPy Paraguay', description: 'Alineamos el contexto, hacemos avanzar la primera entrega y dejamos capacidad instalada.' },
     'empresa':         { title: 'Nosotros | Compromisos Verificables | MindTechPy Paraguay', description: 'NDA desde el inicio, facturación desde Paraguay, gestión de acceso por roles y entregas documentadas.' },
-    'talento':         { title: 'Talento | Trabaja con Nosotros | MindTechPy', description: 'Buen trabajo técnico empieza con conversaciones claras. Sumate al equipo de MindTechPy.' },
     'contacto':        { title: 'Contacto | Iniciar Conversación | MindTechPy Paraguay', description: 'Contanos qué necesita empezar a funcionar mejor. Respondemos en 24-48 horas hábiles.' }
   };
 

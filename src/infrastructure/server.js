@@ -92,12 +92,6 @@ app.get('/staff-augmentation', (req, res) => {
   res.sendFile(filePath);
 });
 
-// Trabaja con nosotros (empleos)
-app.get('/trabaja-con-nosotros', (req, res) => {
-  const filePath = path.join(__dirname, '../../dist/trabaja-con-nosotros.html');
-  res.sendFile(filePath);
-});
-
 // Paginas legales (URLs registradas en plataformas externas: no renombrar)
 ['privacidad', 'terminos', 'eliminacion-de-datos'].forEach((page) => {
   app.get(`/${page}`, (req, res) => {
