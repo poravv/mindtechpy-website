@@ -73,3 +73,11 @@ test('should_build_gifthub_page_with_faq_schema_matching_visible_faq', () => {
   const sitemap = fs.readFileSync(path.join(__dirname, '../dist/sitemap.xml'), 'utf8');
   assert.match(sitemap, /https:\/\/mindtechpy\.net\/gifthub</);
 });
+
+test('should_serve_gifthub_share_image_referenced_by_meta_tags', () => {
+  const page = fs.readFileSync(path.join(__dirname, '../dist/gifthub.html'), 'utf8');
+  const imageUrl = page.match(/<meta property="og:image" content="https:\/\/mindtechpy\.net\/([^"]+)"/)[1];
+  assert.equal(imageUrl, 'images/gifthub/og-gifthub.png');
+  assert.match(page, new RegExp(`<meta name="twitter:image" content="https://mindtechpy\\.net/${imageUrl}"`));
+  assert.ok(fs.existsSync(path.join(__dirname, '../dist', imageUrl)), `falta dist/${imageUrl}`);
+});
