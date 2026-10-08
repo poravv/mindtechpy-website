@@ -256,3 +256,14 @@
     white-space: normal;
   }
 }
+
+// Marca G-nodo de Gift Hub junto al eyebrow del hero.
+.we-eyebrow--brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  .gh-mark {
+    flex-shrink: 0;
+  }
+}
