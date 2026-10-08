@@ -14,6 +14,7 @@ module.exports = (env, argv) => {
       index: './src/pages/index.js',
       'web-express': './src/pages/web-express.js',
       'staff-augmentation': './src/pages/staff-augmentation.js',
+      gifthub: './src/pages/gifthub.js',
       legal: './src/pages/legal.js',
     },
     output: {
@@ -86,6 +87,17 @@ module.exports = (env, argv) => {
         template: './src/pages/staff-augmentation.html',
         filename: 'staff-augmentation.html',
         chunks: ['staff-augmentation'],
+        minify: isProduction ? {
+          collapseWhitespace: true,
+          removeComments: true,
+          removeRedundantAttributes: true,
+          useShortDoctype: true,
+        } : false,
+      }),
+      new HtmlWebpackPlugin({
+        template: './src/pages/gifthub.html',
+        filename: 'gifthub.html',
+        chunks: ['gifthub'],
         minify: isProduction ? {
           collapseWhitespace: true,
           removeComments: true,

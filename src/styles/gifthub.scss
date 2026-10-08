@@ -1,0 +1,258 @@
+// =============================================
+// Gift Hub — landing del producto
+// Extiende el sistema Operaciones Visibles de web-express.scss.
+// La pieza protagonista es la conversación de ejemplo del hero;
+// el resto reutiliza los bloques compartidos.
+// =============================================
+
+@use 'web-express';
+
+:root {
+  --radius-device: 34px;
+  --radius-bubble: 14px;
+  --phone-w: 340px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// ─── Conversación de ejemplo (ilustrativa) ───
+.gh-phone {
+  margin: 0 0 0 auto;
+  max-width: var(--phone-w);
+
+  &__screen {
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-device);
+    background: var(--surface);
+    padding: 14px 14px 22px;
+    box-shadow: var(--shadow-panel);
+  }
+
+  &__bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 6px 14px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+
+    p {
+      margin: 0;
+      line-height: 1.3;
+    }
+  }
+
+  &__avatar {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-pill);
+    background: var(--violet-dim);
+    border: 1px solid var(--violet-soft);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--violet-bright);
+  }
+
+  &__name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--paper);
+  }
+
+  &__status {
+    font-size: 12.5px;
+    color: var(--muted-2);
+  }
+
+  &__caption {
+    margin-top: 14px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--muted-2);
+    text-align: center;
+  }
+}
+
+.gh-chat {
+  list-style: none;
+  margin: 0;
+  padding: 0 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__msg {
+    max-width: 86%;
+    padding: 10px 13px;
+    border-radius: var(--radius-bubble);
+    font-size: 14px;
+    line-height: 1.45;
+    animation: ghBubbleIn 0.45s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+
+    // Una sola secuencia orquestada: la conversación se escribe al cargar.
+    &:nth-child(1) { animation-delay: 0.5s; }
+    &:nth-child(2) { animation-delay: 1.1s; }
+    &:nth-child(3) { animation-delay: 1.9s; }
+    &:nth-child(4) { animation-delay: 2.5s; }
+
+    &--in {
+      align-self: flex-end;
+      background: var(--violet-dim);
+      border: 1px solid var(--violet-soft);
+      border-bottom-right-radius: 4px;
+      color: var(--paper);
+    }
+
+    &--bot {
+      align-self: flex-start;
+      background: var(--surface-raised);
+      border: 1px solid var(--line-strong);
+      border-bottom-left-radius: 4px;
+      color: var(--paper);
+    }
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 10px;
+
+    span {
+      padding: 7px 10px;
+      border: 1px solid var(--violet-soft);
+      border-radius: var(--radius-field);
+      font-size: 13px;
+      color: var(--violet-bright);
+      text-align: center;
+    }
+  }
+}
+
+@keyframes ghBubbleIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// ─── Pasos del alta (lista ordenada sobre la línea de tiempo) ───
+.gh-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+// ─── Para quién (celdas dentro de .we-strip) ───
+.gh-audience {
+  h3 {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--paper);
+    margin: 0 0 10px;
+  }
+
+  p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+  }
+}
+
+// ─── Preguntas frecuentes (acordeón nativo) ───
+.gh-faq {
+  max-width: 760px;
+  border-top: 1px solid var(--line);
+
+  details {
+    border-bottom: 1px solid var(--line);
+  }
+
+  summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 4px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--paper);
+    cursor: pointer;
+    list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::after {
+      content: '+';
+      flex-shrink: 0;
+      font-family: var(--font-mono);
+      font-size: 20px;
+      line-height: 1;
+      color: var(--violet);
+      transition: transform 0.2s ease;
+    }
+
+    &:hover {
+      color: var(--violet-bright);
+    }
+  }
+
+  details[open] summary::after {
+    transform: rotate(45deg);
+  }
+
+  p {
+    margin: 0;
+    padding: 0 4px 22px;
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--muted);
+    max-width: 42em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gh-chat__msg {
+    animation: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .gh-phone {
+    margin: 8px 0 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .gh-phone {
+    max-width: none;
+  }
+
+  .we-cta-box .we-hero__ctas .btn {
+    white-space: normal;
+  }
+}

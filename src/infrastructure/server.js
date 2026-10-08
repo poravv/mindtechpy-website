@@ -92,6 +92,11 @@ app.get('/staff-augmentation', (req, res) => {
   res.sendFile(filePath);
 });
 
+// Gift Hub (landing del producto)
+app.get('/gifthub', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../dist/gifthub.html'));
+});
+
 // Paginas legales (URLs registradas en plataformas externas: no renombrar)
 ['privacidad', 'terminos', 'eliminacion-de-datos'].forEach((page) => {
   app.get(`/${page}`, (req, res) => {

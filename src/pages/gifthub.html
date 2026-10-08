@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gift Hub — Bot de WhatsApp para pedidos y fidelización | MindTechPy</title>
+  <meta name="description"
+    content="Bot en tu WhatsApp oficial y panel para tu equipo: respuestas 24/7, pedidos ordenados, atención humana y club de fidelización. Desde Gs. 250.000/mes. Paraguay.">
+  <meta name="keywords"
+    content="bot de WhatsApp Paraguay, pedidos por WhatsApp, API oficial de WhatsApp Business, club de fidelización, atención al cliente WhatsApp, Gift Hub, MindTechPy">
+  <meta name="author" content="MindTechPy">
+  <meta name="theme-color" content="#11131A">
+  <meta name="color-scheme" content="dark">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Gift Hub — Atendé, vendé y fidelizá por WhatsApp">
+  <meta property="og:description"
+    content="Bot en tu WhatsApp oficial y panel para tu equipo. Respuestas 24/7, pedidos ordenados y club de fidelización. Desde Gs. 250.000/mes.">
+  <meta property="og:url" content="https://mindtechpy.net/gifthub">
+  <meta property="og:image" content="https://mindtechpy.net/images/mindtechpy-logo.png">
+  <meta property="og:locale" content="es_PY">
+  <meta property="og:site_name" content="MindTechPy">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Gift Hub — Atendé, vendé y fidelizá por WhatsApp">
+  <meta name="twitter:description"
+    content="Bot en tu WhatsApp oficial y panel para tu equipo. Desde Gs. 250.000/mes. MindTechPy Paraguay.">
+  <meta name="twitter:image" content="https://mindtechpy.net/images/mindtechpy-logo.png">
+
+  <link rel="canonical" href="https://mindtechpy.net/gifthub">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/mindtechpy-logo.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/mindtechpy-logo.png">
+  <link rel="apple-touch-icon" href="/images/mindtechpy-logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet">
+  </noscript>
+
+  <!-- JSON-LD: producto + FAQ (debe coincidir con la sección visible de preguntas) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://mindtechpy.net/gifthub#producto",
+        "name": "Gift Hub",
+        "description": "Bot de atención, pedidos y fidelización en el WhatsApp oficial del comercio, sobre la API oficial de WhatsApp Business, con un panel para el equipo: respuestas automáticas 24/7 con menú y catálogo, pedidos y solicitudes de cotización ordenados, atención humana con pausa del bot y club de fidelización con sellos y cupones.",
+        "url": "https://mindtechpy.net/gifthub",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "inLanguage": "es",
+        "brand": { "@type": "Brand", "name": "MindTechPy" },
+        "provider": { "@type": "Organization", "name": "MindTechPy", "url": "https://mindtechpy.net" },
+        "areaServed": { "@type": "Country", "name": "Paraguay" },
+        "offers": {
+          "@type": "Offer",
+          "name": "Plan mensual de Gift Hub",
+          "url": "https://mindtechpy.net/gifthub",
+          "price": "250000",
+          "priceCurrency": "PYG",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "minPrice": 250000,
+            "price": 250000,
+            "priceCurrency": "PYG",
+            "unitText": "mes",
+            "billingDuration": "P1M"
+          },
+          "description": "Desde Gs. 250.000 por mes. El consumo de mensajes de Meta se paga aparte, directamente a Meta."
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://mindtechpy.net/gifthub#preguntas",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Necesito un número nuevo?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Sí. Gift Hub usa un número dedicado que no esté en uso en la app de WhatsApp ni en WhatsApp Business. Ese número queda para el bot y para tu equipo, que responde desde el panel." }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cuánto cuesta?",
+            "acceptedAnswer": { "@type": "Answer", "text": "El plan mensual de Gift Hub cuesta desde Gs. 250.000 por mes. El consumo de mensajes de Meta se paga aparte, directamente a Meta. Responder a clientes que te escribieron dentro de las últimas 24 horas no tiene costo de Meta." }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Puedo seguir atendiendo yo?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Sí. Desde el panel tomás cualquier conversación y, mientras atendés vos, el bot se pausa en ese chat." }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Necesito saber programar?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. La conexión de WhatsApp, el catálogo y los textos del bot se configuran desde el panel, y te acompañamos durante el alta." }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cuánto tarda el alta?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Minutos. Conectar el número lleva pocos pasos y te acompañamos en todo el proceso." }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "MindTechPy", "item": "https://mindtechpy.net/" },
+          { "@type": "ListItem", "position": 2, "name": "Gift Hub", "item": "https://mindtechpy.net/gifthub" }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <div class="we-scroll-progress" aria-hidden="true">
+    <div class="we-scroll-progress__bar"></div>
+  </div>
+
+  <header class="we-header">
+    <nav aria-label="Principal">
+      <a href="/" class="we-brand" aria-label="Volver a MindTechPy">
+        <picture>
+          <source srcset="/images/mindtechpy-logo.webp" type="image/webp">
+          <img src="/images/mindtechpy-logo.png" alt="MindTechPy" width="140" height="40">
+        </picture>
+      </a>
+      <div class="we-nav-links">
+        <a href="#beneficios">Beneficios</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#para-quien">Para quién</a>
+        <a href="#preguntas">Preguntas</a>
+        <a href="https://wa.me/595981586823?text=Hola%20MindTechPy!%20Quiero%20solicitar%20una%20demo%20de%20Gift%20Hub"
+          target="_blank" rel="noopener" class="btn btn--primary btn--sm">Solicitar demo</a>
+      </div>
+      <button class="we-menu-toggle" id="we-menu-toggle" aria-label="Abrir menu de navegacion" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero: el problema y la promesa, con la conversación de ejemplo al lado -->
+    <section class="we-hero" id="hero">
+      <div class="we-container we-hero__grid">
+        <div class="we-rail" aria-hidden="true">
+          <span class="we-thread we-thread--origin" data-reveal></span>
+        </div>
+        <div class="we-hero__copy" data-reveal>
+          <p class="we-eyebrow">Gift Hub, de MindTechPy</p>
+          <h1>Atendé, vendé y fidelizá por WhatsApp sin perder ningún mensaje.</h1>
+          <p class="we-hero__subtitle">Un bot en tu WhatsApp oficial que responde, toma pedidos y ordena cada
+            consulta, y un panel para que tu equipo entre cuando hace falta.</p>
+          <ul class="we-facts">
+            <li><span class="we-dot" aria-hidden="true"></span>Atención 24/7</li>
+            <li><span class="we-dot" aria-hidden="true"></span>Panel para tu equipo</li>
+            <li><span class="we-dot" aria-hidden="true"></span>Desde Gs. 250.000/mes</li>
+          </ul>
+          <div class="we-hero__ctas">
+            <a href="https://wa.me/595981586823?text=Hola%20MindTechPy!%20Quiero%20solicitar%20una%20demo%20de%20Gift%20Hub"
+              target="_blank" rel="noopener" class="btn btn--primary btn--lg">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                aria-hidden="true">
+                <path
+                  d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
+              </svg>
+              Solicitar demo
+            </a>
+            <a href="#como-funciona" class="btn btn--secondary btn--lg">Ver cómo funciona</a>
+          </div>
+        </div>
+
+        <aside class="we-hero__aside" data-reveal>
+          <figure class="gh-phone" aria-labelledby="gh-phone-caption">
+            <div class="gh-phone__screen">
+              <div class="gh-phone__bar">
+                <span class="gh-phone__avatar" aria-hidden="true">TN</span>
+                <div>
+                  <p class="gh-phone__name">Tu negocio</p>
+                  <p class="gh-phone__status">Bot de Gift Hub</p>
+                </div>
+              </div>
+              <ol class="gh-chat">
+                <li class="gh-chat__msg gh-chat__msg--in">
+                  <span class="visually-hidden">Cliente:</span>Hola</li>
+                <li class="gh-chat__msg gh-chat__msg--bot">
+                  <span class="visually-hidden">Bot:</span>¡Hola! 👋 Bienvenido a Tu negocio. ¿Qué necesitás?
+                  <span class="gh-chat__options" aria-label="Opciones del menú">
+                    <span>Ver el menú</span>
+                    <span>Hacer un pedido</span>
+                    <span>Hablar con una persona</span>
+                  </span>
+                </li>
+                <li class="gh-chat__msg gh-chat__msg--in">
+                  <span class="visually-hidden">Cliente:</span>Hacer un pedido</li>
+                <li class="gh-chat__msg gh-chat__msg--bot">
+                  <span class="visually-hidden">Bot:</span>¡Genial! ¿Lo retirás en el local o te lo enviamos?
+                  <span class="gh-chat__options" aria-label="Opciones de entrega">
+                    <span>Retiro en el local</span>
+                    <span>Delivery</span>
+                  </span>
+                </li>
+              </ol>
+            </div>
+            <figcaption id="gh-phone-caption" class="gh-phone__caption">Conversación ilustrativa: así responde el
+              bot a un cliente nuevo.</figcaption>
+          </figure>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Beneficios -->
+    <section class="we-section" id="beneficios">
+      <div class="we-container we-with-rail">
+        <div class="we-rail" aria-hidden="true">
+          <span class="we-thread" data-reveal></span>
+        </div>
+        <div>
+          <div class="we-section-header" data-reveal>
+            <h2>Cada mensaje tiene respuesta, y cada pedido, un lugar</h2>
+            <p>El bot resuelve lo repetitivo. Tu equipo ve todo ordenado y se ocupa de lo que necesita una persona.</p>
+          </div>
+          <div class="we-future__grid">
+            <article class="we-future__item" data-reveal>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <polyline points="12 7 12 12 15 14" />
+              </svg>
+              <h3>Respuestas automáticas las 24 horas</h3>
+              <p>El bot saluda, muestra tu menú y tu catálogo, y responde las consultas de siempre, también a medianoche.</p>
+            </article>
+            <article class="we-future__item" data-reveal>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                aria-hidden="true">
+                <rect x="3" y="4" width="18" height="16" rx="2" />
+                <line x1="3" y1="9" x2="21" y2="9" />
+                <line x1="9" y1="9" x2="9" y2="20" />
+              </svg>
+              <h3>Pedidos y cotizaciones en un panel</h3>
+              <p>Cada pedido o solicitud de cotización llega ordenado al panel, con los datos del cliente, en vez de
+                perderse entre chats.</p>
+            </article>
+            <article class="we-future__item" data-reveal>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                aria-hidden="true">
+                <circle cx="12" cy="8" r="4" />
+                <path d="M4 21v-1a6 6 0 0112 0v1" />
+                <line x1="19" y1="8" x2="19" y2="14" />
+                <line x1="22" y1="8" x2="22" y2="14" />
+              </svg>
+              <h3>Una persona cuando hace falta</h3>
+              <p>Si un cliente necesita hablar con alguien, tu equipo toma la conversación desde el panel y el bot se
+                pausa en ese chat.</p>
+            </article>
+            <article class="we-future__item" data-reveal>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                aria-hidden="true">
+                <rect x="3" y="6" width="18" height="12" rx="2" />
+                <circle cx="8" cy="12" r="1.5" />
+                <circle cx="12" cy="12" r="1.5" />
+                <circle cx="16" cy="12" r="1.5" />
+              </svg>
+              <h3>Club de fidelización</h3>
+              <p>Tus clientes suman sellos con cada compra y canjean cupones. Vuelven, y vos sabés quiénes son.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cómo funciona: alta en 3 pasos -->
+    <section class="we-section" id="como-funciona">
+      <div class="we-container we-with-rail">
+        <div class="we-rail" aria-hidden="true">
+          <span class="we-thread" data-reveal></span>
+        </div>
+        <div>
+          <div class="we-section-header" data-reveal>
+            <h2>Cómo funciona: el alta en 3 pasos</h2>
+            <p>Gift Hub funciona sobre la API oficial de WhatsApp Business (WhatsApp Business Platform de Meta).</p>
+          </div>
+          <ol class="we-proceso__timeline gh-steps">
+            <li class="we-proceso__step" data-reveal>
+              <div class="we-proceso__step-number">Paso 1</div>
+              <div class="we-proceso__step-content">
+                <h3>Creamos tu cuenta</h3>
+                <p>Te damos de alta en Gift Hub y dejamos listo el panel para vos y tu equipo.</p>
+              </div>
+            </li>
+            <li class="we-proceso__step" data-reveal>
+              <div class="we-proceso__step-number">Paso 2</div>
+              <div class="we-proceso__step-content">
+                <h3>Conectás tu WhatsApp con un clic</h3>
+                <p>Con la conexión oficial de Meta: iniciás sesión con Facebook, elegís el número y lo confirmás con
+                  un código por SMS.</p>
+              </div>
+            </li>
+            <li class="we-proceso__step" data-reveal>
+              <div class="we-proceso__step-number">Paso 3</div>
+              <div class="we-proceso__step-content">
+                <h3>Cargás tu catálogo y listo</h3>
+                <p>Subís tus productos o servicios y el bot empieza a atender a tus clientes.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Para quién -->
+    <section class="we-section" id="para-quien">
+      <div class="we-container we-with-rail">
+        <div class="we-rail" aria-hidden="true">
+          <span class="we-thread" data-reveal></span>
+        </div>
+        <div>
+          <div class="we-section-header" data-reveal>
+            <h2>Para negocios que venden por WhatsApp</h2>
+            <p>El mismo bot se adapta a lo que tus clientes vienen a buscar.</p>
+          </div>
+          <div class="we-strip we-strip--3">
+            <article class="gh-audience" data-reveal>
+              <h3>Gastronomía</h3>
+              <p>Pedidos con menú, delivery o retiro en el local.</p>
+            </article>
+            <article class="gh-audience" data-reveal>
+              <h3>Servicios profesionales</h3>
+              <p>Solicitudes de cotización, demos y reuniones, ordenadas antes de que las atiendas.</p>
+            </article>
+            <article class="gh-audience" data-reveal>
+              <h3>Comercios con club de clientes</h3>
+              <p>Sellos por compra y cupones para que tus clientes vuelvan.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Preguntas frecuentes (mismo texto que el FAQPage del head) -->
+    <section class="we-section" id="preguntas">
+      <div class="we-container we-with-rail">
+        <div class="we-rail" aria-hidden="true">
+          <span class="we-thread" data-reveal></span>
+        </div>
+        <div>
+          <div class="we-section-header" data-reveal>
+            <h2>Preguntas frecuentes</h2>
+          </div>
+          <div class="gh-faq" data-reveal>
+            <details>
+              <summary>¿Necesito un número nuevo?</summary>
+              <p>Sí. Gift Hub usa un número dedicado que no esté en uso en la app de WhatsApp ni en WhatsApp
+                Business. Ese número queda para el bot y para tu equipo, que responde desde el panel.</p>
+            </details>
+            <details>
+              <summary>¿Cuánto cuesta?</summary>
+              <p>El plan mensual de Gift Hub cuesta desde Gs. 250.000 por mes. El consumo de mensajes de Meta se paga
+                aparte, directamente a Meta. Responder a clientes que te escribieron dentro de las últimas 24 horas no
+                tiene costo de Meta.</p>
+            </details>
+            <details>
+              <summary>¿Puedo seguir atendiendo yo?</summary>
+              <p>Sí. Desde el panel tomás cualquier conversación y, mientras atendés vos, el bot se pausa en ese chat.</p>
+            </details>
+            <details>
+              <summary>¿Necesito saber programar?</summary>
+              <p>No. La conexión de WhatsApp, el catálogo y los textos del bot se configuran desde el panel, y te
+                acompañamos durante el alta.</p>
+            </details>
+            <details>
+              <summary>¿Cuánto tarda el alta?</summary>
+              <p>Minutos. Conectar el número lleva pocos pasos y te acompañamos en todo el proceso.</p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA final -->
+    <section class="we-section we-cta-section" id="demo">
+      <div class="we-container we-with-rail">
+        <div class="we-rail" aria-hidden="true">
+          <span class="we-thread" data-reveal></span>
+        </div>
+        <div class="we-cta-box" data-reveal>
+          <h2>Probalo con tu propio catálogo</h2>
+          <p>Te mostramos Gift Hub funcionando en una demo por WhatsApp y resolvemos tus dudas sobre el alta.</p>
+          <div class="we-cta-box__highlights">
+            <div class="we-cta-box__highlight">
+              <strong>Desde Gs. 250.000</strong>
+              <span>por mes, plan de Gift Hub</span>
+            </div>
+            <div class="we-cta-box__divider"></div>
+            <div class="we-cta-box__highlight">
+              <strong>Mensajes de Meta</strong>
+              <span>se pagan aparte, directo a Meta</span>
+            </div>
+          </div>
+          <div class="we-hero__ctas">
+            <a href="https://wa.me/595981586823?text=Hola%20MindTechPy!%20Quiero%20solicitar%20una%20demo%20de%20Gift%20Hub"
+              target="_blank" rel="noopener" class="btn btn--primary btn--lg">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                aria-hidden="true">
+                <path
+                  d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
+              </svg>
+              Solicitar demo
+            </a>
+            <a href="/#contacto" class="btn btn--secondary btn--lg">Escribirnos por el formulario</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="we-footer">
+    <div class="we-footer__inner">
+      <div class="we-footer__brand">
+        <picture>
+          <source srcset="/images/mindtechpy-logo.webp" type="image/webp">
+          <img src="/images/mindtechpy-logo.png" alt="MindTechPy" width="140" height="40" loading="lazy">
+        </picture>
+        <p>Soluciones de software empresarial para toda Latinoamerica.</p>
+        <div class="we-footer__social">
+          <a href="https://www.linkedin.com/company/mindtechpy" target="_blank" rel="noopener" aria-label="MindTechPy en LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z" /></svg>
+          </a>
+          <a href="https://www.instagram.com/mindtechpy/" target="_blank" rel="noopener" aria-label="MindTechPy en Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.6" /><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6" /><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" /></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61553838899557" target="_blank" rel="noopener" aria-label="MindTechPy en Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 8.5V11h4l-.6 4H14v9h-4v-9H7v-4h3V8.5C10 5.8 11.6 4 14.4 4H17v4h-2.5c-.3 0-.5.2-.5.5z" /></svg>
+          </a>
+        </div>
+      </div>
+      <div class="we-footer__links">
+        <a href="/">Volver a MindTechPy</a>
+        <a href="/privacidad">Privacidad</a>
+        <a href="/terminos">Términos</a>
+        <a href="/eliminacion-de-datos">Eliminación de datos</a>
+        <a href="https://wa.me/595981586823" target="_blank" rel="noopener">+595 981 586823</a>
+        <a href="mailto:andres.vera@mindtechpy.net">andres.vera@mindtechpy.net</a>
+      </div>
+    </div>
+    <div class="we-footer__bottom">
+      <p>&copy; <span id="y"></span> MindTechPy — Todos los derechos reservados
+        <span class="we-footer__legal">MindTechPy · de Andrés Valentín Vera Chávez · RUC 5379057-0</span>
+      </p>
+    </div>
+  </footer>
+</body>
+
+</html>

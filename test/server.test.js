@@ -35,3 +35,9 @@ test('should_serve_each_legal_page_at_its_clean_url', async () => {
     assert.match(await res.text(), /RUC 5379057-0/, `${route} no contiene el RUC`);
   }
 });
+
+test('should_serve_gifthub_landing_at_its_clean_url', async () => {
+  const res = await fetch(`${baseUrl}/gifthub`);
+  assert.equal(res.status, 200);
+  assert.match(await res.text(), /<h1[^>]*>Atendé, vendé y fidelizá por WhatsApp/);
+});

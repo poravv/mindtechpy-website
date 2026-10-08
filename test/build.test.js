@@ -59,3 +59,17 @@ test('should_publish_sitemap_and_robots_at_dist_root', () => {
   assert.match(sitemap, /https:\/\/mindtechpy\.net\/privacidad</);
   assert.ok(fs.existsSync(path.join(__dirname, '../dist/robots.txt')), 'falta dist/robots.txt');
 });
+
+test('should_build_gifthub_page_with_faq_schema_matching_visible_faq', () => {
+  const page = fs.readFileSync(path.join(__dirname, '../dist/gifthub.html'), 'utf8');
+  assert.match(page, /rel="canonical" href="https:\/\/mindtechpy.net\/gifthub"/);
+  assert.equal(page.match(/<h1[\s>]/g).length, 1, 'debe tener un solo h1');
+
+  const graph = JSON.parse(page.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
+  const faq = graph.find((node) => node['@type'] === 'FAQPage');
+  const visibleQuestions = [...page.matchAll(/<summary>([^<]+)<\/summary>/g)].map((m) => m[1].trim());
+  assert.deepEqual(faq.mainEntity.map((q) => q.name), visibleQuestions);
+
+  const sitemap = fs.readFileSync(path.join(__dirname, '../dist/sitemap.xml'), 'utf8');
+  assert.match(sitemap, /https:\/\/mindtechpy\.net\/gifthub</);
+});
