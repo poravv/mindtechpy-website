@@ -54,6 +54,18 @@ test('should_build_each_legal_page_with_legal_identity_and_canonical', () => {
   }
 });
 
+test('should_cover_gift_hub_meta_permissions_and_deletion_when_building_legal_pages', () => {
+  const privacy = fs.readFileSync(path.join(__dirname, '../dist/privacidad.html'), 'utf8');
+  assert.match(privacy, /id="gift-hub"/);
+  assert.match(privacy, /whatsapp_business_management/);
+  assert.match(privacy, /whatsapp_business_messaging/);
+  assert.match(privacy, /Embedded Signup/);
+
+  const deletion = fs.readFileSync(path.join(__dirname, '../dist/eliminacion-de-datos.html'), 'utf8');
+  assert.match(deletion, /id="gift-hub"/);
+  assert.match(privacy, /href="\/eliminacion-de-datos#gift-hub"/);
+});
+
 test('should_publish_sitemap_and_robots_at_dist_root', () => {
   const sitemap = fs.readFileSync(path.join(__dirname, '../dist/sitemap.xml'), 'utf8');
   assert.match(sitemap, /https:\/\/mindtechpy\.net\/privacidad</);
