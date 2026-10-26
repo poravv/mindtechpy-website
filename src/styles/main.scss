@@ -271,6 +271,10 @@ header {
   img {
     width: auto;
     height: 34px;
+
+    @media (min-width: $bp-desktop) {
+      height: 44px;
+    }
   }
 }
 

@@ -147,8 +147,10 @@ a {
 .we-brand img {
   height: 36px;
   width: auto;
-  min-width: 120px;
-  object-fit: contain;
+
+  @media (min-width: 1024px) {
+    height: 44px;
+  }
 }
 
 .we-nav-links {
