@@ -17,7 +17,7 @@ Textos listos para pegar en https://www.linkedin.com/company/mindtechpy
 **Sector:** Servicios y consultoría de TI
 **Tamaño:** 2-10 empleados
 **Tipo:** Empresa privada
-**Ubicación:** Asunción, Paraguay
+**Ubicación:** Capiatá, Paraguay
 
 **Acerca de** (máx. 2.000 caracteres)
 
@@ -120,7 +120,7 @@ Datos a cargar por cada vacante (los textos completos están en `src/pages/traba
 | Campo | Valor |
 |---|---|
 | Empresa | MindTechPy |
-| Ubicación | Asunción, Paraguay |
+| Ubicación | Capiatá, Paraguay |
 | Tipo de puesto | Remoto |
 | Régimen | A convenir según modalidad (mensual / por hora / por proyecto) |
 | URL de postulación | https://mindtechpy.net/trabaja-con-nosotros |

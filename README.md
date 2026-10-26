@@ -308,7 +308,7 @@ Privada — MindTechPy © 2025
 
 - **Email**: andres.vera@mindtechpy.net
 - **WhatsApp**: +595 981 586823
-- **Ubicación**: Asunción, Paraguay
+- **Ubicación**: Capiatá, Paraguay ([Google Maps](https://maps.app.goo.gl/Vef6QA51y2qjnYsn6))
 
 ---
 
