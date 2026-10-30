@@ -40,6 +40,11 @@ $header-h: 68px;
 $rail-w: 64px;
 $bp-tablet: 768px;
 $bp-desktop: 1024px;
+$float-gap-mobile: 12px;
+$float-gap: 24px;
+$cookie-notice-w: 960px;
+$cookie-notice-clearance: 200px;
+$cookie-notice-clearance-wide: 120px;
 
 $shadow-cta: 0 8px 30px rgba($violet, 0.16);
 $shadow-panel: 0 14px 40px rgba($violet, 0.1);
@@ -1880,18 +1885,26 @@ footer {
 
 // ─── AVISO DE COOKIES ───
 
-// Sticky y no fixed: ocupa su propio lugar al final del documento, así nunca
-// tapa de forma permanente el final de la página.
+// La tarjeta flota sobre el contenido: este espacio deja scrollear el final de
+// la página por encima de ella mientras no haya decisión.
+body:has(.cookie-notice:not([hidden])) {
+  padding-bottom: $cookie-notice-clearance;
+}
+
 .cookie-notice {
-  position: sticky;
-  bottom: 0;
+  position: fixed;
+  left: $float-gap-mobile;
+  right: $float-gap-mobile;
+  bottom: calc(#{$float-gap-mobile} + env(safe-area-inset-bottom));
   z-index: 90;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 14px 16px;
+  padding: 16px;
   background: $surface-raised;
-  border-top: 1px solid $line-strong;
+  border: 1px solid $line-strong;
+  border-radius: $radius-panel;
+  box-shadow: $shadow-panel;
 
   &[hidden] {
     display: none;
@@ -1928,12 +1941,22 @@ footer {
 }
 
 @media (min-width: $bp-tablet) {
+  body:has(.cookie-notice:not([hidden])) {
+    padding-bottom: $cookie-notice-clearance-wide;
+  }
+
+  // Centrada con márgenes automáticos: un transform pisaría la animación de entrada
   .cookie-notice {
+    left: $float-gap;
+    right: $float-gap;
+    bottom: calc(#{$float-gap} + env(safe-area-inset-bottom));
+    max-width: $cookie-notice-w;
+    margin-inline: auto;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     gap: 24px;
-    padding: 14px 32px;
+    padding: 16px 20px;
 
     &__actions {
       flex-shrink: 0;
