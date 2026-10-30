@@ -1,4 +1,5 @@
 import '../styles/main.scss';
+import { readConsent, writeConsent, loadAdSense } from './cookie-consent';
 
 // Los textos legales vivian en el home (#legal, #terminos, #privacidad): los enlaces viejos siguen funcionando.
 const legacyLegalRoutes = { '#legal': '/terminos', '#terminos': '/terminos', '#privacidad': '/privacidad' };
@@ -12,6 +13,24 @@ document.documentElement.classList.add('js');
 document.addEventListener('DOMContentLoaded', () => {
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ─── Consentimiento de cookies ───
+  const consent = readConsent();
+  const cookieNotice = document.getElementById('cookie-notice');
+
+  if (consent === 'accepted') loadAdSense();
+
+  if (!consent && cookieNotice) {
+    cookieNotice.hidden = false;
+    cookieNotice.querySelectorAll('[data-cookie-choice]').forEach(button => {
+      button.addEventListener('click', () => {
+        const choice = button.dataset.cookieChoice;
+        writeConsent(choice);
+        if (choice === 'accepted') loadAdSense();
+        cookieNotice.hidden = true;
+      });
+    });
+  }
 
   // ─── Footer Year ───
   const yearEl = document.getElementById('y');
@@ -296,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'capacidades':     { title: 'Servicios | Software a Medida, Automatización, Cloud, Staff Augmentation | MindTechPy', description: 'Software a medida, automatización e IA, cloud y operación, Staff Augmentation y Web Express en Paraguay.' },
     'evidencia':       { title: 'Productos y Colaboraciones | Gift Hub, FoxBox | MindTechPy', description: 'Productos propios y colaboraciones en operación: Gift Hub, FoxBox y más.' },
     'como-trabajamos': { title: 'Cómo Trabajamos | MindTechPy Paraguay', description: 'Alineamos el contexto, hacemos avanzar la primera entrega y dejamos capacidad instalada.' },
-    'empresa':         { title: 'Nosotros | Compromisos Verificables | MindTechPy Paraguay', description: 'NDA desde el inicio, facturación desde Paraguay, gestión de acceso por roles y entregas documentadas.' },
+    'empresa':         { title: 'Nosotros | Compromisos Verificables | MindTechPy Paraguay', description: 'NDA desde el inicio, empresa constituida en Paraguay, gestión de acceso por roles y entregas documentadas.' },
     'contacto':        { title: 'Contacto | Iniciar Conversación | MindTechPy Paraguay', description: 'Contanos qué necesita empezar a funcionar mejor. Respondemos en 24-48 horas hábiles.' }
   };
 

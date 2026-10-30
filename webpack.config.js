@@ -105,8 +105,8 @@ module.exports = (env, argv) => {
           useShortDoctype: true,
         } : false,
       }),
-      // Las tres paginas legales comparten el chunk `legal`
-      ...['privacidad', 'terminos', 'eliminacion-de-datos'].map((page) => new HtmlWebpackPlugin({
+      // Las paginas legales comparten el chunk `legal`
+      ...['privacidad', 'terminos', 'eliminacion-de-datos', 'cookies'].map((page) => new HtmlWebpackPlugin({
         template: `./src/pages/${page}.html`,
         filename: `${page}.html`,
         chunks: ['legal'],

@@ -1,5 +1,5 @@
 // =============================================
-// Legal — Privacidad, Términos y Eliminación de datos
+// Legal — Privacidad, Términos, Eliminación de datos y Cookies
 // Extiende el sistema Operaciones Visibles de web-express.scss con un
 // layout de lectura: una sola columna angosta, sin paneles ni efectos.
 // =============================================
@@ -162,7 +162,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
-    margin: 20px 0 0;
+    margin: 20px 0 16px;
   }
 
   &__related {
@@ -191,6 +191,72 @@
       font-weight: 600;
     }
   }
+
+  // En móvil cada fila es una ficha: tres columnas de texto no entran en 375px.
+  // Los role del HTML conservan la semántica de tabla que display: block quita.
+  &__table {
+    display: block;
+    width: 100%;
+    margin: 0 0 12px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--muted);
+
+    caption {
+      display: block;
+      text-align: left;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      color: var(--muted-2);
+      margin-bottom: 12px;
+    }
+
+    thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+    }
+
+    tbody,
+    tr,
+    th,
+    td {
+      display: block;
+    }
+
+    tr {
+      padding: 16px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    th,
+    td {
+      text-align: left;
+      font-weight: 400;
+    }
+
+    tbody th {
+      color: var(--paper);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    td {
+      margin-bottom: 8px;
+
+      &::before {
+        content: attr(data-label) ': ';
+        color: var(--muted-2);
+      }
+    }
+
+    code {
+      overflow-wrap: anywhere;
+    }
+  }
 }
 
 @media (min-width: 768px) {
@@ -205,14 +271,64 @@
       padding: 28px 32px;
 
       dl {
-        grid-template-columns: auto auto 1fr;
-        gap: 40px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px 40px;
       }
     }
 
     &__actions {
       flex-direction: row;
       flex-wrap: wrap;
+    }
+
+    &__table {
+      display: table;
+      border-collapse: collapse;
+
+      caption {
+        display: table-caption;
+      }
+
+      thead {
+        position: static;
+        display: table-header-group;
+        width: auto;
+        height: auto;
+        clip-path: none;
+      }
+
+      tbody {
+        display: table-row-group;
+      }
+
+      tr {
+        display: table-row;
+        padding: 0;
+        border: 0;
+      }
+
+      th,
+      td {
+        display: table-cell;
+        padding: 12px 16px 12px 0;
+        vertical-align: top;
+        border-top: 1px solid var(--line);
+      }
+
+      thead th {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        letter-spacing: 0.04em;
+        color: var(--muted-2);
+      }
+
+      td {
+        margin: 0;
+
+        &::before {
+          content: none;
+        }
+      }
     }
   }
 }

@@ -98,7 +98,7 @@ app.get('/gifthub', (req, res) => {
 });
 
 // Paginas legales (URLs registradas en plataformas externas: no renombrar)
-['privacidad', 'terminos', 'eliminacion-de-datos'].forEach((page) => {
+['privacidad', 'terminos', 'eliminacion-de-datos', 'cookies'].forEach((page) => {
   app.get(`/${page}`, (req, res) => {
     res.sendFile(path.join(__dirname, `../../dist/${page}.html`));
   });

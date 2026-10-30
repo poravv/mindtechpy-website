@@ -1878,6 +1878,69 @@ footer {
   margin-top: 6px;
 }
 
+// ─── AVISO DE COOKIES ───
+
+// Sticky y no fixed: ocupa su propio lugar al final del documento, así nunca
+// tapa de forma permanente el final de la página.
+.cookie-notice {
+  position: sticky;
+  bottom: 0;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px 16px;
+  background: $surface-raised;
+  border-top: 1px solid $line-strong;
+
+  &[hidden] {
+    display: none;
+  }
+
+  &__text {
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: $paper;
+
+    a {
+      color: $violet-bright;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+
+  &__actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: cookie-notice-in 0.2s ease-out;
+  }
+}
+
+@keyframes cookie-notice-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@media (min-width: $bp-tablet) {
+  .cookie-notice {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 14px 32px;
+
+    &__actions {
+      flex-shrink: 0;
+    }
+  }
+}
+
 @media (min-width: $bp-tablet) {
   .footer__inner {
     grid-template-columns: repeat(2, 1fr);

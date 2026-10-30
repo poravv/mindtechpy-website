@@ -29,10 +29,10 @@ test('should_respond_ok_when_health_check_is_requested', async () => {
 });
 
 test('should_serve_each_legal_page_at_its_clean_url', async () => {
-  for (const route of ['/privacidad', '/terminos', '/eliminacion-de-datos']) {
+  for (const route of ['/privacidad', '/terminos', '/eliminacion-de-datos', '/cookies']) {
     const res = await fetch(`${baseUrl}${route}`);
     assert.equal(res.status, 200, `${route} no responde 200`);
-    assert.match(await res.text(), /RUC 5379057-0/, `${route} no contiene el RUC`);
+    assert.match(await res.text(), /RUC 80181095-7/, `${route} no contiene el RUC`);
   }
 });
 

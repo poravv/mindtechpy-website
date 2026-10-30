@@ -32,9 +32,10 @@ Each page is an HTML template in `src/pages/` built by its own `HtmlWebpackPlugi
 | `/web-express` | `web-express.html` | `web-express.js` | `web-express.scss` |
 | `/staff-augmentation` | `staff-augmentation.html` | `staff-augmentation.js` | `talento.scss` |
 | `/gifthub` | `gifthub.html` | `gifthub.js` | `gifthub.scss` |
-| `/privacidad`, `/terminos`, `/eliminacion-de-datos` | one `.html` each | `legal.js` (shared chunk) | `legal.scss` |
+| `/privacidad`, `/terminos`, `/eliminacion-de-datos`, `/cookies` | one `.html` each | `legal.js` (shared chunk) | `legal.scss` |
 
 - **`src/pages/index.js`** — Home entry: IntersectionObserver reveals, per-section meta, contact form (`POST /api/contact`, then WhatsApp redirect). Redirects the legacy hashes `/#legal`, `/#terminos`, `/#privacidad` to the standalone legal pages.
+- **`src/pages/cookie-consent.js`** — AdSense consent: reads and writes the `mindtechpy-cookie-consent` localStorage key (`accepted`/`rejected`; a storage failure counts as no decision) and injects the AdSense script once. The home keeps `meta google-adsense-account` for site verification but has no AdSense script in its HTML: `index.js` loads it only with `accepted` and shows `#cookie-notice` while there is no decision. `legal.js` wires the Aceptar/Rechazar buttons of `/cookies`, which only save the decision. `public/ads.txt` stays published.
 - **`src/pages/page-chrome.js`** — Shared secondary-page behaviour (`initPageChrome`: mobile nav, scroll progress bar, compact header, scroll reveals, smooth scroll) imported by every secondary-page entry.
 - **`src/styles/main.scss`** — Home design system. **`src/styles/web-express.scss`** — tokens and shared components for secondary pages; `talento.scss` and `legal.scss` extend it with `@use 'web-express'`.
 - **`functions/api/contact.js`** — Cloudflare Pages Function for `POST /api/contact` (`onRequestPost`): validates the payload and sends the email over SMTP via `cloudflare:sockets`. Configured through the Pages environment variables `MAIL_HOST`, `MAIL_PORT`, `MAIL_USERNAME`, `MAIL_PASSWORD`, `MAIL_FROM`, `CONTACT_TO`. This is the production contact endpoint.
@@ -52,7 +53,7 @@ Each page is an HTML template in `src/pages/` built by its own `HtmlWebpackPlugi
 
 ## Legal Identity
 
-"MindTechPy es el nombre comercial de Andrés Valentín Vera Chávez, RUC 5379057-0." It appears discreetly in the footer of every page, in the owner block (`section.legal__owner`, headed "Titular" / "Responsable del tratamiento") and `meta author` of the three legal pages, and in the home's Organization JSON-LD (`legalName`, `taxID`, `founder`). Never emphasize it visually, and keep all of these in sync when it changes.
+"MindTechPy es la marca comercial utilizada por MINDTECH E.A.S. UNIPERSONAL, con RUC 80181095-7, radicada en Capiatá, departamento Central, Paraguay." Owner: Andrés Valentín Vera Chávez. It appears discreetly in the footer of every page (`MindTechPy · MINDTECH E.A.S. UNIPERSONAL · RUC 80181095-7 · Capiatá, Central, Paraguay`), in the owner block (`section.legal__owner`, headed "Titular" / "Responsable del tratamiento") and `meta author` of the four legal pages, and in the home's Organization JSON-LD (`legalName`, `taxID`, `founder`). Never emphasize it visually, and keep all of these in sync when it changes.
 
 ## Interactive Design Directives
 
