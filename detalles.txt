@@ -38,26 +38,7 @@ Características:
 
 ⸻
 
-📄 3. Sistema de Lectura Automática de Facturas Electrónicas
-
-Tipo: Uso por licencia
-Tecnología: Python, OpenAI, FastAPI, Angular, XML, OCR
-
-Descripción:
-Procesá automáticamente tus facturas electrónicas desde el correo o carpetas compartidas.
-El sistema detecta PDFs, XMLs o imágenes, extrae y valida la información fiscal mediante IA, y genera exportaciones listas para sistemas contables.
-
-Características:
-	•	Integración con correos IMAP/SMTP
-	•	Lectura inteligente con OpenAI (GPT-4o)
-	•	Procesamiento de XML nativos y PDFs escaneados
-	•	Panel de control web con Angular
-	•	Exportación a Excel compatible
-	•	Validación contra bases fiscales locales
-
-⸻
-
-⚙️ 4. Desarrollo de Software a Medida
+⚙️ 3. Desarrollo de Software a Medida
 
 Tipo: Por proyecto o contrato
 Tecnología principal: Node.js, Spring Boot, Python, Flutter, Angular, React

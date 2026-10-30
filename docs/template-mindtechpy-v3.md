@@ -16,7 +16,7 @@ MindTechPy v3.0 es una evolución estratégica de la plataforma digital corporat
 
 ### Objetivos Principales:
 1. **Conversión B2B Maximizada**: Generación de leads cualificados para Staff Augmentation y Desarrollo a Medida con tiempos de respuesta < 48h.
-2. **Exhibición de Productos Propios (SaaS)**: Destacar las soluciones paquetizadas (`WhatsApp Sender Pro`, `SMS Sender Pro`, `FacturaIA / Lectura de Facturas con IA`).
+2. **Exhibición de Productos Propios (SaaS)**: Destacar las soluciones paquetizadas (`WhatsApp Sender Pro` y `SMS Sender Pro`).
 3. **Captación de Talento TI de Élite**: Portal interactivo ("Trabaja con Nosotros") con proceso de selección transparente de 3 pasos.
 4. **Diseño Visual Ultra-Premium (Anti-Slop)**: Cero plantillas genéricas. Sistema visual basado en micro-interacciones hápticas, contenedores de doble bisel (Doppelrand), degradados mesh oscuros y tipografía geométrica refinada.
 
@@ -73,8 +73,7 @@ El sitio se estructura en un **Single-Page Application (SPA) Híbrido** con land
 ├─────────────────────────────────────────────────────────────────────────────┤
 │ 5. PRODUCTOS PROPIOS / ECOSYSTEM SHOWCASE                                   │
 │    ├── WhatsApp Sender Pro (Suscripción Enterprise, Redis, MinIO, Keycloak)  │
-│    ├── SMS Sender Pro (Módems USB array, Garantía Offline)                  │
-│    └── FacturaIA (Extracción Inteligente de Facturas XML/PDF con GPT-4o)     │
+│    └── SMS Sender Pro (Módems USB array, Garantía Offline)                  │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │ 6. ARQUITECTURA & GARANTÍAS DE SEGURIDAD (NDA, Facturación PY, ISO/GDPR)    │
 ├─────────────────────────────────────────────────────────────────────────────┤
@@ -142,7 +141,7 @@ Disposición en **CSS Grid Asimétrico** de 4 tarjetas principales con Doble Bis
 ├──────────────────────────────────────────────┼──────────────────────────────────────────────┤
 │  CARD 3 (Span 4): CLOUD, DEVOPS & K8S        │  CARD 4 (Span 8): IA & AUTOMATIZACIÓN        │
 │  - CI/CD, Docker, Observabilidad, Costos.    │  - Integración de LLMs, Procesamiento doc.   │
-│  - Optimización de infraestructura.          │  - Lectura inteligente de facturas y OCR.    │
+│  - Optimización de infraestructura.          │                                              │
 └──────────────────────────────────────────────┴──────────────────────────────────────────────┘
 ```
 
@@ -170,11 +169,6 @@ Sección dedicada a mostrar el portafolio de software empaquetado de la empresa:
 - **Modelo**: Contrato & Licencia Anual.
 - **Stack**: Node.js, Express, Hardware Array (Módems USB Físicos).
 - **Propuesta de Valor**: Sistema independiente de mensajería masiva SMS por hardware para empresas con requerimientos de alta disponibilidad offline o notificaciones críticas fuera de internet.
-
-#### 3. 📄 FacturaIA (Lectura Automática de Facturas con IA)
-- **Modelo**: Licencia por uso / Procesamiento por lote.
-- **Stack**: Python, OpenAI GPT-4o, FastAPI, Angular, OCR, XML Parser.
-- **Propuesta de Valor**: Procesamiento automático e inteligente de facturas electrónicas (PDF, XML, imágenes escaneadas) enviadas por IMAP/SMTP o carpetas compartidas. Extrae tributos, RUC, ítems y exporta directo a sistemas contables/Excel.
 
 ---
 
@@ -217,7 +211,7 @@ Un componente dinámico donde el cliente puede armar su paquete preliminar:
 ### SECCIÓN 9: FOOTER ENTERPRISE (`Footer Architecture`)
 - **Columna 1**: Isotipo MindTechPy, eslogan corporativo, información de registro comercial Asunción, Paraguay.
 - **Columna 2 (Servicios)**: Staff Augmentation, Software a Medida, Cloud/DevOps, IA.
-- **Columna 3 (Productos)**: WhatsApp Sender Pro, SMS Sender Pro, FacturaIA.
+- **Columna 3 (Productos)**: WhatsApp Sender Pro, SMS Sender Pro.
 - **Columna 4 (Legal & Contacto)**: Términos de Servicio, Política de Privacidad, Soporte WhatsApp (`+595 981 586823`), Email (`andres.vera@mindtechpy.net`).
 - **Barra Inferior**: © 2026 MindTechPy. Todos los derechos reservados. Made with precision in Asunción.
 

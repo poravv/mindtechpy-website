@@ -142,7 +142,6 @@ Los productos propios aparecen como tres capítulos en una secuencia horizontal 
 | --- | --- | --- |
 | WhatsApp Sender Pro | Conversaciones y campañas con control empresarial. | Captura real del inbox, campañas o métricas, con datos anonimizados. |
 | SMS Sender Pro | Mensajería crítica cuando el canal debe seguir disponible. | Foto real del dispositivo o del contexto de operación. |
-| CuenlyApp / FacturaIA | Facturas que llegan como datos listos para trabajar. | Captura real de una extracción de documento con información anonimizada. |
 
 No se crearán pantallas falsas. Si una captura no está lista, el módulo debe usar una imagen editorial temporal identificada en el backlog de contenidos, no una maqueta hecha con rectángulos.
 
