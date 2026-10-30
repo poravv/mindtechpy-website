@@ -310,13 +310,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ─── Dynamic Page Title & Meta Description ───
   const sectionMeta = {
-    'hero':            { title: 'MindTechPy — Ingeniería de Software & Transformación Digital | Paraguay', description: 'Software que entra en operación: sistemas, automatizaciones y equipos técnicos desde Paraguay para toda LATAM.' },
+    'hero':            { title: 'MindTechPy | Mindtech Paraguay — Software a medida', description: 'Software que entra en operación: sistemas, automatizaciones y equipos técnicos desde Capiatá, Paraguay.' },
     'criterio':        { title: 'Cómo ejecutamos | De la necesidad a la operación | MindTechPy', description: 'Entender, diseñar, integrar y acompañar: el hilo de ejecución de MindTechPy.' },
     'capacidades':     { title: 'Servicios | Software a Medida, Automatización, Cloud, Staff Augmentation | MindTechPy', description: 'Software a medida, automatización e IA, cloud y operación, Staff Augmentation y Web Express en Paraguay.' },
-    'evidencia':       { title: 'Productos y Colaboraciones | Gift Hub, FoxBox | MindTechPy', description: 'Productos propios y colaboraciones en operación: Gift Hub, FoxBox y más.' },
+    'evidencia':       { title: 'Productos | Gift Hub, Accenova, Punto de Venta | MindTechPy', description: 'Productos propios en operación: Gift Hub, Accenova y Punto de Venta.' },
     'como-trabajamos': { title: 'Cómo Trabajamos | MindTechPy Paraguay', description: 'Alineamos el contexto, hacemos avanzar la primera entrega y dejamos capacidad instalada.' },
-    'empresa':         { title: 'Nosotros | Compromisos Verificables | MindTechPy Paraguay', description: 'NDA desde el inicio, empresa constituida en Paraguay, gestión de acceso por roles y entregas documentadas.' },
-    'contacto':        { title: 'Contacto | Iniciar Conversación | MindTechPy Paraguay', description: 'Contanos qué necesita empezar a funcionar mejor. Respondemos en 24-48 horas hábiles.' }
+    'empresa':         { title: 'Nosotros | Compromisos Verificables | MindTechPy Paraguay', description: 'Acuerdos de trabajo por escrito, empresa constituida en Paraguay, gestión de acceso por roles y entregas documentadas.' },
+    'contacto':        { title: 'Contacto | Iniciar Conversación | MindTechPy Paraguay', description: 'Contanos qué necesita empezar a funcionar mejor. Respondemos en días hábiles con una lectura del problema y un próximo paso concreto.' }
   };
 
   const metaDescriptionTag = document.querySelector('meta[name="description"]');
