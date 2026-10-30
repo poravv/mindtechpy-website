@@ -11,3 +11,6 @@
 
 # Logs de CLIs
 *-debug.log
+
+# Datos fiscales internos (repo público)
+docs/datos-fiscales-web.md
